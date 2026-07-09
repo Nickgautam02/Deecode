@@ -167,7 +167,8 @@ export const site = {
     // and setup steps). Paste the deployed web-app URL (ends in /exec)
     // below. While it's empty, the form falls back to opening the
     // visitor's email client instead.
-    sheetWebhookUrl: "",
+    sheetWebhookUrl:
+      "https://script.google.com/macros/s/AKfycbwZWaEFsTo91xl9vsf9J0tMBICMWliCFJZpVn92IZCmnq-C5W6V-uwkT190xy5_STF4lg/exec",
   },
 };
 
