@@ -1,0 +1,174 @@
+// ────────────────────────────────────────────────────────────────
+//  SITE CONTENT — edit this one file to change everything on the
+//  website: brand name, contact details, stats, services, creators,
+//  case studies and footer links. No other file needs touching.
+// ────────────────────────────────────────────────────────────────
+
+export const site = {
+  // ← Replace with your real brand name
+  name: "Novareach",
+  domain: "novareach.in",
+  tagline: "Influencer marketing & talent management agency",
+
+  email: "hello@novareach.in",
+  phone: "+91 98765 43210",
+  whatsapp: "https://wa.me/919876543210",
+  address: "3rd Floor, Cyber Park, Sector 39, Gurugram, Haryana 122003",
+
+  socials: {
+    instagram: "https://instagram.com/novareach",
+    linkedin: "https://linkedin.com/company/novareach",
+    youtube: "https://youtube.com/@novareach",
+  },
+
+  nav: [
+    { label: "Services", href: "#services" },
+    { label: "Creators", href: "#creators" },
+    { label: "Case Studies", href: "#work" },
+    { label: "About", href: "#about" },
+  ],
+
+  hero: {
+    kicker: "Influencer Marketing · Talent Management",
+    // The word wrapped in [brackets] is rendered in the accent color
+    headline: "We turn creators into [household names].",
+    sub: "From first brief to billion views — we build digital stars and run creator campaigns that drive massive, measurable brand growth.",
+    primaryCta: { label: "Let's Talk", href: "#contact" },
+    secondaryCta: { label: "Explore our work", href: "#work" },
+  },
+
+  stats: [
+    { value: 120, suffix: "+", label: "Creators managed", decimals: 0 },
+    { value: 800, suffix: "+", label: "Campaigns delivered", decimals: 0 },
+    { value: 2.4, suffix: "B+", label: "Views generated", decimals: 1 },
+    { value: 150, suffix: "+", label: "Brand partners", decimals: 0 },
+  ],
+
+  // Logos strip under the hero
+  brands: [
+    "FinPeak",
+    "GlowKart",
+    "Zestify",
+    "UrbanFit",
+    "PixelPay",
+    "Brewly",
+    "SnapLearn",
+    "Voltride",
+  ],
+
+  services: [
+    {
+      title: "Influencer Marketing",
+      description:
+        "End-to-end creator campaigns — from shortlisting the right faces to reporting the numbers that matter.",
+      points: [
+        "Creator discovery & matchmaking",
+        "Campaign strategy & execution",
+        "Performance analytics & reporting",
+      ],
+    },
+    {
+      title: "Talent Management",
+      description:
+        "We manage careers, not just deals. Long-term growth plans for every creator on our roster.",
+      points: [
+        "Brand deal negotiation",
+        "Career & content strategy",
+        "IP, merch & monetisation",
+      ],
+    },
+    {
+      title: "Content Production",
+      description:
+        "A full in-house studio that takes ideas from script to screen, optimised for every platform.",
+      points: [
+        "Concept development & scripting",
+        "End-to-end video production",
+        "Multi-platform editing & packaging",
+      ],
+    },
+    {
+      title: "Brand Strategy",
+      description:
+        "Social-first playbooks that put your brand where culture is happening — and prove the ROI.",
+      points: [
+        "Social media strategy",
+        "Audience & trend intelligence",
+        "ROI-driven media planning",
+      ],
+    },
+  ],
+
+  creators: [
+    { name: "Aarav Mehta", niche: "Tech & Gadgets", followers: "3.2M", platform: "YouTube" },
+    { name: "Sana Kapoor", niche: "Fashion & Lifestyle", followers: "2.8M", platform: "Instagram" },
+    { name: "Rohan Verma", niche: "Comedy", followers: "5.1M", platform: "Instagram" },
+    { name: "Ishita Rao", niche: "Beauty", followers: "1.9M", platform: "YouTube" },
+    { name: "Kabir Singhania", niche: "Fitness", followers: "2.2M", platform: "Instagram" },
+    { name: "Mira Joshi", niche: "Food & Travel", followers: "1.4M", platform: "YouTube" },
+    { name: "Dev Malhotra", niche: "Finance", followers: "980K", platform: "Instagram" },
+    { name: "Tara Iyer", niche: "Music & Dance", followers: "4.6M", platform: "Instagram" },
+  ],
+
+  caseStudies: [
+    {
+      brand: "FinPeak",
+      category: "Fintech · Performance Campaign",
+      title: "50M+ views in 45 days for a fintech launch",
+      description:
+        "A 40-creator finance squad took FinPeak's new investing app from unknown to unmissable — short-form explainers, long-form deep dives and a viral challenge that made investing feel simple.",
+      metrics: [
+        { value: "50M+", label: "Views" },
+        { value: "12x", label: "ROAS" },
+        { value: "40+", label: "Creators" },
+      ],
+    },
+    {
+      brand: "TuneVerse Records",
+      category: "Music Label · Creator Growth",
+      title: "120M views across three artist launches",
+      description:
+        "We paired a leading music label with our dance and music roster to launch three artists in six months — choreography trends, creator remixes and fan-first content that kept every drop trending.",
+      metrics: [
+        { value: "120M", label: "Views" },
+        { value: "2.1M", label: "Subscribers gained" },
+        { value: "3", label: "Chart-topping launches" },
+      ],
+    },
+  ],
+
+  about: {
+    heading: "The agency behind the creators you already follow.",
+    body: "We started as creators ourselves — so we build careers the way we wished someone had built ours. Today we manage 120+ digital stars and run campaigns for some of the country's fastest-growing brands, with one rule: every view has to work as hard as we do.",
+    pillars: [
+      {
+        title: "Creator-first",
+        text: "We grow people, not just channels. Long-term careers beat one-off virality.",
+      },
+      {
+        title: "Performance-obsessed",
+        text: "Every campaign ships with clear KPIs, live dashboards and honest reporting.",
+      },
+      {
+        title: "Full-stack",
+        text: "Strategy, talent, production and distribution under one roof — no hand-offs.",
+      },
+    ],
+  },
+
+  contact: {
+    heading: "Let's build something massive.",
+    sub: "Tell us whether you're a brand looking to scale or a creator ready to go pro — we'll get back within 24 hours.",
+    roles: ["I'm a Brand", "I'm a Creator", "Something else"],
+
+    // ── Google Sheet integration ──
+    // Submissions are appended to the "Deecode" spreadsheet via a Google
+    // Apps Script web app (see scripts/google-apps-script.gs for the code
+    // and setup steps). Paste the deployed web-app URL (ends in /exec)
+    // below. While it's empty, the form falls back to opening the
+    // visitor's email client instead.
+    sheetWebhookUrl: "",
+  },
+};
+
+export type Site = typeof site;

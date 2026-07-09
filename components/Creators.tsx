@@ -1,0 +1,61 @@
+import { site } from "@/content/site";
+import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
+
+const AVATAR_GRADIENTS = [
+  "from-lime-400/80 to-emerald-600/80",
+  "from-fuchsia-400/80 to-purple-700/80",
+  "from-amber-300/80 to-orange-600/80",
+  "from-sky-400/80 to-indigo-600/80",
+];
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("");
+}
+
+export default function Creators() {
+  return (
+    <section id="creators" className="scroll-mt-20 bg-card/40 py-24">
+      <div className="mx-auto max-w-6xl px-5">
+        <SectionHeading
+          kicker="Our roster"
+          title="120+ creators. Every niche that matters."
+          sub="A hand-picked roster across tech, fashion, comedy, fitness, finance and more — matched to your brand by data, not guesswork."
+        />
+
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
+          {site.creators.map((creator, i) => (
+            <Reveal key={creator.name} delay={(i % 4) * 80}>
+              <article className="group rounded-2xl border border-line bg-background p-5 text-center transition-colors hover:border-accent/60">
+                <div
+                  className={`font-display mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-2xl font-bold text-background ${AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length]}`}
+                >
+                  {initials(creator.name)}
+                </div>
+                <h3 className="font-display mt-4 font-bold">{creator.name}</h3>
+                <p className="mt-1 text-xs text-muted">{creator.niche}</p>
+                <p className="mt-3 text-sm">
+                  <span className="font-semibold text-accent">{creator.followers}</span>{" "}
+                  <span className="text-muted">on {creator.platform}</span>
+                </p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal className="mt-10 text-center">
+          <a
+            href="#contact"
+            className="inline-block rounded-full border border-line px-7 py-3 font-semibold transition-colors hover:border-accent hover:text-accent"
+          >
+            Work with our creators →
+          </a>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
