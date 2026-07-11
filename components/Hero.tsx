@@ -27,7 +27,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={100}>
-          <h1 className="font-display max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
+          <h1 className="font-display max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl whitespace-pre-line">
             <Headline text={site.hero.headline} />
           </h1>
         </Reveal>

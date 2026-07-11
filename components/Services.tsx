@@ -8,7 +8,7 @@ export default function Services() {
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
           kicker="What we do"
-          title="Four ways we make brands impossible to ignore."
+          title="One Agency Infinite Reach."
         />
 
         <div className="grid gap-6 md:grid-cols-2">

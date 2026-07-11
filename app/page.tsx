@@ -1,6 +1,6 @@
 import About from "@/components/About";
 import BrandMarquee from "@/components/BrandMarquee";
-import CaseStudies from "@/components/CaseStudies";
+
 import Contact from "@/components/Contact";
 import Creators from "@/components/Creators";
 import Footer from "@/components/Footer";
@@ -17,7 +17,6 @@ export default function Home() {
         <BrandMarquee />
         <Services />
         <Creators />
-        <CaseStudies />
         <About />
         <Contact />
       </main>

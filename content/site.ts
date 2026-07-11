@@ -6,8 +6,8 @@
 
 export const site = {
   // ← Replace with your real brand name
-  name: "Novareach",
-  domain: "novareach.in",
+  name: "Deecode Media House",
+  domain: "deecode.in",
   tagline: "Influencer marketing & talent management agency",
 
   email: "hello@novareach.in",
@@ -31,29 +31,34 @@ export const site = {
   hero: {
     kicker: "Influencer Marketing · Talent Management",
     // The word wrapped in [brackets] is rendered in the accent color
-    headline: "We turn creators into [household names].",
+    headline: "We Don't Just Create Campaigns.\nWe Create [Brand Momentum].",
     sub: "From first brief to billion views — we build digital stars and run creator campaigns that drive massive, measurable brand growth.",
     primaryCta: { label: "Let's Talk", href: "#contact" },
     secondaryCta: { label: "Explore our work", href: "#work" },
   },
 
   stats: [
-    { value: 120, suffix: "+", label: "Creators managed", decimals: 0 },
-    { value: 800, suffix: "+", label: "Campaigns delivered", decimals: 0 },
-    { value: 2.4, suffix: "B+", label: "Views generated", decimals: 1 },
-    { value: 150, suffix: "+", label: "Brand partners", decimals: 0 },
+    { value: 600, suffix: "+", label: "Creators managed", decimals: 0 },
+    { value: 100, suffix: "+", label: "Campaigns delivered", decimals: 0 },
+    { value: 2, suffix: "B+", label: "Views generated", decimals: 0 },
+    { value: 80, suffix: "+", label: "Brand partners", decimals: 0 },
   ],
 
   // Logos strip under the hero
   brands: [
-    "FinPeak",
-    "GlowKart",
-    "Zestify",
-    "UrbanFit",
-    "PixelPay",
-    "Brewly",
-    "SnapLearn",
-    "Voltride",
+    "Garnier",
+    "Monster",
+    "Red Bull",
+    "Polka Pop",
+    "Red Bus",
+    "Jio Saavan",
+    "Commudle",
+    "Qoneqt",
+    "Coolberg",
+    "Hell",
+    "Cornitos",
+    "Hilary Rhoda",
+    "Ixigo",
   ],
 
   services: [
@@ -80,7 +85,7 @@ export const site = {
     {
       title: "Content Production",
       description:
-        "A full in-house studio that takes ideas from script to screen, optimised for every platform.",
+        "Studio-grade content creation for brands and creators - from concept to final cut. We make content that stops thumbs and starts conversations.",
       points: [
         "Concept development & scripting",
         "End-to-end video production",
@@ -90,7 +95,7 @@ export const site = {
     {
       title: "Brand Strategy",
       description:
-        "Social-first playbooks that put your brand where culture is happening — and prove the ROI.",
+        "We go beyond likes and views - building narratives that drive real business outcomes. Strategy-first, always.",
       points: [
         "Social media strategy",
         "Audience & trend intelligence",

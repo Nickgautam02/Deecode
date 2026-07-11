@@ -4,7 +4,7 @@
   --background: #08080a;
   --foreground: #f4f4f0;
   --muted: #9a9a92;
-  --accent: #c9f24b;
+  --accent: #f472b6;
   --card: #101013;
   --line: rgba(255, 255, 255, 0.08);
 }
@@ -74,6 +74,6 @@ body {
 /* ── Hero background glow ── */
 .hero-glow {
   background:
-    radial-gradient(600px 400px at 15% 10%, rgba(201, 242, 75, 0.13), transparent 65%),
-    radial-gradient(700px 500px at 85% 85%, rgba(201, 242, 75, 0.07), transparent 65%);
+    radial-gradient(600px 400px at 15% 10%, rgba(244, 114, 182, 0.13), transparent 65%),
+    radial-gradient(700px 500px at 85% 85%, rgba(244, 114, 182, 0.07), transparent 65%);
 }
