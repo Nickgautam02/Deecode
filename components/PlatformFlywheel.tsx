@@ -98,7 +98,15 @@ export default function PlatformFlywheel() {
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
           kicker="Content flywheel"
-          title="One idea. Every format. Every feed."
+          title={
+            <>
+              One idea.
+              <br />
+              <span className="text-accent">Every feed.</span>
+              <br />
+              Every format.
+            </>
+          }
           sub="We build bulletproof content flywheels for brands and creators — high-volume content engineered to grow on every platform at once."
         />
 

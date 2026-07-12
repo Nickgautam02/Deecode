@@ -7,6 +7,20 @@ import Reveal from "./Reveal";
 const inputClasses =
   "w-full rounded-xl border border-line bg-background px-4 py-3 text-foreground placeholder:text-muted/60 outline-none transition-colors focus:border-accent";
 
+/** Renders the heading, painting the [bracketed] segment in the accent color. */
+function Heading({ text }: { text: string }) {
+  const match = text.match(/^([\s\S]*)\[(.+)\]([\s\S]*)$/);
+  if (!match) return <>{text}</>;
+  const [, before, highlighted, after] = match;
+  return (
+    <>
+      {before}
+      <span className="text-accent">{highlighted}</span>
+      {after}
+    </>
+  );
+}
+
 type Status = "idle" | "sending" | "sent" | "error";
 
 export default function Contact() {
@@ -65,7 +79,7 @@ export default function Contact() {
               Contact
             </p>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              {site.contact.heading}
+              <Heading text={site.contact.heading} />
             </h2>
             <p className="mt-5 max-w-md text-lg text-muted">{site.contact.sub}</p>
 

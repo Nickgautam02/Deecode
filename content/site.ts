@@ -143,7 +143,8 @@ export const site = {
   ],
 
   about: {
-    heading: "Where brands meet the creator economy.",
+    // The words wrapped in [brackets] are rendered in the accent color
+    heading: "Where brands meet the [creator economy].",
     body: "Deecode Media House connects ambitious brands with a network of 600+ creators across India, the USA and Dubai. From Garnier to Red Bull to Ixigo, we've turned briefs into 2B+ views by matching the right voices to the right audiences — and backing every campaign with strategy, production muscle and numbers that hold up in the boardroom.",
     pillars: [
       {
@@ -162,7 +163,8 @@ export const site = {
   },
 
   contact: {
-    heading: "Let's build something massive.",
+    // The word wrapped in [brackets] is rendered in the accent color
+    heading: "Let's build something [massive].",
     sub: "Tell us whether you're a brand looking to scale or a creator ready to go pro — we'll get back within 24 hours.",
     roles: ["I'm a Brand", "I'm a Creator", "Something else"],
 

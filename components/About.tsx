@@ -1,6 +1,20 @@
 import { site } from "@/content/site";
 import Reveal from "./Reveal";
 
+/** Renders the heading, painting the [bracketed] segment in the accent color. */
+function Heading({ text }: { text: string }) {
+  const match = text.match(/^([\s\S]*)\[(.+)\]([\s\S]*)$/);
+  if (!match) return <>{text}</>;
+  const [, before, highlighted, after] = match;
+  return (
+    <>
+      {before}
+      <span className="text-accent">{highlighted}</span>
+      {after}
+    </>
+  );
+}
+
 export default function About() {
   return (
     <section id="about" className="scroll-mt-20 bg-card/40 py-24">
@@ -11,7 +25,7 @@ export default function About() {
               About us
             </p>
             <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-              {site.about.heading}
+              <Heading text={site.about.heading} />
             </h2>
             <p className="mt-6 text-lg text-muted">{site.about.body}</p>
           </Reveal>
