@@ -13,7 +13,7 @@ export const site = {
   email: "deecode.mediahouse@gmail.com",
   phone: "+91 95360 81111",
   whatsapp: "https://wa.me/919536081111",
-  address: "B-104, Proview Technocity, Chi V, Greater Noida, India",
+  address: "Technocity, Greater Noida, India",
 
   socials: {
     linkedin: "https://www.linkedin.com/company/deecode-media-house/",
