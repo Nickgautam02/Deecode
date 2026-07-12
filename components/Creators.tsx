@@ -19,7 +19,7 @@ function initials(name: string) {
 
 export default function Creators() {
   return (
-    <section id="creators" className="scroll-mt-20 bg-card/40 py-24">
+    <section id="creators" className="scroll-mt-20 py-10 md:py-16">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
           kicker="Creator roster"
@@ -36,7 +36,7 @@ export default function Creators() {
         <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
           {site.creators.map((creator, i) => (
             <Reveal key={creator.name} delay={(i % 3) * 80}>
-              <article className="group card-hover rounded-2xl border border-line bg-background p-5 text-center">
+              <article className="group card-hover rounded-2xl border border-line bg-card p-5 text-center">
                 {creator.image ? (
                   <img
                     src={creator.image}

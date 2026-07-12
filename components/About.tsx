@@ -17,7 +17,7 @@ function Heading({ text }: { text: string }) {
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-20 bg-card/40 py-24">
+    <section id="about" className="scroll-mt-20 bg-card/40 py-10 md:py-16">
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal>

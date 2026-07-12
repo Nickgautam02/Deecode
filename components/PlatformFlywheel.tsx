@@ -94,7 +94,7 @@ export default function PlatformFlywheel() {
   }, []);
 
   return (
-    <section id="platforms" className="scroll-mt-20 overflow-hidden py-24">
+    <section id="platforms" className="scroll-mt-20 overflow-hidden bg-card/40 py-10 md:py-16">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
           kicker="Content flywheel"

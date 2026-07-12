@@ -71,7 +71,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 py-24">
+    <section id="contact" className="scroll-mt-20 py-10 md:py-16">
       <div className="mx-auto max-w-6xl px-5">
         <div className="grid gap-14 lg:grid-cols-2">
           <Reveal>

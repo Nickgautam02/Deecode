@@ -18,7 +18,7 @@ function Headline({ text }: { text: string }) {
 
 export default function Hero() {
   return (
-    <section id="top" className="hero-glow relative overflow-hidden pb-20 pt-36 md:pt-44">
+    <section id="top" className="hero-glow relative overflow-hidden pb-10 pt-28 md:pb-16 md:pt-40">
       <div className="mx-auto max-w-6xl px-5">
         <Reveal>
           <p className="mb-5 inline-block rounded-full border border-line px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-muted">

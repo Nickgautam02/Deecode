@@ -4,7 +4,7 @@ import SectionHeading from "./SectionHeading";
 
 export default function Services() {
   return (
-    <section id="services" className="scroll-mt-20 py-24">
+    <section id="services" className="scroll-mt-20 py-10 md:py-16">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
           kicker="What we do"
