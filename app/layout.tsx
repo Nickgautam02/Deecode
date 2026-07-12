@@ -14,8 +14,29 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(`https://${site.domain}`),
   title: `${site.name} — ${site.tagline}`,
   description: site.hero.sub,
+  keywords: [
+    "influencer marketing agency",
+    "talent management",
+    "creator economy",
+    "content production",
+    "brand strategy",
+    site.name,
+  ],
+  openGraph: {
+    title: `${site.name} — ${site.tagline}`,
+    description: site.hero.sub,
+    url: `https://${site.domain}`,
+    siteName: site.name,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.hero.sub,
+  },
 };
 
 export default function RootLayout({
