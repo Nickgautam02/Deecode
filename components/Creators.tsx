@@ -31,11 +31,22 @@ export default function Creators() {
           {site.creators.map((creator, i) => (
             <Reveal key={creator.name} delay={(i % 3) * 80}>
               <article className="group card-hover rounded-2xl border border-line bg-background p-5 text-center">
-                <div
-                  className={`font-display mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-2xl font-bold text-background transition-transform duration-300 group-hover:scale-110 ${AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length]}`}
-                >
-                  {initials(creator.name)}
-                </div>
+                {creator.image ? (
+                  <img
+                    src={creator.image}
+                    alt={creator.name}
+                    width={100}
+                    height={100}
+                    loading="lazy"
+                    className="mx-auto h-20 w-20 rounded-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                ) : (
+                  <div
+                    className={`font-display mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-2xl font-bold text-background transition-transform duration-300 group-hover:scale-110 ${AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length]}`}
+                  >
+                    {initials(creator.name)}
+                  </div>
+                )}
                 <h3 className="font-display mt-4 font-bold">{creator.name}</h3>
                 <p className="mt-1 text-xs text-muted">{creator.niche}</p>
                 <p className="mt-3 text-sm">

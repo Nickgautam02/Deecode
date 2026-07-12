@@ -102,16 +102,17 @@ export const site = {
     },
   ],
 
+  // image: file in public/creators/ — leave "" to show initials instead
   creators: [
-    { name: "Megi Mali", niche: "Lifestyle & Tech", followers: "217K", platform: "Instagram", location: "USA" },
-    { name: "Nick", niche: "Tech", followers: "300K", platform: "Instagram", location: "Texas" },
-    { name: "Raman Yadav", niche: "Sketches", followers: "1.5M", platform: "Instagram", location: "India" },
-    { name: "Matthew A.", niche: "Lifestyle & Tech", followers: "178K", platform: "Instagram", location: "Texas" },
-    { name: "The Ass Tag", niche: "Comedy", followers: "3.83M", platform: "YouTube", location: "India" },
-    { name: "Ridey Behl", niche: "Comedy", followers: "260K", platform: "Instagram", location: "India" },
-    { name: "Sonam Pirani", niche: "Fashion & Beauty", followers: "120K", platform: "Instagram", location: "Dubai" },
-    { name: "Gauri Bhasin", niche: "Fashion & Lifestyle", followers: "150K", platform: "Instagram", location: "India" },
-    { name: "Choti Philim", niche: "Comedy", followers: "1M", platform: "Instagram", location: "India" },
+    { name: "Choti Philim", niche: "Comedy", followers: "1M", platform: "Instagram", location: "India", image: "/creators/choti-philim.jpg" },
+    { name: "The Ass Tag", niche: "Comedy", followers: "3.83M", platform: "YouTube", location: "India", image: "/creators/the-ass-tag.jpg" },
+    { name: "Ridey Behl", niche: "Comedy", followers: "260K", platform: "Instagram", location: "India", image: "/creators/ridey-behl.jpg" },
+    { name: "Megi Mali", niche: "Lifestyle & Tech", followers: "217K", platform: "Instagram", location: "USA", image: "/creators/megi-mali.jpg" },
+    { name: "Nick", niche: "Tech", followers: "300K", platform: "Instagram", location: "Texas", image: "/creators/nick.jpg" },
+    { name: "Raman Yadav", niche: "Sketches", followers: "1.5M", platform: "Instagram", location: "India", image: "/creators/raman-yadav.jpg" },
+    { name: "Matthew A.", niche: "Lifestyle & Tech", followers: "178K", platform: "Instagram", location: "Texas", image: "/creators/matthew-a.jpg" },
+    { name: "Sonam Pirani", niche: "Fashion & Beauty", followers: "120K", platform: "Instagram", location: "Dubai", image: "/creators/sonam-pirani.jpg" },
+    { name: "Gauri Bhasin", niche: "Fashion & Lifestyle", followers: "150K", platform: "Instagram", location: "India", image: "/creators/gauri-bhasin.jpg" },
   ],
 
   caseStudies: [
