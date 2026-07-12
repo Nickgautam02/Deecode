@@ -6,7 +6,7 @@ export default function SectionHeading({
   sub,
 }: {
   kicker: string;
-  title: string;
+  title: React.ReactNode;
   sub?: string;
 }) {
   return (
