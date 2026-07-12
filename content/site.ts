@@ -56,6 +56,7 @@ export const site = {
     "Cornitos",
     "Hilary Rhoda",
     "Ixigo",
+    "Vedorra",
   ],
 
   services: [

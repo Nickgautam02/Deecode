@@ -76,13 +76,11 @@ const NODES = [
 
 export default function PlatformFlywheel() {
   const wheelRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
   const [chipsVisible, setChipsVisible] = useState(false);
 
   useEffect(() => {
     const wheel = wheelRef.current;
-    const svg = svgRef.current;
-    if (!wheel || !svg) return;
+    if (!wheel) return;
 
     // Stagger the platform chips in when the wheel scrolls into view,
     // and hide them again when it scrolls out — the reveal replays on
@@ -92,29 +90,7 @@ export default function PlatformFlywheel() {
       { threshold: 0.4 },
     );
     observer.observe(wheel);
-
-    // Rotate the wireframe in lockstep with scroll: 0° when the section
-    // enters the viewport bottom, ~160° by the time it leaves the top.
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rect = wheel.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const progress = Math.min(Math.max((vh - rect.top) / (vh + rect.height), 0), 1);
-        svg.style.transform = `rotate(${progress * 160}deg)`;
-      });
-    };
-    if (!reduceMotion) {
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
-    }
-    return () => {
-      observer.disconnect();
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -129,13 +105,12 @@ export default function PlatformFlywheel() {
         <Reveal>
           <div
             ref={wheelRef}
-            className="flywheel relative mx-auto flex h-[340px] w-[340px] items-center justify-center md:h-[640px] md:w-[640px]"
+            className="flywheel relative mx-auto flex h-[320px] w-[320px] max-w-full items-center justify-center md:h-[640px] md:w-[640px]"
           >
             {/* spirograph wireframe */}
             <svg
-              ref={svgRef}
               viewBox="0 0 400 400"
-              className="flywheel-wheel absolute h-[300px] w-[300px] md:h-[540px] md:w-[540px]"
+              className="flywheel-wheel absolute h-[280px] w-[280px] md:h-[540px] md:w-[540px]"
               aria-hidden
             >
               <defs>
@@ -162,7 +137,7 @@ export default function PlatformFlywheel() {
             </svg>
 
             {/* centre label */}
-            <p className="font-display relative z-10 text-center text-2xl font-medium leading-snug md:text-4xl">
+            <p className="relative z-10 text-center font-sans text-2xl font-medium leading-snug md:text-4xl">
               Content
               <br />
               Flywheel

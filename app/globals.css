@@ -72,6 +72,27 @@ body {
   animation: marquee 30s linear infinite;
 }
 
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* fade the strip out at both edges */
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
 /* ── Card hover: lift, glow + animated gradient wash ── */
 .card-hover {
   position: relative;
@@ -147,7 +168,7 @@ body {
 /* chip anchor radius — a bit beyond the wireframe's vertex radius so
    the platform tiles sit clear of the wheel */
 .flywheel {
-  --orbit-r: 142px;
+  --orbit-r: 132px;
 }
 
 @media (min-width: 768px) {
@@ -161,10 +182,16 @@ body {
   transform: rotate(var(--angle)) translateX(var(--orbit-r)) rotate(calc(-1 * var(--angle)));
 }
 
-/* the spirograph wireframe — rotation driven by scroll position (JS) */
+/* the spirograph wireframe — spins continuously */
 .flywheel-wheel {
   transform-origin: center;
-  will-change: transform;
+  animation: orbit-spin 22s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flywheel-wheel {
+    animation: none;
+  }
 }
 
 /* ── Hero background glow ── */
