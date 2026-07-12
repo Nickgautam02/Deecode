@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, Montserrat } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
         <Analytics />
+        <SpeedInsights />
       </body>
       <GoogleAnalytics gaId="G-1RNV3LT3X7" />
     </html>
