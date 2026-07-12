@@ -35,7 +35,7 @@ export const site = {
   },
 
   stats: [
-    { value: 600, suffix: "+", label: "Creators managed", decimals: 0 },
+    { value: 600, suffix: "+", label: "Creator roster", decimals: 0 },
     { value: 100, suffix: "+", label: "Campaigns delivered", decimals: 0 },
     { value: 2, suffix: "B+", label: "Views generated", decimals: 0 },
     { value: 80, suffix: "+", label: "Brand partners", decimals: 0 },
