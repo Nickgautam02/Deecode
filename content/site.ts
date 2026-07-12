@@ -7,7 +7,7 @@
 export const site = {
   // ← Replace with your real brand name
   name: "Deecode Media House",
-  domain: "deecode.in",
+  domain: "www.deecodemediahouse.com",
   tagline: "Influencer marketing & talent management agency",
 
   email: "deecode.mediahouse@gmail.com",
