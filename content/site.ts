@@ -10,21 +10,19 @@ export const site = {
   domain: "deecode.in",
   tagline: "Influencer marketing & talent management agency",
 
-  email: "hello@novareach.in",
-  phone: "+91 98765 43210",
-  whatsapp: "https://wa.me/919876543210",
-  address: "3rd Floor, Cyber Park, Sector 39, Gurugram, Haryana 122003",
+  email: "deecode.mediahouse@gmail.com",
+  phone: "+91 95360 81111",
+  whatsapp: "https://wa.me/919536081111",
+  address: "B-104, Proview Technocity, Chi V, Greater Noida, India",
 
   socials: {
-    instagram: "https://instagram.com/novareach",
-    linkedin: "https://linkedin.com/company/novareach",
-    youtube: "https://youtube.com/@novareach",
+    instagram: "https://www.instagram.com/deecode.media/",
+    linkedin: "https://www.linkedin.com/company/deecode-media-house/",
   },
 
   nav: [
     { label: "Services", href: "#services" },
     { label: "Creators", href: "#creators" },
-    { label: "Case Studies", href: "#work" },
     { label: "About", href: "#about" },
   ],
 
@@ -34,7 +32,7 @@ export const site = {
     headline: "We Don't Just Create Campaigns.\nWe Create [Brand Momentum].",
     sub: "From first brief to billion views — we build digital stars and run creator campaigns that drive massive, measurable brand growth.",
     primaryCta: { label: "Let's Talk", href: "#contact" },
-    secondaryCta: { label: "Explore our work", href: "#work" },
+    secondaryCta: { label: "Explore our work", href: "#services" },
   },
 
   stats: [
@@ -105,14 +103,14 @@ export const site = {
   ],
 
   creators: [
-    { name: "Aarav Mehta", niche: "Tech & Gadgets", followers: "3.2M", platform: "YouTube" },
-    { name: "Sana Kapoor", niche: "Fashion & Lifestyle", followers: "2.8M", platform: "Instagram" },
-    { name: "Rohan Verma", niche: "Comedy", followers: "5.1M", platform: "Instagram" },
-    { name: "Ishita Rao", niche: "Beauty", followers: "1.9M", platform: "YouTube" },
-    { name: "Kabir Singhania", niche: "Fitness", followers: "2.2M", platform: "Instagram" },
-    { name: "Mira Joshi", niche: "Food & Travel", followers: "1.4M", platform: "YouTube" },
-    { name: "Dev Malhotra", niche: "Finance", followers: "980K", platform: "Instagram" },
-    { name: "Tara Iyer", niche: "Music & Dance", followers: "4.6M", platform: "Instagram" },
+    { name: "Megi Mali", niche: "Lifestyle & Tech", followers: "217K", platform: "Instagram", location: "USA" },
+    { name: "Nick", niche: "Tech", followers: "300K", platform: "Instagram", location: "Texas" },
+    { name: "Raman Yadav", niche: "Sketches", followers: "1.5M", platform: "Instagram", location: "India" },
+    { name: "Matthew A.", niche: "Lifestyle & Tech", followers: "178K", platform: "Instagram", location: "Texas" },
+    { name: "The Ass Tag", niche: "Comedy", followers: "3.83M", platform: "YouTube", location: "India" },
+    { name: "Choti Philim", niche: "Comedy", followers: "1M", platform: "Instagram", location: "India" },
+    { name: "Sonam Pirani", niche: "Fashion & Beauty", followers: "120K", platform: "Instagram", location: "Dubai" },
+    { name: "Gauri Bhasin", niche: "Fashion & Lifestyle", followers: "150K", platform: "Instagram", location: "India" },
   ],
 
   caseStudies: [

@@ -14,8 +14,8 @@ export default function Services() {
         <div className="grid gap-6 md:grid-cols-2">
           {site.services.map((service, i) => (
             <Reveal key={service.title} delay={i * 100}>
-              <article className="group h-full rounded-2xl border border-line bg-card p-8 transition-colors hover:border-accent/60">
-                <span className="font-display text-sm font-bold text-accent">
+              <article className="group card-hover h-full rounded-2xl border border-line bg-card p-8">
+                <span className="font-display inline-block origin-left text-sm font-bold text-accent transition-transform duration-300 group-hover:scale-125">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display mt-3 text-2xl font-bold">{service.title}</h3>

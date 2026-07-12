@@ -30,9 +30,9 @@ export default function Creators() {
         <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
           {site.creators.map((creator, i) => (
             <Reveal key={creator.name} delay={(i % 4) * 80}>
-              <article className="group rounded-2xl border border-line bg-background p-5 text-center transition-colors hover:border-accent/60">
+              <article className="group card-hover rounded-2xl border border-line bg-background p-5 text-center">
                 <div
-                  className={`font-display mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-2xl font-bold text-background ${AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length]}`}
+                  className={`font-display mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-2xl font-bold text-background transition-transform duration-300 group-hover:scale-110 ${AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length]}`}
                 >
                   {initials(creator.name)}
                 </div>
@@ -42,6 +42,7 @@ export default function Creators() {
                   <span className="font-semibold text-accent">{creator.followers}</span>{" "}
                   <span className="text-muted">on {creator.platform}</span>
                 </p>
+                <p className="mt-1 text-xs text-muted">📍 {creator.location}</p>
               </article>
             </Reveal>
           ))}
