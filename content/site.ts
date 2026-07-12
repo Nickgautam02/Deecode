@@ -16,7 +16,6 @@ export const site = {
   address: "B-104, Proview Technocity, Chi V, Greater Noida, India",
 
   socials: {
-    instagram: "https://www.instagram.com/deecode.media/",
     linkedin: "https://www.linkedin.com/company/deecode-media-house/",
   },
 
