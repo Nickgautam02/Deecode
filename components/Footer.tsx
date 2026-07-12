@@ -25,6 +25,12 @@ export default function Footer() {
                   {label}
                 </a>
               ))}
+              <a
+                href={`mailto:${site.email}`}
+                className="text-sm capitalize text-muted transition-colors hover:text-accent"
+              >
+                Mail
+              </a>
             </div>
           </div>
 
