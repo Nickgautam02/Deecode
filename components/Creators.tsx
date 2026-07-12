@@ -33,7 +33,7 @@ export default function Creators() {
           sub="A hand-picked roster across tech, fashion, comedy, fitness, finance and more — matched to your brand by data, not guesswork."
         />
 
-        <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
+        <div className="grid auto-rows-fr grid-cols-2 gap-5 md:grid-cols-3">
           {site.creators.map((creator, i) => (
             <Reveal key={creator.name} delay={(i % 3) * 80} className="h-full">
               <article className="group card-hover flex h-full flex-col items-center rounded-2xl border border-line bg-card p-5 text-center">
@@ -55,7 +55,7 @@ export default function Creators() {
                 )}
                 <h3 className="font-display mt-4 font-bold">{creator.name}</h3>
                 <p className="mt-1 text-xs text-muted">{creator.niche}</p>
-                <p className="mt-auto pt-3 text-sm">
+                <p className="mt-auto whitespace-nowrap pt-3 text-xs md:text-sm">
                   <span className="font-semibold text-accent">{creator.followers}</span>{" "}
                   <span className="text-muted">on {creator.platform}</span>
                 </p>
