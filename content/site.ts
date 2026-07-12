@@ -31,11 +31,11 @@ export const site = {
     headline: "We Don't Just Create Campaigns.\nWe Create [Brand Momentum].",
     sub: "From first brief to billion views — we build digital stars and run creator campaigns that drive massive, measurable brand growth.",
     primaryCta: { label: "Let's Talk", href: "#contact" },
-    secondaryCta: { label: "Explore our work", href: "#services" },
+    secondaryCta: { label: "Explore our services", href: "#services" },
   },
 
   stats: [
-    { value: 600, suffix: "+", label: "Creators roster", decimals: 0 },
+    { value: 600, suffix: "+", label: "Creator roster", decimals: 0 },
     { value: 100, suffix: "+", label: "Campaigns delivered", decimals: 0 },
     { value: 2, suffix: "B+", label: "Views generated", decimals: 0 },
     { value: 80, suffix: "+", label: "Brand partners", decimals: 0 },
