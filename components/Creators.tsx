@@ -22,7 +22,7 @@ export default function Creators() {
     <section id="creators" className="scroll-mt-20 bg-card/40 py-24">
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
-          kicker="Our roster"
+          kicker="Creator roster"
           title={
             <>
               Our Top Creators.
