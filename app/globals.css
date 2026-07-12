@@ -93,6 +93,19 @@ body {
   }
 }
 
+/* ── Gradient headline text: accent violet flowing into white ── */
+.text-gradient-accent {
+  background: linear-gradient(
+    90deg,
+    #6c5ce7 0%,
+    #6c5ce7 40%,
+    var(--foreground) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* ── Card hover: lift, glow + animated gradient wash ── */
 .card-hover {
   position: relative;

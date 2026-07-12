@@ -65,13 +65,13 @@ const ICON_PATHS: Record<string, string> = {
 /* One node per platform, spaced around the wheel. `tile` is the chip
    background; `glyph` the icon color. */
 const NODES = [
-  { platform: "LinkedIn", format: "Posts & Carousels", icon: "linkedin", tile: "#0a66c2", glyph: "#ffffff" },
   { platform: "Instagram", format: "Reels & Carousels", icon: "instagram", tile: "linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)", glyph: "#ffffff" },
   { platform: "YouTube", format: "Shorts & Videos", icon: "youtube", tile: "#ffffff", glyph: "#ff0000" },
-  { platform: "Reddit", format: "Threads", icon: "reddit", tile: "#ff4500", glyph: "#ffffff" },
   { platform: "TikTok", format: "Videos", icon: "tiktok", tile: "#1c1c1e", glyph: "#ffffff" },
+  { platform: "Reddit", format: "Threads", icon: "reddit", tile: "#ff4500", glyph: "#ffffff" },
   { platform: "Facebook", format: "Reels & Posts", icon: "facebook", tile: "#1877f2", glyph: "#ffffff" },
   { platform: "X / Twitter", format: "Posts", icon: "x", tile: "#1c1c1e", glyph: "#ffffff" },
+  { platform: "LinkedIn", format: "Posts & Carousels", icon: "linkedin", tile: "#0a66c2", glyph: "#ffffff" },
 ];
 
 export default function PlatformFlywheel() {

@@ -87,10 +87,6 @@ export default function Contact() {
                   {site.phone}
                 </a>
               </p>
-              <p>
-                <span className="mb-1 block text-xs uppercase tracking-[0.2em]">Office</span>
-                {site.address}
-              </p>
             </div>
           </Reveal>
 
