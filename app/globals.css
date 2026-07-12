@@ -4,7 +4,7 @@
   --background: #08080a;
   --foreground: #f4f4f0;
   --muted: #9a9a92;
-  --accent: rgb(108, 92, 231);
+  --accent: #877bf2;
   --accent-2: #ec4899; /* second hue for gradient effects */
   --card: #101013;
   --line: rgba(255, 255, 255, 0.08);
@@ -91,19 +91,6 @@ body {
   .marquee-track {
     animation: none;
   }
-}
-
-/* ── Gradient headline text: accent violet flowing into white ── */
-.text-gradient-accent {
-  background: linear-gradient(
-    90deg,
-    #6c5ce7 0%,
-    #6c5ce7 40%,
-    var(--foreground) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 /* ── Card hover: lift, glow + animated gradient wash ── */
@@ -210,6 +197,6 @@ body {
 /* ── Hero background glow ── */
 .hero-glow {
   background:
-    radial-gradient(600px 400px at 15% 10%, rgba(108, 92, 231, 0.16), transparent 65%),
-    radial-gradient(700px 500px at 85% 85%, rgba(108, 92, 231, 0.09), transparent 65%);
+    radial-gradient(600px 400px at 15% 10%, rgba(135, 123, 242, 0.16), transparent 65%),
+    radial-gradient(700px 500px at 85% 85%, rgba(135, 123, 242, 0.09), transparent 65%);
 }

@@ -10,7 +10,7 @@ function Headline({ text }: { text: string }) {
   return (
     <>
       {before}
-      <span className="text-gradient-accent">{highlighted}</span>
+      <span className="text-accent">{highlighted}</span>
       {after}
     </>
   );
