@@ -23,7 +23,13 @@ export default function Creators() {
       <div className="mx-auto max-w-6xl px-5">
         <SectionHeading
           kicker="Our roster"
-          title="600+ creators. Every niche that matters."
+          title={
+            <>
+              Our Top Creators.
+              <br />
+              <span className="text-accent">Every niche that matters.</span>
+            </>
+          }
           sub="A hand-picked roster across tech, fashion, comedy, fitness, finance and more — matched to your brand by data, not guesswork."
         />
 
