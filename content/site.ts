@@ -140,8 +140,8 @@ export const site = {
   ],
 
   about: {
-    heading: "The agency behind the creators you already follow.",
-    body: "We started as creators ourselves — so we build careers the way we wished someone had built ours. Today we manage 120+ digital stars and run campaigns for some of the country's fastest-growing brands, with one rule: every view has to work as hard as we do.",
+    heading: "The team behind the momentum.",
+    body: "Deecode Media House is where brands and creators build together. With a network of 600+ creators across India, the USA and Dubai, we've delivered 100+ campaigns and 2B+ views for brands like Garnier, Red Bull and Ixigo — pairing sharp strategy with content people actually want to watch. One rule drives everything: every view has to work as hard as we do.",
     pillars: [
       {
         title: "Creator-first",
