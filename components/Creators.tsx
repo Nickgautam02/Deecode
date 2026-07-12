@@ -35,8 +35,8 @@ export default function Creators() {
 
         <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
           {site.creators.map((creator, i) => (
-            <Reveal key={creator.name} delay={(i % 3) * 80}>
-              <article className="group card-hover rounded-2xl border border-line bg-card p-5 text-center">
+            <Reveal key={creator.name} delay={(i % 3) * 80} className="h-full">
+              <article className="group card-hover flex h-full flex-col items-center rounded-2xl border border-line bg-card p-5 text-center">
                 {creator.image ? (
                   <img
                     src={creator.image}
@@ -55,7 +55,7 @@ export default function Creators() {
                 )}
                 <h3 className="font-display mt-4 font-bold">{creator.name}</h3>
                 <p className="mt-1 text-xs text-muted">{creator.niche}</p>
-                <p className="mt-3 text-sm">
+                <p className="mt-auto pt-3 text-sm">
                   <span className="font-semibold text-accent">{creator.followers}</span>{" "}
                   <span className="text-muted">on {creator.platform}</span>
                 </p>
