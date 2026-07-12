@@ -107,7 +107,7 @@ export const site = {
     { name: "Raman Yadav", niche: "Sketches", followers: "1.5M", platform: "Instagram", location: "India" },
     { name: "Matthew A.", niche: "Lifestyle & Tech", followers: "178K", platform: "Instagram", location: "Texas" },
     { name: "The Ass Tag", niche: "Comedy", followers: "3.83M", platform: "YouTube", location: "India" },
-    { name: "Choti Philim", niche: "Comedy", followers: "1M", platform: "Instagram", location: "India" },
+    { name: "Ridey Behl", niche: "Comedy", followers: "260K", platform: "Instagram", location: "India" },
     { name: "Sonam Pirani", niche: "Fashion & Beauty", followers: "120K", platform: "Instagram", location: "Dubai" },
     { name: "Gauri Bhasin", niche: "Fashion & Lifestyle", followers: "150K", platform: "Instagram", location: "India" },
   ],
@@ -140,20 +140,20 @@ export const site = {
   ],
 
   about: {
-    heading: "The team behind the momentum.",
-    body: "Deecode Media House is where brands and creators build together. With a network of 600+ creators across India, the USA and Dubai, we've delivered 100+ campaigns and 2B+ views for brands like Garnier, Red Bull and Ixigo — pairing sharp strategy with content people actually want to watch. One rule drives everything: every view has to work as hard as we do.",
+    heading: "Where brands meet the creator economy.",
+    body: "Deecode Media House connects ambitious brands with a network of 600+ creators across India, the USA and Dubai. From Garnier to Red Bull to Ixigo, we've turned briefs into 2B+ views by matching the right voices to the right audiences — and backing every campaign with strategy, production muscle and numbers that hold up in the boardroom.",
     pillars: [
       {
-        title: "Creator-first",
-        text: "We grow people, not just channels. Long-term careers beat one-off virality.",
+        title: "Right creator, right audience",
+        text: "Data-led matchmaking across niches and geographies — no spray-and-pray influencer lists.",
       },
       {
-        title: "Performance-obsessed",
-        text: "Every campaign ships with clear KPIs, live dashboards and honest reporting.",
+        title: "Results you can measure",
+        text: "Clear KPIs, transparent reporting and campaigns judged by business impact, not vanity metrics.",
       },
       {
-        title: "Full-stack",
-        text: "Strategy, talent, production and distribution under one roof — no hand-offs.",
+        title: "Everything under one roof",
+        text: "Strategy, talent, production and distribution handled end-to-end — one team, zero hand-offs.",
       },
     ],
   },
