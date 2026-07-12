@@ -6,6 +6,7 @@ import Creators from "@/components/Creators";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import PlatformFlywheel from "@/components/PlatformFlywheel";
 import Services from "@/components/Services";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <BrandMarquee />
         <Services />
+        <PlatformFlywheel />
         <Creators />
         <About />
         <Contact />

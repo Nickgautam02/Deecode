@@ -134,6 +134,39 @@ body {
   }
 }
 
+/* ── Content flywheel ── */
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* chip anchor radius — a bit beyond the wireframe's vertex radius so
+   the platform tiles sit clear of the wheel */
+.flywheel {
+  --orbit-r: 142px;
+}
+
+@media (min-width: 768px) {
+  .flywheel {
+    --orbit-r: 250px;
+  }
+}
+
+/* platform chip anchored at --angle around the wheel, kept upright */
+.flywheel-item {
+  transform: rotate(var(--angle)) translateX(var(--orbit-r)) rotate(calc(-1 * var(--angle)));
+}
+
+/* the spirograph wireframe — rotation driven by scroll position (JS) */
+.flywheel-wheel {
+  transform-origin: center;
+  will-change: transform;
+}
+
 /* ── Hero background glow ── */
 .hero-glow {
   background:
