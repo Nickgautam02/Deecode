@@ -27,9 +27,9 @@ export default function Creators() {
           sub="A hand-picked roster across tech, fashion, comedy, fitness, finance and more — matched to your brand by data, not guesswork."
         />
 
-        <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
           {site.creators.map((creator, i) => (
-            <Reveal key={creator.name} delay={(i % 4) * 80}>
+            <Reveal key={creator.name} delay={(i % 3) * 80}>
               <article className="group card-hover rounded-2xl border border-line bg-background p-5 text-center">
                 <div
                   className={`font-display mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br text-2xl font-bold text-background transition-transform duration-300 group-hover:scale-110 ${AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length]}`}

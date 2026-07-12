@@ -111,6 +111,7 @@ export const site = {
     { name: "Ridey Behl", niche: "Comedy", followers: "260K", platform: "Instagram", location: "India" },
     { name: "Sonam Pirani", niche: "Fashion & Beauty", followers: "120K", platform: "Instagram", location: "Dubai" },
     { name: "Gauri Bhasin", niche: "Fashion & Lifestyle", followers: "150K", platform: "Instagram", location: "India" },
+    { name: "Choti Philim", niche: "Comedy", followers: "1M", platform: "Instagram", location: "India" },
   ],
 
   caseStudies: [
