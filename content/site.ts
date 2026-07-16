@@ -175,7 +175,7 @@ export const site = {
     // below. While it's empty, the form falls back to opening the
     // visitor's email client instead.
     sheetWebhookUrl:
-      "https://script.google.com/macros/s/AKfycbwZWaEFsTo91xl9vsf9J0tMBICMWliCFJZpVn92IZCmnq-C5W6V-uwkT190xy5_STF4lg/exec",
+      "https://script.google.com/macros/s/AKfycbxMk9YOMH3WNzs-6mb1PG9XXwQYwY2bReNNElV5bNfqxzjOD_MVw6JcS13BKzRgvuh-1A/exec",
   },
 };
 
