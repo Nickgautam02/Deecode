@@ -39,7 +39,9 @@ function doPost(e) {
   sheet.appendRow([
     p.name || "",
     p.email || "",
-    p.phone || "", // → your "Number" column
+    // Leading apostrophe forces plain text — otherwise Sheets parses
+    // "+91…" as a formula (#ERROR!) and bare digits as numbers (3.2E+36).
+    p.phone ? "'" + p.phone : "", // → your "Number" column
     p.profile || "", // → your "Profile" column
     p.message || "", // → your "Goal" column
     p.role || "",
@@ -47,4 +49,24 @@ function doPost(e) {
   ]);
 
   return ContentService.createTextOutput("ok");
+}
+
+/**
+ * Editor-only test: select this function in the toolbar and click Run.
+ * (Running doPost directly fails with "Cannot read properties of
+ * undefined" because the editor passes no web request.)
+ * Appends one fake row so you can check the column mapping, then
+ * delete the row.
+ */
+function testDoPost() {
+  doPost({
+    parameter: {
+      name: "Test Name",
+      email: "test@example.com",
+      phone: "+91 00000 00000",
+      profile: "https://instagram.com/test",
+      message: "Test goal",
+      role: "I'm a Creator",
+    },
+  });
 }
