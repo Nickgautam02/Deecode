@@ -38,7 +38,7 @@ export default function Contact() {
     if (!webhookUrl) {
       const subject = encodeURIComponent(`${role} — enquiry from ${data.get("name")}`);
       const body = encodeURIComponent(
-        `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\nRole: ${role}\n\n${data.get("message")}`,
+        `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\nProfile: ${data.get("profile")}\nRole: ${role}\n\n${data.get("message")}`,
       );
       window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
       return;
@@ -49,6 +49,7 @@ export default function Contact() {
       name: String(data.get("name") ?? ""),
       email: String(data.get("email") ?? ""),
       phone: String(data.get("phone") ?? ""),
+      profile: String(data.get("profile") ?? ""),
       message: String(data.get("message") ?? ""),
       role,
     });
@@ -160,6 +161,12 @@ export default function Contact() {
                     type="tel"
                     required
                     placeholder="Phone / WhatsApp number"
+                    className={inputClasses}
+                  />
+                  <input
+                    name="profile"
+                    required
+                    placeholder="Your profile link (Instagram / YouTube / website)"
                     className={inputClasses}
                   />
                   <textarea

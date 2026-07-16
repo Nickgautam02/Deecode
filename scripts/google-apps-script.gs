@@ -5,10 +5,11 @@
  * in the tab with gid 938976038 (the one from your link), mapped to
  * your existing columns:
  *
- *   A: Name | B: Email | C: Number | D: Goal | E: Role | F: Submitted at
+ *   A: Name | B: Email | C: Number | D: Profile | E: Goal | F: Role | G: Submitted at
  *
- * (E and F are extra — add those two headers to row 1, or delete them
- * from the appendRow line below if you don't want them.)
+ * IMPORTANT: the sheet's "Profile" column must be column D (between
+ * Number and Goal) to match the appendRow order below — move it there,
+ * or reorder the appendRow values to match your sheet.
  *
  * SETUP — one time, ~2 minutes:
  * 1. Open the spreadsheet → Extensions → Apps Script.
@@ -39,6 +40,7 @@ function doPost(e) {
     p.name || "",
     p.email || "",
     p.phone || "", // → your "Number" column
+    p.profile || "", // → your "Profile" column
     p.message || "", // → your "Goal" column
     p.role || "",
     new Date(),
