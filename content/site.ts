@@ -176,7 +176,7 @@ export const site = {
     // The word wrapped in [brackets] is rendered in the accent color
     heading: "Let's build something [massive].",
     sub: "Tell us whether you're a brand looking to scale or a creator ready to go pro — we'll get back within 24 hours.",
-    roles: ["I'm a Brand", "I'm a Creator", "Something else"],
+    roles: ["I'm a Brand", "I'm a Creator", "I need a website", "Something else"],
 
     // ── Google Sheet integration ──
     // Submissions are appended to the "Deecode" spreadsheet via a Google
