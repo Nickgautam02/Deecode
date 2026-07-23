@@ -11,8 +11,8 @@ export const site = {
   tagline: "Influencer marketing & talent management agency",
 
   email: "deecode.mediahouse@gmail.com",
-  phone: "+91 95360 81111",
-  whatsapp: "https://wa.me/919536081111",
+  phone: "+91 89370 66066",
+  whatsapp: "https://wa.me/918937066066",
   address: "Technocity, Greater Noida, India",
 
   socials: {
