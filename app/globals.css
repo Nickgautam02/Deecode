@@ -6,6 +6,7 @@
   --muted: #9a9a92;
   --accent: #877bf2;
   --accent-2: #ec4899; /* second hue for gradient effects */
+  --accent-strong: var(--accent); /* re-pointed inside .deck-theme */
   --card: #101013;
   --line: rgba(255, 255, 255, 0.08);
 }
@@ -15,11 +16,53 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-card: var(--card);
   --color-line: var(--line);
   --font-sans: var(--font-inter);
   --font-display: var(--font-montserrat);
 }
+
+/* ── Deck theme — scoped re-skin used by /portfolio/MIT ──────────────
+   Mirrors the credentials deck's "modernist" design system, whose token
+   sheet lives under "Portfolio MIT/_ds/modernist-<id>/styles.css":
+   a light ground, a single red accent, Archivo throughout, zero radius
+   and 2px rules.
+
+   Because the @theme block above is `inline`, Tailwind compiles its
+   utilities down to the raw custom properties — `text-accent` becomes
+   `color: var(--accent)`, not `var(--color-accent)`. Redefining those
+   properties here therefore re-themes every utility used inside the
+   subtree, with no per-class overrides. */
+.deck-theme {
+  --background: #f3f2f2;
+  --foreground: #201e1d;
+  --muted: #605d5d; /* neutral-700 — passes AA on this ground */
+  --card: #eae9e9; /* the system's surface */
+  --line: color-mix(in srgb, #201e1d 40%, transparent);
+  --accent: #ec3013;
+  /* accent-700. The system notes accent-to-ground is only ~3:1, so red
+     at body/label size must use this, not --accent. */
+  --accent-strong: #ae1800;
+  --accent-2: #ec3013; /* mono scheme: accent-2 reads as one role */
+
+  /* Archivo for headings and body alike. These two names are the
+     next/font variables the root layout declares, so re-pointing them
+     swaps both font-sans and font-display within this subtree. */
+  --font-inter: var(--font-archivo);
+  --font-montserrat: var(--font-archivo);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+}
+
+/* "Do not round a corner anywhere" — belt-and-braces, in case a utility
+   with a radius is added to this subtree later. */
+.deck-theme :where([class*="rounded"]) {
+  border-radius: 0;
+}
+
+/* NOTE: the modernist system prints photography in pure black and white
+   (`.grayscale`), but these are stage and festival shots that carry their
+   colour, so the greyscale rule is deliberately not applied here. */
 
 html {
   scroll-behavior: smooth;
@@ -55,6 +98,17 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* Safety net: a .reveal only becomes visible when its IntersectionObserver
+   fires. If scripting is unavailable — or an observer never triggers — the
+   content would stay at opacity 0 and the section would read as empty.
+   Show it unconditionally when there is no JS to reveal it. */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
@@ -116,15 +117,15 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               {site.nav.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="text-muted transition-colors hover:text-foreground">
+                  <Link href={item.href} className="text-muted transition-colors hover:text-foreground">
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>
-                <a href="#contact" className="text-muted transition-colors hover:text-foreground">
+                <Link href="/#contact" className="text-muted transition-colors hover:text-foreground">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

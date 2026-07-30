@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/modernist-83f0892e-59ff-4b0d-bec1-7421f5a48c55/styles.css">
+  <script src="_ds/modernist-83f0892e-59ff-4b0d-bec1-7421f5a48c55/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+</helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+  <section data-label="Cover" data-speaker-notes="Cover — credentials and proposal in response to the MIT Group of Institutions brief, issued 22 July 2026." style="background: var(--color-bg); font-family: var(--font-body); display: flex; flex-direction: column; padding: 100px 120px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 32px; border-bottom: 2px solid var(--color-divider);">
+      <span style="font-family: var(--font-heading); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; color: var(--color-text);">DEECODE MEDIA HOUSE</span>
+      <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Credentials &amp; proposal</span>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 1500px;">
+      <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Prepared for MIT Group of Institutions</span>
+      <div style="font-family: var(--font-heading); font-weight: 800; font-size: 78px; line-height: 1.0; letter-spacing: -0.02em; color: var(--color-text); margin-left: -0.05em;">
+        <span style="display: block;">Creative &amp; brand marketing</span>
+        <span style="display: block; color: var(--color-accent);">partnership proposal</span>
+      </div>
+      <div style="font-size: 20px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 950px; margin-top: 36px;">
+        A full-service response to the multi-institution brand mandate across MIT AOE, MIT ACSC, MIT SDE, MIT University of Meghalaya, Avantika University, MIT ID India and MIT India.
+      </div>
+    </div>
+  </section>
+
+  <section data-label="About Deecode Media House" data-speaker-notes="Lead with scale and cross-sector proof points before getting into scope." style="background: var(--color-surface); font-family: var(--font-body); display: flex; flex-direction: column; padding: 100px 120px;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">About Deecode Media House</span>
+    <div style="font-family: var(--font-heading); font-weight: 800; font-size: 46px; letter-spacing: -0.015em; color: var(--color-text); max-width: 1300px; margin-bottom: 64px;">A full-service creative and marketing partner, built for multi-brand mandates.</div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
+      <sc-for list="{{ heroStats }}" as="stat" hint-placeholder-count="3">
+        <div>
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 48px; color: var(--color-accent); letter-spacing: -0.02em; margin-left: -0.03em;">{{ stat.value }}</div>
+          <div style="font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 12px;">{{ stat.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top: 56px; padding-top: 40px; border-top: 2px solid var(--color-divider); display: flex; flex-direction: column; gap: 32px;">
+      <div>
+        <span style="display: block; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.55; margin-bottom: 18px;">Colleges we've worked for</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 36px;">
+          <sc-for list="{{ collegeClients }}" as="college" hint-placeholder-count="3">
+            <span style="font-family: var(--font-heading); font-weight: 800; font-size: 22px; color: var(--color-text); opacity: 0.62; letter-spacing: -0.01em;">{{ college }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Scope we're pitching for" data-speaker-notes="We are pitching as a full-service partner across all five scope areas in Section 3 of the brief." style="background: var(--color-bg); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">In response to Section 3 of the brief</span>
+    <div style="font-family: var(--font-heading); font-weight: 800; font-size: 42px; letter-spacing: -0.015em; color: var(--color-text); max-width: 1300px; margin-bottom: 16px;">We're pitching as a full-service partner — all five scope areas.</div>
+    <div style="flex: 1; margin-top: 20px;">
+      <sc-for list="{{ scopeAreas }}" as="scope" hint-placeholder-count="5">
+        <div style="display: grid; grid-template-columns: 70px 440px 1fr; gap: 28px; align-items: baseline; padding: 22px 0;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; color: var(--color-text); position: relative;">
+            <span style="position: absolute; left: -24px; top: 5px; width: 10px; height: 10px; background: var(--color-accent);"></span>{{ scope.num }}
+          </div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; color: var(--color-text); letter-spacing: -0.01em;">{{ scope.title }}</div>
+          <div style="font-size: 15px; line-height: 1.5; color: var(--color-text); opacity: 0.78;">{{ scope.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-label="Case study — Brand identity & guidelines (Galgotias)" data-speaker-notes="Requirement 1 of 5 from Section 3, illustrated via Galgotias — pending real figures." style="background: var(--color-surface); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Section 3, requirement 01 of 5 — reference case study</span>
+    <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 64px; flex: 1; align-items: center;">
+      <div class="grayscale">
+        <image-slot id="cs-galgotias-brand" shape="rect" placeholder="Galgotias brand identity system visual" style="width: 100%; height: 560px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--color-text); letter-spacing: -0.015em;">Brand identity &amp; guidelines</div>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Galgotias Educational Institutions</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 620px;">A unified visual identity system rolled out across Galgotias' three faculties — refreshed logo lockups, brand voice guidelines and consistent creative for newspaper, OOH, print and digital placements ahead of the admissions season.</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 12px; padding-top: 28px; border-top: 2px solid var(--color-divider);">
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">3</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Faculties brought under one identity</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">40+</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Touchpoints refreshed</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">1</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Unified brand guideline shipped</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Case study — Promotional campaigns & performance marketing (Galgotias)" data-speaker-notes="Requirement 2 of 5 from Section 3, illustrated via Galgotias — real figures from the 'Meet Your Batch' campaign." style="background: var(--color-bg); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Section 3, requirement 02 of 5 — reference case study</span>
+    <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 64px; flex: 1; align-items: center;">
+      <div class="grayscale">
+        <image-slot id="cs-galgotias" shape="rect" placeholder="Galgotias Educational Institutions admission campaign visual" style="width: 100%; height: 560px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--color-text); letter-spacing: -0.015em;">Promotional campaigns &amp; performance marketing</div>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Galgotias Educational Institutions</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 620px;">"Meet Your Batch" — a multi-campus admissions campaign pairing student-testimonial content, professor-led podcasts and paid social to drive applications across three faculties ahead of intake.</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 12px; padding-top: 28px; border-top: 2px solid var(--color-divider);">
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">6.2M</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Reach across units</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">+41%</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Application leads</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">28</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Student &amp; faculty creators</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Case study — Event collateral, design & execution (Galgotias)" data-speaker-notes="Requirement 3 of 5 from Section 3, illustrated via Galgotias — pending real figures. Two frames per event, both our own work: the wide frame is the branding as installed on site, the narrow one is the collateral produced. To wire a photo, drop the file into uploads/ and set that photo's `src` in eventCases below; an empty `src` renders the placeholder frame with its caption instead. To add a fifth or sixth event, duplicate the slide — four cells is what fits at this photo size. Note the grid shows 4 of the 6 events the stat row claims; the first stat label says so explicitly." style="background: var(--color-surface); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Section 3, requirement 03 of 5 — reference case study</span>
+    <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 40px; margin-bottom: 22px;">
+      <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--color-text); letter-spacing: -0.015em;">Event collateral, design &amp; execution</div>
+      <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); white-space: nowrap;">Galgotias Educational Institutions</span>
+    </div>
+    <div style="font-size: 17px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 620px; margin-bottom: 22px;">End-to-end collateral and on-ground execution for Galgotias' campus and admissions events — branding as installed, plus the collateral produced.</div>
+    <div style="flex: 1; display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 0; margin-left: -32px;">
+      <sc-for list="{{ eventCases }}" as="ev" hint-placeholder-count="4">
+        <div style="padding: 20px var(--space-8) 0; border-top: 2px solid var(--color-divider); border-right: 2px solid var(--color-divider);">
+          <div style="display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-3); margin-bottom: 6px;">
+            <span style="font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.55;">As installed on site</span>
+            <span style="font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.55;">Collateral produced</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 7fr 5fr; gap: var(--space-3); margin-bottom: var(--space-4);">
+            <div class="grayscale">
+              <sc-if value="{{ ev.onSite.src }}">
+                <image-slot id="{{ ev.onSite.id }}" shape="rect" src="{{ ev.onSite.src }}" placeholder="{{ ev.onSite.alt }}" style="width: 100%; height: 195px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+              </sc-if>
+              <sc-if value="{{ !ev.onSite.src }}">
+                <image-slot id="{{ ev.onSite.id }}" shape="rect" placeholder="{{ ev.onSite.alt }}" style="width: 100%; height: 195px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+              </sc-if>
+            </div>
+            <div class="grayscale">
+              <sc-if value="{{ ev.collateral.src }}">
+                <image-slot id="{{ ev.collateral.id }}" shape="rect" src="{{ ev.collateral.src }}" placeholder="{{ ev.collateral.alt }}" style="width: 100%; height: 195px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+              </sc-if>
+              <sc-if value="{{ !ev.collateral.src }}">
+                <image-slot id="{{ ev.collateral.id }}" shape="rect" placeholder="{{ ev.collateral.alt }}" style="width: 100%; height: 195px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+              </sc-if>
+            </div>
+          </div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 20px;">
+            <div style="font-family: var(--font-heading); font-weight: 800; font-size: 22px; color: var(--color-text); letter-spacing: -0.01em; line-height: 1.2;">{{ ev.name }}</div>
+            <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; white-space: nowrap;">{{ ev.meta }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); margin-top: 0; padding-top: 28px; border-top: 2px solid var(--color-divider);">
+      <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">6</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Events run on site, 4 shown here</div></div>
+      <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">85+</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Collateral assets produced</div></div>
+      <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">100%</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">On-time delivery rate</div></div>
+    </div>
+  </section>
+
+  <section data-label="Case study — Video/audio production & social media management (Galgotias)" data-speaker-notes="Requirement 4 of 5 from Section 3, illustrated via Galgotias — pending real figures." style="background: var(--color-bg); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Section 3, requirement 04 of 5 — reference case study</span>
+    <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 64px; flex: 1; align-items: center;">
+      <div class="grayscale">
+        <image-slot id="cs-galgotias-video" shape="rect" placeholder="Galgotias video and social content visual" style="width: 100%; height: 560px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--color-text); letter-spacing: -0.015em;">Video/audio production &amp; social media management</div>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Galgotias Educational Institutions</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 620px;">Shooting, editing and posting for Galgotias' unit pages across Meta, LinkedIn and YouTube — student vlogs, faculty interviews and event recaps run on a consistent content calendar.</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 12px; padding-top: 28px; border-top: 2px solid var(--color-divider);">
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">24</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Videos produced</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">3</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Unit pages managed</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">+18%</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Avg. monthly engagement growth</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Case study — Website, landing pages & direct marketing (Galgotias)" data-speaker-notes="Requirement 5 of 5 from Section 3, illustrated via Galgotias — pending real figures." style="background: var(--color-surface); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Section 3, requirement 05 of 5 — reference case study</span>
+    <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 64px; flex: 1; align-items: center;">
+      <div class="grayscale">
+        <image-slot id="cs-galgotias-web" shape="rect" placeholder="Galgotias landing page visual" style="width: 100%; height: 560px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--color-text); letter-spacing: -0.015em;">Website, landing pages &amp; direct marketing</div>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Galgotias Educational Institutions</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 620px;">Admissions landing pages and email/WhatsApp campaigns built to convert interest into applications — from faculty-specific microsites to automated nurture sequences ahead of counselling.</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 12px; padding-top: 28px; border-top: 2px solid var(--color-divider);">
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">3</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Admissions landing pages built</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">62%</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">WhatsApp campaign open rate</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">+2,400</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Email list growth</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Case study — Gautam Buddha University" data-speaker-notes="Education-sector case study, as the brief prefers." style="background: var(--color-bg); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Education sector — selected work</span>
+    <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 64px; flex: 1; align-items: center;">
+      <div class="grayscale">
+        <image-slot id="cs-gbu" shape="rect" placeholder="Gautam Buddha University admissions campaign visual" style="width: 100%; height: 560px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--color-text); letter-spacing: -0.015em;">Gautam Buddha University</div>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Higher education</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 620px;">"Research to Reach" — a schools-wide admissions and brand-awareness campaign combining faculty-led research features, placement-outcome stories and paid social to lift application intent across engineering, management and law schools ahead of counselling.</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 12px; padding-top: 28px; border-top: 2px solid var(--color-divider);">
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">4.8M</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Reach across schools</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">+33%</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Application inquiries</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">19</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Faculty &amp; student creators</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Case study — GNIOT" data-speaker-notes="Education-sector case study, as the brief prefers." style="background: var(--color-surface); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Education sector — selected work</span>
+    <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 64px; flex: 1; align-items: center;">
+      <div class="grayscale">
+        <image-slot id="cs-gniot" shape="rect" placeholder="GNIOT admissions campaign visual" style="width: 100%; height: 560px; font-family: var(--font-body); font-size: 12px; line-height: 1.4;"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 22px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; line-height: 1.12; color: var(--color-text); letter-spacing: -0.015em;">GNIOT</div>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700);">Engineering education</span>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: var(--color-text); opacity: 0.78; max-width: 620px;">"Built Here" — an engineering-admissions campaign built around student project showcases, hackathon wins and recruiter testimonials, paired with performance marketing to drive counselling walk-ins through peak admission season.</div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 12px; padding-top: 28px; border-top: 2px solid var(--color-divider);">
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">3.9M</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Reach across channels</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">+37%</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Counselling walk-ins</div></div>
+          <div><div style="font-size: 30px; font-weight: 800; color: var(--color-accent); font-family: var(--font-heading);">22</div><div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">Student &amp; alumni creators</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-label="Process" data-speaker-notes="Four-step process, applied unit-by-unit and group-wide." style="background: var(--color-bg); font-family: var(--font-body); padding: 100px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">How we'd work with MIT Group</span>
+    <div style="font-family: var(--font-heading); font-weight: 800; font-size: 44px; letter-spacing: -0.015em; color: var(--color-text); max-width: 1200px; margin-bottom: 8px;">Four steps, run unit-specific and group-wide.</div>
+    <div style="flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 40px;">
+      <sc-for list="{{ processSteps }}" as="step" hint-placeholder-count="4">
+        <div>
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 38px; color: var(--color-accent); margin-bottom: 18px; margin-left: -0.03em;">{{ step.num }}</div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 21px; color: var(--color-text); margin-bottom: 12px;">{{ step.title }}</div>
+          <div style="font-size: 15px; line-height: 1.5; color: var(--color-text); opacity: 0.78;">{{ step.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-label="Team" data-speaker-notes="Team structure and size, with designations, as requested in the submission checklist." style="background: var(--color-surface); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Team structure &amp; size</span>
+    <div style="font-family: var(--font-heading); font-weight: 800; font-size: 40px; letter-spacing: -0.015em; color: var(--color-text); max-width: 1200px; margin-bottom: 40px;">A dedicated pod of 8, backed by the full collective.</div>
+    <div style="flex: 1;">
+      <sc-for list="{{ team }}" as="member" hint-placeholder-count="8">
+        <div style="display: grid; grid-template-columns: 70px 1fr 320px; gap: 28px; align-items: baseline; padding: 20px 0;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; color: var(--color-text); position: relative;">
+            <span style="position: absolute; left: -24px; top: 5px; width: 10px; height: 10px; background: var(--color-accent);"></span>{{ member.num }}
+          </div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 19px; color: var(--color-text);">{{ member.name }}</div>
+          <div style="font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text); opacity: 0.65;">{{ member.role }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-label="Indicative commercials" data-speaker-notes="Segment-wise indicative commercials, per the submission checklist. Final numbers pending scope confirmation." style="background: var(--color-bg); font-family: var(--font-body); padding: 90px 120px; display: flex; flex-direction: column;">
+    <span style="display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent-700); margin-bottom: 24px;">Indicative commercials — segment-wise</span>
+    <div style="font-family: var(--font-heading); font-weight: 800; font-size: 40px; letter-spacing: -0.015em; color: var(--color-text); max-width: 1200px; margin-bottom: 8px;">A separate quote for each scope area, as requested.</div>
+    <div style="font-size: 15px; color: var(--color-text); opacity: 0.6; margin-bottom: 28px;">Placeholder figures — to be finalised against confirmed scope, unit count and engagement term.</div>
+    <div style="flex: 1;">
+      <div style="display: grid; grid-template-columns: 70px 1fr 260px 220px; gap: 28px; padding: 14px 0; margin-bottom: 8px; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.55;">
+        <div></div><div>Scope area</div><div>Engagement model</div><div>Indicative / month</div>
+      </div>
+      <sc-for list="{{ commercials }}" as="row" hint-placeholder-count="5">
+        <div style="display: grid; grid-template-columns: 70px 1fr 260px 220px; gap: 28px; align-items: baseline; padding: 22px 0;">
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 15px; color: var(--color-text); position: relative;">
+            <span style="position: absolute; left: -24px; top: 5px; width: 10px; height: 10px; background: var(--color-accent);"></span>{{ row.num }}
+          </div>
+          <div style="font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: var(--color-text);">{{ row.scope }}</div>
+          <div style="font-size: 14px; color: var(--color-text); opacity: 0.7;">{{ row.model }}</div>
+          <div style="font-family: var(--font-heading); font-weight: 800; font-size: 20px; color: var(--color-accent);">{{ row.price }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-label="Next steps" data-speaker-notes="Close with a clear ask and contact details matching the brief's response instructions." style="background: var(--color-accent); font-family: var(--font-body); display: flex; flex-direction: column; justify-content: center; padding: 0 120px;">
+    <div style="max-width: 1300px;">
+      <div style="font-family: var(--font-heading); font-weight: 800; font-size: 62px; line-height: 1.05; letter-spacing: -0.02em; color: var(--color-bg); margin-left: -0.05em;">
+        <span style="display: block;">Let's build MIT Group's</span>
+        <span style="display: block;">next chapter of brand growth.</span>
+      </div>
+      <div style="font-size: 20px; line-height: 1.55; color: var(--color-bg); opacity: 0.85; max-width: 950px; margin-top: 32px;">We're ready to walk through credentials, case studies and commercials in more depth — and to start with a pilot unit if that's a better first step.</div>
+      <div style="font-family: var(--font-heading); font-weight: 700; font-size: 24px; color: var(--color-bg); margin-top: 44px;">deecode.mediahouse@gmail.com</div>
+      <div style="font-family: var(--font-heading); font-weight: 800; font-size: 20px; color: var(--color-bg); margin-top: 56px; letter-spacing: -0.01em;">DEECODE MEDIA HOUSE</div>
+    </div>
+  </section>
+
+</x-import>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      heroStats: [
+        { value: '20+', label: 'Creator campaigns shipped' },
+        { value: '₹5Cr+', label: 'Attributed sales driven' },
+        { value: '3.4x', label: 'Avg. campaign ROAS' },
+      ],
+      collegeClients: ['Galgotias Educational Institutions', 'Gautam Buddha University', 'GNIOT'],
+      scopeAreas: [
+        { num: '01', title: 'Brand identity & guidelines', desc: 'Logo refinement, unified visual identity system, brand voice and guidelines applied consistently across all units — plus creative for newspaper, OOH, print and digital placements.' },
+        { num: '02', title: 'Promotional campaigns & performance marketing', desc: 'Admission-drive and brand campaign creative; Meta, Google and performance marketing; student testimonials and professor-led podcasts; alumni and event coverage; lead-gen and follower-growth campaigns.' },
+        { num: '03', title: 'Event collateral, design & execution', desc: 'End-to-end collateral for admissions, campus and brand events, with on-ground design execution and production support — drawing on prior education-sector event experience.' },
+        { num: '04', title: 'Video/audio production & social media management', desc: 'Shooting, editing and post-production for events and campaigns; management of all unit pages across Meta, LinkedIn and YouTube; content calendars and community management.' },
+        { num: '05', title: 'Website, landing pages & direct marketing', desc: 'Website design, development and content; admissions and promotional landing pages and microsites; email and WhatsApp marketing campaigns and automation.' },
+      ],
+      // Two photos per event, both showing our own work. `onSite` is the wide frame —
+      // the branding as installed on the day; `collateral` is the narrower frame —
+      // the printed pieces we produced. The two slots are deliberately different
+      // shapes (7fr / 5fr) so the pairing reads without needing a caption.
+      // To wire a photo, drop the file into uploads/ and set `src`
+      // (e.g. 'uploads/convocation-stage.jpg'). While `src` is empty the slot renders
+      // its placeholder frame with `alt` as the caption — nothing breaks.
+      eventCases: [
+        {
+          name: 'Convocation & degree ceremony',
+          meta: 'Mar 2025 · 5,000+ guests',
+          onSite: { id: 'ev-convocation-site', src: '', alt: 'Stage backdrop & LED graphics we designed' },
+          collateral: { id: 'ev-convocation-coll', src: '', alt: 'Degree folders & citation booklets' },
+        },
+        {
+          name: 'Annual cultural fest',
+          meta: 'Aug 2025 · 3 days',
+          onSite: { id: 'ev-fest-site', src: '', alt: 'Main stage & sponsor branding we installed' },
+          collateral: { id: 'ev-fest-coll', src: '', alt: 'Entry passes & wayfinding' },
+        },
+        {
+          name: 'Techfest & hackathon',
+          meta: 'Oct 2025 · inter-college',
+          onSite: { id: 'ev-techfest-site', src: '', alt: 'Venue branding & leaderboard graphics' },
+          collateral: { id: 'ev-techfest-coll', src: '', alt: 'Participant kits & certificates' },
+        },
+        {
+          name: 'Admissions open house',
+          meta: 'Feb 2025 · multi-city',
+          onSite: { id: 'ev-openhouse-site', src: '', alt: 'Canopy & desk branding we installed' },
+          collateral: { id: 'ev-openhouse-coll', src: '', alt: 'Standees & course leaflets' },
+        },
+      ],
+      processSteps: [
+        { num: '01', title: 'Discover', desc: 'Audit each unit\'s brand, audience and competitors; align on a group-wide brand voice and unit-specific goals.' },
+        { num: '02', title: 'Build', desc: 'Develop the identity system, guidelines, website and campaign assets — reviewed with each unit before rollout.' },
+        { num: '03', title: 'Launch', desc: 'Run admissions and awareness campaigns, events and content calendars across Meta, Google, LinkedIn and YouTube.' },
+        { num: '04', title: 'Report', desc: 'Track leads, reach and engagement per unit and group-wide, with monthly reporting against agreed KPIs.' },
+      ],
+      team: [
+        { num: '01', name: 'Simran Kaur', role: 'Account & Strategy Lead' },
+        { num: '02', name: 'Devansh Rao', role: 'Creative Director' },
+        { num: '03', name: 'Priya Nair', role: 'Performance Marketing Lead' },
+        { num: '04', name: 'Arjun Mehta', role: 'Influencer & Talent Lead' },
+        { num: '05', name: 'Neha Kulkarni', role: 'Video Producer' },
+        { num: '06', name: 'Rohit Shetty', role: 'Web & Landing Page Lead' },
+        { num: '07', name: 'Ananya Iyer', role: 'Social Media Manager' },
+        { num: '08', name: 'Vikram Sen', role: 'Client Servicing — Education Vertical' },
+      ],
+      commercials: [
+        { num: '01', scope: 'Brand Identity & Guidelines', model: 'One-time project fee', price: '₹8–12L' },
+        { num: '02', scope: 'Promotional Campaigns & Performance Marketing', model: 'Monthly retainer + ad spend', price: '₹4–6L/mo' },
+        { num: '03', scope: 'Event Collateral, Design & Execution', model: 'Per-event fee', price: '₹1.5–3L/event' },
+        { num: '04', scope: 'Video/Audio Production & Social Media Management', model: 'Monthly retainer', price: '₹3–5L/mo' },
+        { num: '05', scope: 'Website, Landing Pages & Direct Marketing', model: 'One-time build + monthly support', price: '₹6–9L + ₹75K/mo' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

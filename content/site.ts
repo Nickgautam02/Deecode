@@ -19,10 +19,13 @@ export const site = {
     linkedin: "https://www.linkedin.com/company/deecode-media-house/",
   },
 
+  // Root-relative so these resolve from sub-routes (/gallery, /portfolio/*)
+  // as well as the homepage.
   nav: [
-    { label: "Services", href: "#services" },
-    { label: "Creators", href: "#creators" },
-    { label: "About", href: "#about" },
+    { label: "Services", href: "/#services" },
+    { label: "Creators", href: "/#creators" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "About", href: "/#about" },
   ],
 
   hero: {

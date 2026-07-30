@@ -50,6 +50,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // Next 16 no longer overrides `scroll-behavior: smooth` (set in
+      // globals.css) during route transitions; this opts back in so
+      // navigating to /portfolio/MIT jumps instead of animating.
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
