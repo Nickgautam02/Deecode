@@ -105,6 +105,8 @@ export default function MITProposalPage() {
           <div className="flex items-center gap-5">
             <a
               href={DECK_SRC}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[13px] font-semibold uppercase tracking-[0.06em] text-muted transition-colors hover:text-accent-strong"
             >
               View as presentation
@@ -432,7 +434,10 @@ export default function MITProposalPage() {
             title="A separate quote for each scope area, as requested."
             sub={p.commercials.note}
           >
-            <div className="border-t-2 border-line">
+            {/* Top rule only where the column header shows. On mobile the
+                header is hidden, so the first row's own border-t is the top
+                rule — otherwise the two stack into a 4px line. */}
+            <div className="border-line md:border-t-2">
               <div className="hidden grid-cols-[1fr_240px_170px] gap-6 py-3 text-[13px] uppercase tracking-[0.06em] text-muted md:grid">
                 <div>Scope area</div>
                 <div>Engagement model</div>
@@ -459,7 +464,9 @@ export default function MITProposalPage() {
                 </Reveal>
               ))}
             </div>
-            <p className="mt-7 border-t-2 border-line pt-5 text-sm text-muted">
+            {/* No top margin: this rule is the table's closing edge, so it
+                sits directly under the last row rather than floating below it. */}
+            <p className="border-t-2 border-line pt-5 text-sm text-muted">
               <span className="font-extrabold text-accent-strong">*</span>{" "}
               {p.commercials.footnote}
             </p>
@@ -510,6 +517,8 @@ export default function MITProposalPage() {
           <span className="flex gap-6">
             <a
               href={DECK_SRC}
+              target="_blank"
+              rel="noopener noreferrer"
               className="uppercase tracking-[0.06em] transition-colors hover:text-foreground"
             >
               Presentation

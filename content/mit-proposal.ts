@@ -72,10 +72,12 @@ export const mitProposal = {
     {
       title: "Website, landing pages & direct marketing",
       description:
-        "Websites and admissions funnels built to convert interest into applications, then measured.",
+        "Websites and admissions funnels built to convert interest into applications — including the content that fills them, and a dedicated microsite per admissions cycle.",
       points: [
-        "Website design, development and content",
-        "Admissions and promotional landing pages and microsites",
+        "Website design and development, per unit",
+        "Full content creation — page copy, course and faculty content, imagery",
+        "Admissions microsites and campaign landing pages, per intake",
+        "Ongoing maintenance — hosting support, security updates, content changes",
         "Email and WhatsApp campaigns with automation",
       ],
     },
@@ -151,7 +153,7 @@ export const mitProposal = {
       num: "05",
       title: "Website, landing pages & direct marketing",
       summary:
-        "Admissions landing pages and email/WhatsApp campaigns built to convert interest into applications — from faculty-specific microsites to automated nurture sequences ahead of counselling.",
+        "Admissions microsites, landing pages and the content inside them, paired with email and WhatsApp campaigns built to convert interest into applications — from faculty-specific microsites to automated nurture sequences ahead of counselling.",
     },
   ],
 
@@ -187,8 +189,12 @@ export const mitProposal = {
       },
       {
         scope: "Website, landing pages & direct marketing",
-        model: "One-time build + monthly support",
-        price: "₹4–5L + ₹50K/mo",
+        // Priced per site rather than flat: this scope covers up to seven
+        // unit websites, so a single build figure understates it badly. The
+        // monthly line names maintenance explicitly — it was previously
+        // hidden inside a "support" figure and read as an afterthought.
+        model: "Per-unit build + monthly maintenance",
+        price: "₹3–4L per site + ₹1–1.5L/mo",
       },
     ],
   },
