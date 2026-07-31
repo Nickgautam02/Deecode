@@ -144,6 +144,12 @@ export const mitProposal = {
         "“Meet Your Batch” — a multi-campus admissions campaign pairing student-testimonial content, professor-led podcasts and paid social to drive applications across three faculties ahead of intake.",
     },
     {
+      num: "03",
+      title: "Event collateral, design & execution",
+      summary:
+        "End-to-end collateral for admissions, campus and brand events across three admission seasons — every asset designed in-house, print-ready files released to vendors, and a design team on site through install and show day.",
+    },
+    {
       num: "04",
       title: "Video / audio production & social media management",
       summary:
