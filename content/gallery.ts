@@ -124,6 +124,13 @@ export const gallery = {
       tag: "Ceremony",
     },
     {
+      src: "/gallery/gallery-19.jpg",
+      w: 1280,
+      h: 792,
+      caption: "Teams heads-down at the Galgotias International Hackathon",
+      tag: "Hackathon",
+    },
+    {
       src: "/gallery/gallery-15.jpg",
       w: 700,
       h: 1238,
