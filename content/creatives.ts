@@ -42,20 +42,131 @@ export const creatives: CreativesContent = {
   items: [],
 };
 
-// ⚠ Staging only. The MUN emblem is in here rather than in `creatives`
-// because I could not confirm from the repo that we designed it — confirm
-// authorship before promoting, since this page claims credit for what it
-// shows.
+// Staging list. Ordered identity → campaign → posters → sponsor → collateral,
+// so the section opens on the marks and ends on the printed pieces rather
+// than reading as an unsorted dump.
+//
+// Titles describe what is visible on each piece. Several carry a "Ct Creative
+// Team" badge — if that is not our mark, check before these go live, because
+// this page presents everything it shows as our work.
 export const creativesUat: CreativesContent = {
   ...creatives,
   items: [
     ...creatives.items,
+
+    // ── Identity ──
     {
       src: "/creatives/mun-identity-mark.jpg",
       w: 1280,
       h: 1078,
       title: "Galgotias International MUN — identity mark",
       tag: "Identity",
+    },
+    {
+      src: "/creatives/mun-identity-mark-reversed.jpg",
+      w: 1600,
+      h: 1350,
+      title: "Galgotias International MUN — reversed mark for dark grounds",
+      tag: "Identity",
+    },
+    {
+      src: "/creatives/gimun-24-emblem.jpg",
+      w: 1080,
+      h: 1080,
+      title: "GIMUN '24 — “Quam Artibus” emblem",
+      tag: "Identity",
+    },
+
+    // ── Campaign & announcements ──
+    {
+      src: "/creatives/creators-hackathon-banner.jpg",
+      w: 1280,
+      h: 720,
+      title: "Galgotias Creators Hackathon — event banner",
+      tag: "Event branding",
+    },
+    {
+      src: "/creatives/unifest-akhil-sachdeva-poster.jpg",
+      w: 1080,
+      h: 1080,
+      title: "Unifest — Akhil Sachdeva artist announcement",
+      tag: "Artist announcement",
+    },
+    {
+      src: "/creatives/unifest-javed-ali-poster.jpg",
+      w: 1080,
+      h: 1080,
+      title: "Unifest — Javed Ali artist announcement",
+      tag: "Artist announcement",
+    },
+    {
+      src: "/creatives/unifest-24-create-a-thon.jpg",
+      w: 1080,
+      h: 1080,
+      title: "Unifest '24 — Create-A-Thon registrations open",
+      tag: "Campaign creative",
+    },
+
+    // ── Event posters ──
+    {
+      src: "/creatives/prom-night-2024-poster.jpg",
+      w: 720,
+      h: 1280,
+      title: "Prom Night 2024 — registration poster",
+      tag: "Event poster",
+    },
+    {
+      src: "/creatives/club-carnival-meme-day-poster.jpg",
+      w: 720,
+      h: 1280,
+      title: "Club Carnival — Meme Day poster",
+      tag: "Event poster",
+    },
+    {
+      src: "/creatives/rangmanch-stageplay-poster.jpg",
+      w: 959,
+      h: 1280,
+      title: "Rangmanch — stageplay and monoact poster",
+      tag: "Event poster",
+    },
+
+    // ── Sponsor & partner creative ──
+    {
+      src: "/creatives/unifest-24-beverage-partner.jpg",
+      w: 1080,
+      h: 1080,
+      title: "Unifest '24 — beverage partner announcement",
+      tag: "Sponsor creative",
+    },
+    {
+      src: "/creatives/gimun-garnier-collaboration.jpg",
+      w: 591,
+      h: 1004,
+      title: "GIMUN — Garnier collaboration announcement",
+      tag: "Sponsor creative",
+    },
+
+    // ── Printed collateral ──
+    {
+      src: "/creatives/gimun-committee-standees.jpg",
+      w: 1600,
+      h: 1280,
+      title: "GIMUN 2024 — committee standees for UNGA, UNHRC, AIPPM, UNSC and IP",
+      tag: "Event collateral",
+    },
+    {
+      src: "/creatives/gimun-24-organising-committee-badge.jpg",
+      w: 900,
+      h: 1600,
+      title: "GIMUN '24 — organising committee badge",
+      tag: "Event collateral",
+    },
+    {
+      src: "/creatives/aktu-sports-fest-2024-cover.jpg",
+      w: 851,
+      h: 315,
+      title: "AKTU Sports Fest 2024 — cover banner",
+      tag: "Event branding",
     },
   ],
 };
