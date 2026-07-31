@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CountUp from "@/components/CountUp";
 import Reveal from "@/components/Reveal";
+import type { CreativesContent } from "@/content/creatives";
 import { gallery } from "@/content/gallery";
 import type { mitProposal } from "@/content/mit-proposal";
 import { site } from "@/content/site";
@@ -18,6 +19,8 @@ const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo" });
 export type MitProposalProps = {
   proposal: typeof mitProposal;
   deckSrc: string;
+  // Optional: the creatives section is skipped when this is absent or empty.
+  creatives?: CreativesContent;
 };
 
 /* ── Primitives matching the deck's type and rule treatment ───────── */
@@ -93,6 +96,7 @@ function Section({
 export default function MitProposal({
   proposal: p,
   deckSrc: DECK_SRC,
+  creatives,
 }: MitProposalProps) {
   return (
     <div
@@ -338,6 +342,51 @@ export default function MitProposal({
             ))}
           </div>
         </Section>
+
+        {/* ── Creatives — the designed pieces themselves. Absent entirely
+              while the list is empty, so the live page is unaffected until
+              a piece is promoted in content/creatives.ts. CSS columns keep
+              each piece's own aspect ratio; a poster must not be cropped to
+              a grid cell. ── */}
+        {creatives && creatives.items.length > 0 && (
+          <Section
+            id="creatives"
+            kicker={creatives.kicker}
+            title={creatives.title}
+            sub={creatives.sub}
+          >
+            <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
+              {creatives.items.map((c, i) => (
+                <Reveal key={c.src} delay={(i % 3) * 70} className="break-inside-avoid">
+                  <figure className="border-2 border-line bg-card">
+                    <a
+                      href={c.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                      aria-label={`Open full size: ${c.title}`}
+                    >
+                      <Image
+                        src={c.src}
+                        alt={c.title}
+                        width={c.w}
+                        height={c.h}
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="h-auto w-full"
+                      />
+                    </a>
+                    <figcaption className="border-t-2 border-line px-4 py-3">
+                      <p className="font-extrabold tracking-[-0.01em]">{c.title}</p>
+                      <p className="mt-1.5 text-[13px] uppercase tracking-[0.06em] text-muted">
+                        {c.tag}
+                      </p>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </Section>
+        )}
 
         {/* ── The other four requirements ── */}
         <Section

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MitProposal from "@/components/MitProposal";
+import { creatives } from "@/content/creatives";
 import { mitProposal as p } from "@/content/mit-proposal";
 import { site } from "@/content/site";
 
@@ -17,5 +18,5 @@ export const metadata: Metadata = {
 };
 
 export default function MITProposalPage() {
-  return <MitProposal proposal={p} deckSrc={DECK_SRC} />;
+  return <MitProposal proposal={p} deckSrc={DECK_SRC} creatives={creatives} />;
 }
