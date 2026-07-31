@@ -14,8 +14,7 @@
 //  Entries in `creatives.items` show on BOTH /portfolio/MIT (the client's
 //  URL) and /UAT/portfolio/MIT. Entries in `creativesUat.items` show only
 //  on UAT — put anything unconfirmed there, review it, then move it up.
-//  The section renders nothing at all while a list is empty, so the live
-//  page stays as it is until an item is promoted.
+//  The section is skipped entirely while a list is empty.
 // ────────────────────────────────────────────────────────────────
 
 export type Creative = {
@@ -40,22 +39,14 @@ export const creatives: CreativesContent = {
   title: "The design work itself.",
   sub: "Identity marks, campaign creative and event collateral — the pieces our design team drew, not photographs of them in use.",
 
-  // Live list — empty until a piece is promoted from creativesUat below.
-  items: [],
-};
-
-// Staging list. Ordered identity → campaign → posters → sponsor → collateral,
-// so the section opens on the marks and ends on the printed pieces rather
-// than reading as an unsorted dump.
-//
-// Titles describe what is visible on each piece. Several carry a "Ct Creative
-// Team" badge — if that is not our mark, check before these go live, because
-// this page presents everything it shows as our work.
-export const creativesUat: CreativesContent = {
-  ...creatives,
+  // Ordered identity → campaign → posters → sponsor → collateral → motion,
+  // so the section opens on the marks and ends on the moving pieces rather
+  // than reading as an unsorted dump.
+  //
+  // Titles describe what is visible on each piece. Several carry a "Ct
+  // Creative Team" badge — if that is not our mark, say so and they come
+  // straight back out, since this page presents what it shows as our work.
   items: [
-    ...creatives.items,
-
     // ── Identity ──
     {
       src: "/creatives/mun-identity-mark.jpg",
@@ -192,4 +183,12 @@ export const creativesUat: CreativesContent = {
       kind: "video",
     },
   ],
+};
+
+// Staging list — everything live, plus anything being trialled before it
+// reaches the client's URL. Add unconfirmed pieces here, review them at
+// /UAT/portfolio/MIT, then move them into `creatives.items` above.
+export const creativesUat: CreativesContent = {
+  ...creatives,
+  items: [...creatives.items],
 };

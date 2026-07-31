@@ -100,7 +100,18 @@ function CreativeFigure({ item }: { item: Creative }) {
           className="w-full bg-black"
           style={{ aspectRatio: `${item.w} / ${item.h}` }}
         >
-          <video controls preload="metadata" playsInline className="h-full w-full">
+          {/* Muted autoplay is the only kind browsers allow unprompted, and
+              they gate it on visibility — nothing downloads until the piece
+              scrolls into view. Controls stay, so it can be paused. */}
+          <video
+            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="h-full w-full"
+          >
             <source src={item.src} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -374,8 +385,11 @@ export default function MitProposal({
                   >
                     <video
                       controls
-                      preload="metadata"
+                      autoPlay
+                      muted
+                      loop
                       playsInline
+                      preload="metadata"
                       className="h-full w-full"
                     >
                       <source src={v.src} type="video/mp4" />
