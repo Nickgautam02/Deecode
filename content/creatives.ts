@@ -24,6 +24,8 @@ export type Creative = {
   h: number;
   title: string;
   tag: string;
+  // "video" renders an MP4 player instead of an image. Defaults to image.
+  kind?: "image" | "video";
 };
 
 export type CreativesContent = {
@@ -167,6 +169,27 @@ export const creativesUat: CreativesContent = {
       h: 315,
       title: "AKTU Sports Fest 2024 — cover banner",
       tag: "Event branding",
+    },
+
+    // ── Motion ──
+    {
+      src: "/creatives/freshers-welcome-party-reel.mp4",
+      w: 576,
+      h: 1024,
+      title: "Freshers' welcome party, December 2024 — promo film",
+      tag: "Motion",
+      kind: "video",
+    },
+    {
+      // 1072×112 is the file's real shape, read off the MP4 header — a banner
+      // strip, not a bad export. The section gives anything past 4:1 the full
+      // page width, or this would render 30-odd pixels tall.
+      src: "/creatives/aarambh-title-strip.mp4",
+      w: 1072,
+      h: 112,
+      title: "Aarambh — animated title strip",
+      tag: "Motion",
+      kind: "video",
     },
   ],
 };

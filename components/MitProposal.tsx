@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CountUp from "@/components/CountUp";
 import Reveal from "@/components/Reveal";
-import type { CreativesContent } from "@/content/creatives";
+import type { Creative, CreativesContent } from "@/content/creatives";
 import { gallery } from "@/content/gallery";
 import type { mitProposal } from "@/content/mit-proposal";
 import { site } from "@/content/site";
@@ -89,6 +89,50 @@ function Section({
   );
 }
 
+// One card for either medium. Images link out to the full file; video gets a
+// player in a box fixed to the piece's own aspect ratio, so a 9:1 banner strip
+// and a vertical reel both sit correctly without a hard-coded height.
+function CreativeFigure({ item }: { item: Creative }) {
+  return (
+    <figure className="border-2 border-line bg-card">
+      {item.kind === "video" ? (
+        <div
+          className="w-full bg-black"
+          style={{ aspectRatio: `${item.w} / ${item.h}` }}
+        >
+          <video controls preload="metadata" playsInline className="h-full w-full">
+            <source src={item.src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      ) : (
+        <a
+          href={item.src}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+          aria-label={`Open full size: ${item.title}`}
+        >
+          <Image
+            src={item.src}
+            alt={item.title}
+            width={item.w}
+            height={item.h}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="h-auto w-full"
+          />
+        </a>
+      )}
+      <figcaption className="border-t-2 border-line px-4 py-3">
+        <p className="font-extrabold tracking-[-0.01em]">{item.title}</p>
+        <p className="mt-1.5 text-[13px] uppercase tracking-[0.06em] text-muted">
+          {item.tag}
+        </p>
+      </figcaption>
+    </figure>
+  );
+}
+
 /* ── Page ─────────────────────────────────────────────────────────── */
 
 // Destructured under the names the body already used, so the markup below
@@ -98,6 +142,13 @@ export default function MitProposal({
   deckSrc: DECK_SRC,
   creatives,
 }: MitProposalProps) {
+  // A piece past 4:1 — a banner or an LED strip — would be about thirty pixels
+  // tall inside a one-third-width column, so those take the full measure in a
+  // stack of their own, below the masonry. Everything else columns normally.
+  const creativeItems = creatives?.items ?? [];
+  const wideCreatives = creativeItems.filter((c) => c.w / c.h >= 4);
+  const columnedCreatives = creativeItems.filter((c) => c.w / c.h < 4);
+
   return (
     <div
       className={`${archivo.variable} deck-theme flex min-h-screen flex-col bg-background text-foreground`}
@@ -356,35 +407,22 @@ export default function MitProposal({
             sub={creatives.sub}
           >
             <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
-              {creatives.items.map((c, i) => (
+              {columnedCreatives.map((c, i) => (
                 <Reveal key={c.src} delay={(i % 3) * 70} className="break-inside-avoid">
-                  <figure className="border-2 border-line bg-card">
-                    <a
-                      href={c.src}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                      aria-label={`Open full size: ${c.title}`}
-                    >
-                      <Image
-                        src={c.src}
-                        alt={c.title}
-                        width={c.w}
-                        height={c.h}
-                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                        className="h-auto w-full"
-                      />
-                    </a>
-                    <figcaption className="border-t-2 border-line px-4 py-3">
-                      <p className="font-extrabold tracking-[-0.01em]">{c.title}</p>
-                      <p className="mt-1.5 text-[13px] uppercase tracking-[0.06em] text-muted">
-                        {c.tag}
-                      </p>
-                    </figcaption>
-                  </figure>
+                  <CreativeFigure item={c} />
                 </Reveal>
               ))}
             </div>
+            {/* Full measure, below the columns — see the split above. */}
+            {wideCreatives.length > 0 && (
+              <div className="mt-5 space-y-5">
+                {wideCreatives.map((c) => (
+                  <Reveal key={c.src}>
+                    <CreativeFigure item={c} />
+                  </Reveal>
+                ))}
+              </div>
+            )}
           </Section>
         )}
 
