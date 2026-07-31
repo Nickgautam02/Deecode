@@ -11,6 +11,32 @@
 <link rel="icon" href="/icon.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="/apple-icon.png">
 <script src="./support.js"></script>
+<script>
+// The deck's template compiler keeps `autoplay`, `playsinline` and `preload`
+// on a <video> but drops `muted`, `loop` and `controls`. Without `muted` the
+// browser refuses to autoplay and aborts the load, so the player renders as an
+// empty box — and without `controls` there is no way to start it by hand.
+// Re-apply all three whenever the stage renders, and start each film once.
+(function () {
+  function fix() {
+    document.querySelectorAll("video").forEach(function (v) {
+      if (v.dataset.dcMediaFixed === "1") return;
+      v.dataset.dcMediaFixed = "1";
+      v.muted = true;
+      v.defaultMuted = true;
+      v.loop = true;
+      v.controls = true;
+      var p = v.play();
+      // A rejection here is a blocked autoplay, not a broken file — the
+      // controls we just restored are the fallback.
+      if (p && p.catch) p.catch(function () {});
+    });
+  }
+  new MutationObserver(fix).observe(document.documentElement, { childList: true, subtree: true });
+  document.addEventListener("DOMContentLoaded", fix);
+  fix();
+})();
+</script>
 </head>
 <body>
 <x-dc>
@@ -143,7 +169,7 @@
       <sc-for list="{{ videos }}" as="film" hint-placeholder-count="3">
         <div>
           <div style="height: 500px; border: 2px solid var(--color-divider); background: #000;">
-            <video src="{{ film.src }}" controls autoplay muted loop playsinline preload="metadata" style="height: 100%; display: block;"></video>
+            <video src="{{ film.src }}" controls autoplay muted loop playsinline preload="metadata" style="height: 100%; width: auto; display: block;"></video>
           </div>
           <div style="font-family: var(--font-heading); font-weight: 800; font-size: 17px; color: var(--color-text); margin-top: 16px;">{{ film.title }}</div>
           <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">{{ film.tag }}</div>
@@ -169,8 +195,8 @@
     <div style="font-family: var(--font-heading); font-weight: 800; font-size: 40px; line-height: 1.12; letter-spacing: -0.015em; color: var(--color-text);">And the pieces that move.</div>
     <div style="flex: 1; display: flex; gap: 40px; margin-top: 34px; align-items: flex-start;">
       <div>
-        <div style="height: 520px; border: 2px solid var(--color-divider); background: #000;">
-          <video src="{{ creativeReel.src }}" controls autoplay muted loop playsinline preload="metadata" style="height: 100%; display: block;"></video>
+        <div style="width: 293px; height: 520px; flex: 0 0 auto; border: 2px solid var(--color-divider); background: #000;">
+          <video src="{{ creativeReel.src }}" controls autoplay muted loop playsinline preload="metadata" style="height: 100%; width: auto; display: block;"></video>
         </div>
         <div style="font-family: var(--font-heading); font-weight: 800; font-size: 17px; color: var(--color-text); margin-top: 16px;">{{ creativeReel.title }}</div>
         <div style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text); opacity: 0.7; margin-top: 6px;">{{ creativeReel.tag }}</div>
