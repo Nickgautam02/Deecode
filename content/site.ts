@@ -4,6 +4,22 @@
 //  case studies and footer links. No other file needs touching.
 // ────────────────────────────────────────────────────────────────
 
+export type Creator = {
+  name: string;
+  niche: string;
+  /** Display string, e.g. "217K". Case-insensitive K/M when sorted. */
+  followers: string;
+  platform: string;
+  /** Human-readable place, shown on the site — a city, state or country. */
+  location: string;
+  /** Market, used for filtering. Must stay in step with `location`: a
+   *  creator in "California" is market "USA". Filtering on `location`
+   *  instead would silently drop anyone listed by city. */
+  market: "USA" | "India" | "Dubai";
+  /** File in public/creators/ — "" renders initials instead. */
+  image: string;
+};
+
 export const site = {
   // ← Replace with your real brand name
   name: "Deecode Media House",
@@ -117,16 +133,25 @@ export const site = {
 
   // image: file in public/creators/ — leave "" to show initials instead
   creators: [
-    { name: "Chhoti Philim", niche: "Comedy", followers: "1M", platform: "Instagram", location: "India", image: "/creators/choti-philim.jpg" },
-    { name: "The Ass Tag", niche: "Comedy", followers: "3.83M", platform: "YouTube", location: "India", image: "/creators/the-ass-tag.jpg" },
-    { name: "Ridey Behl", niche: "Comedy", followers: "260K", platform: "Instagram", location: "India", image: "/creators/ridey-behl.jpg" },
-    { name: "Megi Mali", niche: "Lifestyle & Tech", followers: "217K", platform: "Instagram", location: "USA", image: "/creators/megi-mali.jpg" },
-    { name: "Nick", niche: "Tech", followers: "300K", platform: "Instagram", location: "USA", image: "/creators/nick.jpg" },
-    { name: "Raman Yadav", niche: "Sketches", followers: "1.5M", platform: "Instagram", location: "India", image: "/creators/raman-yadav.jpg" },
-    { name: "Matthew A.", niche: "Lifestyle & Tech", followers: "178K", platform: "Instagram", location: "USA", image: "/creators/matthew-a.jpg" },
-    { name: "Sonam Pirani", niche: "Fashion & Beauty", followers: "120K", platform: "Instagram", location: "Dubai", image: "/creators/sonam-pirani.jpg" },
-    { name: "Gauri Bhasin", niche: "Fashion & Lifestyle", followers: "150K", platform: "Instagram", location: "India", image: "/creators/gauri-bhasin.jpg" },
-  ],
+    { name: "Chhoti Philim", niche: "Comedy", followers: "1M", platform: "Instagram", location: "India", market: "India", image: "/creators/choti-philim.jpg" },
+    { name: "The Ass Tag", niche: "Comedy", followers: "3.83M", platform: "YouTube", location: "India", market: "India", image: "/creators/the-ass-tag.jpg" },
+    { name: "Ridey Behl", niche: "Comedy", followers: "260K", platform: "Instagram", location: "India", market: "India", image: "/creators/ridey-behl.jpg" },
+    { name: "Megi Mali", niche: "Lifestyle & Tech", followers: "217K", platform: "Instagram", location: "USA", market: "USA", image: "/creators/megi-mali.jpg" },
+    { name: "Nick", niche: "Tech", followers: "300K", platform: "Instagram", location: "USA", market: "USA", image: "/creators/nick.jpg" },
+    { name: "Raman Yadav", niche: "Sketches", followers: "1.5M", platform: "Instagram", location: "India", market: "India", image: "/creators/raman-yadav.jpg" },
+    { name: "Matthew A.", niche: "Lifestyle & Tech", followers: "178K", platform: "Instagram", location: "USA", market: "USA", image: "/creators/matthew-a.jpg" },
+    { name: "Sonam Pirani", niche: "Fashion & Beauty", followers: "120K", platform: "Instagram", location: "Dubai", market: "Dubai", image: "/creators/sonam-pirani.jpg" },
+    { name: "Gauri Bhasin", niche: "Fashion & Lifestyle", followers: "150K", platform: "Instagram", location: "India", market: "India", image: "/creators/gauri-bhasin.jpg" },
+
+    // US tech roster. Names and follower counts exactly as supplied; avatars
+    // were pulled from each public profile. The Instagram pair are 100x100 —
+    // Instagram serves no larger rendition to logged-out clients — which is
+    // the same size as the rest of this list and ample at display size.
+    { name: "fatihlabs", niche: "Tech", followers: "95.6K", platform: "Instagram", location: "California", market: "USA", image: "/creators/fatihlabs.jpg" },
+    { name: "soojintech", niche: "Tech", followers: "70.2K", platform: "Instagram", location: "New York", market: "USA", image: "/creators/soojintech.jpg" },
+    { name: "KuyikBassey", niche: "Tech", followers: "5.1K", platform: "YouTube", location: "USA", market: "USA", image: "/creators/kuyikbassey.jpg" },
+    { name: "A1 republic", niche: "Tech", followers: "1.72K", platform: "YouTube", location: "USA", market: "USA", image: "/creators/a1-republic.jpg" },
+  ] satisfies Creator[],
 
   caseStudies: [
     {

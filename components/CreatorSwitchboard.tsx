@@ -6,6 +6,7 @@ export type WireFace = {
   name: string;
   image: string;
   meta: string;
+  followers: string;
 };
 
 /* The one claim this page is built to make — that brands and creators meet
@@ -219,7 +220,7 @@ export default function CreatorSwitchboard({
             <div
               key={face.name}
               data-node
-              className="flex flex-row-reverse items-center gap-3 rounded-full border border-line bg-card py-1.5 pl-4 pr-1.5"
+              className="group flex flex-row-reverse items-center gap-3 rounded-full border border-line bg-card py-1.5 pl-4 pr-1.5 transition-colors hover:border-accent/60"
             >
               <img
                 src={face.image}
@@ -227,11 +228,16 @@ export default function CreatorSwitchboard({
                 width={38}
                 height={38}
                 loading="lazy"
-                className="h-[38px] w-[38px] rounded-full object-cover"
+                className="h-[38px] w-[38px] rounded-full object-cover ring-1 ring-line transition-shadow group-hover:ring-accent/70"
               />
               <div className="text-right leading-tight">
-                <p className="font-display whitespace-nowrap text-[0.8125rem] font-semibold">
-                  {face.name}
+                <p className="flex items-baseline justify-end gap-2 whitespace-nowrap">
+                  <span className="font-display text-[0.8125rem] font-semibold">
+                    {face.name}
+                  </span>
+                  <span className="text-[0.6875rem] tabular-nums text-accent">
+                    {face.followers}
+                  </span>
                 </p>
                 <p className="text-[0.625rem] uppercase tracking-[0.08em] text-muted">
                   {face.meta}
