@@ -22,10 +22,12 @@ export default function CreatorSwitchboard({
   brands,
   faces,
   caption,
+  hub,
 }: {
   brands: readonly string[];
   faces: readonly WireFace[];
   caption: string;
+  hub: { name: string; sub: string };
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -37,8 +39,8 @@ export default function CreatorSwitchboard({
   const draw = useCallback(() => {
     const wrap = wrapRef.current;
     const canvas = canvasRef.current;
-    const hub = hubRef.current;
-    if (!wrap || !canvas || !hub) return;
+    const hubEl = hubRef.current;
+    if (!wrap || !canvas || !hubEl) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -54,7 +56,7 @@ export default function CreatorSwitchboard({
     ctx.clearRect(0, 0, w, h);
 
     const base = wrap.getBoundingClientRect();
-    const hr = hub.getBoundingClientRect();
+    const hr = hubEl.getBoundingClientRect();
     const hubY = hr.top + hr.height / 2 - base.top;
     const hubLeft = { x: hr.left - base.left, y: hubY };
     const hubRight = { x: hr.right - base.left, y: hubY };
@@ -203,10 +205,10 @@ export default function CreatorSwitchboard({
         >
           <div>
             <p className="font-display text-[0.8125rem] font-extrabold uppercase leading-tight tracking-widest">
-              Deecode
+              {hub.name}
             </p>
             <p className="mt-0.5 text-[0.5625rem] uppercase tracking-[0.12em] text-muted">
-              600+ creators
+              {hub.sub}
             </p>
           </div>
         </div>

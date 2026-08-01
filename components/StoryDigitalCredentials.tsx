@@ -122,6 +122,7 @@ export default function StoryDigitalCredentials() {
             brands={WIRE_BRANDS}
             faces={WIRE_FACES}
             caption={sd.wireCaption}
+            hub={sd.wireHub}
           />
         </div>
       </section>

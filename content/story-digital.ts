@@ -85,8 +85,16 @@ export const storyDigital = {
     lead: "We put the right faces in front of the",
     accent: "right audiences",
   },
-  lede: "An influencer marketing and talent management house running creator campaigns end to end — sourcing, contracting, briefing, delivery and reporting. One roster, three markets, every platform that matters.",
-  wireCaption: "Brands in · creators out · USA / India / Dubai",
+  lede: "An influencer marketing and talent management house running creator campaigns end to end — sourcing, contracting, briefing, delivery and reporting. One roster, twelve markets, every platform that matters.",
+  // Regions rather than the full twelve-country list — the caption sits under
+  // the switchboard and has to stay on one line.
+  wireCaption:
+    "Brands in · creators out · USA / India / Middle East / North Africa",
+
+  // The hub at the centre of the switchboard. ⚠ `sub` says 1000+, while
+  // content/site.ts still states 600+ in `stats` and in the About copy —
+  // the homepage and this page disagree until one of them is updated.
+  wireHub: { name: "Deecode", sub: "1000+ creators" },
 
   roster: {
     kicker: "01 / The roster",
@@ -98,9 +106,29 @@ export const storyDigital = {
 
   coverage: {
     kicker: "02 / Coverage",
-    title: "Three markets, every surface that matters.",
+    title: "Twelve markets, every surface that matters.",
     groups: [
-      { label: "Markets", items: ["United States", "India", "Dubai / UAE"] },
+      // "Markets served" rather than "Markets": the roster above is based in
+      // the US, India and Dubai, so an unqualified list of twelve countries
+      // invites "you show creators in three of these". Keep the label honest
+      // and the distinction holds up in conversation.
+      {
+        label: "Markets served",
+        items: [
+          "United States",
+          "India",
+          "Dubai / UAE",
+          "Saudi Arabia",
+          "Qatar",
+          "Bahrain",
+          "Kuwait",
+          "Oman",
+          "Jordan",
+          "Lebanon",
+          "Egypt",
+          "Morocco",
+        ],
+      },
       {
         label: "Platforms",
         items: [
