@@ -118,7 +118,7 @@ export const storyDigital = {
         "Garnier",
         "Red Bull",
         "Monster",
-        "Jio Saavan",
+        "Jio Saavn",
         "Ixigo",
         "Red Bus",
         "Cornitos",
