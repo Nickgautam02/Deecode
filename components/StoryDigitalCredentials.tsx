@@ -343,20 +343,16 @@ export default function StoryDigitalCredentials() {
             ))}
           </ol>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {sd.process.throughput.map((t, i) => (
-              <Reveal key={t.label} delay={(i % 4) * 70} className="h-full">
-                <div className="h-full rounded-xl border border-line bg-card p-4">
-                  <p className="font-display text-xl font-bold tracking-tight">
-                    {t.value}
-                  </p>
-                  <p className="mt-1 text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
-                    {t.label}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          {/* One point left, so it reads as a closing statement on the
+              sequence rather than a lone stat card in an empty grid. */}
+          <Reveal>
+            <div className="mt-10 flex flex-wrap items-baseline gap-x-4 gap-y-1 rounded-r-xl border-l-2 border-accent bg-accent/[0.08] px-5 py-4">
+              <p className="font-display text-lg font-bold tracking-tight">
+                {sd.process.payouts.value}
+              </p>
+              <p className="text-muted">{sd.process.payouts.label}</p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

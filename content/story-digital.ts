@@ -188,9 +188,9 @@ export const storyDigital = {
     },
   },
 
-  // Step timings were removed at Nikhil's request; the headline durations
-  // survive in `throughput` below. Re-add a `clock` per step and render it
-  // beside the title if they are ever wanted back.
+  // No durations anywhere in this section — the per-step timings and the
+  // headline ones were both removed at Nikhil's request. To bring them back,
+  // add a `clock` per step and render it beside the title.
   process: {
     kicker: "04 / How we operate",
     title: "Six steps, and who owns each one.",
@@ -221,11 +221,11 @@ export const storyDigital = {
         body: "Per creator and campaign level: reach, impressions, views and watch-through, engagement rate, saves and shares, clicks, CPM, CPV and CPE, and conversions wherever tracking allows. Raw insights screenshots travel with the summary, plus a short read on what over-performed and what is worth scaling.",
       },
     ],
-    throughput: [
-      { value: "2–3 weeks", label: "Signed brief to first content live" },
-      { value: "7–10 days", label: "Fast-track, pre-cleared creators" },
-      { value: "One invoice", label: "Creator payouts handled by us" },
-      { value: "One manager", label: "Single point of contact, live tracker" },
-    ],
+    // One statement rather than a row of stat cards — a single card in a
+    // four-up grid reads as three that failed to load.
+    payouts: {
+      value: "One invoice",
+      label: "Creator payouts handled by us",
+    },
   },
 };
