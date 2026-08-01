@@ -301,6 +301,54 @@ export default function StoryDigitalCredentials() {
         </div>
       </section>
 
+      {/* ── 04 Process. A real sequence, so the steps are numbered. No
+             per-step timings — the headline durations sit in the cards
+             underneath instead. ── */}
+      <section className="border-b border-line/60">
+        <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
+          <SectionHeading
+            kicker={sd.process.kicker}
+            title={sd.process.title}
+            sub={sd.process.sub}
+          />
+
+          <ol className="border-t border-line">
+            {sd.process.steps.map((step, i) => (
+              <li key={step.title} className="border-b border-line/60">
+                <Reveal>
+                  <div className="grid gap-x-5 py-6 sm:grid-cols-[2.75rem_minmax(0,1fr)]">
+                    <span className="pt-1 text-xs tabular-nums tracking-wider text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3 className="font-display font-bold tracking-tight">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 max-w-[66ch] text-muted">{step.body}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {sd.process.throughput.map((t, i) => (
+              <Reveal key={t.label} delay={(i % 4) * 70} className="h-full">
+                <div className="h-full rounded-xl border border-line bg-card p-4">
+                  <p className="font-display text-xl font-bold tracking-tight">
+                    {t.value}
+                  </p>
+                  <p className="mt-1 text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
+                    {t.label}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Footer. Carries the contact routes now that the closing CTA
              block is gone, so the page still ends somewhere useful. ── */}
       <footer className="border-t border-line/60">

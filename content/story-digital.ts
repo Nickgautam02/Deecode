@@ -4,9 +4,8 @@
 //
 //  Context: Story Digital (Vidhi Makol, Business Development) asked for
 //  three things over two emails — our creator roster, an overview of our
-//  operational process, and a case study. This page answers the roster in
-//  full; the other two are handled in the covering email, not here.
-//
+//  operational process, and a case study. This page answers the first two;
+//  the case study is handled in the covering email, not here.
 //
 //  No performance figures appear anywhere on this page, deliberately — the
 //  case studies in content/site.ts are template placeholders, not our
@@ -186,5 +185,46 @@ export const storyDigital = {
       brands: ["Auralis Buzz", "Capital.com"],
       note: "International sourcing is existing work for us, not a new capability — the same team and the same operating model run it.",
     },
+  },
+
+  // Step timings were removed at Nikhil's request; the headline durations
+  // survive in `throughput` below. Re-add a `clock` per step and render it
+  // beside the title if they are ever wanted back.
+  process: {
+    kicker: "04 / How we operate",
+    title: "Six steps, and who owns each one.",
+    sub: "This sequence runs on every campaign, and assumes normal client turnaround on approvals.",
+    steps: [
+      {
+        title: "Brief intake & feasibility",
+        body: "Objective, primary KPI, market, platforms, deliverable count, budget band, timeline and any client mandatories or compliance notes. We come back with feasibility plus a recommended creator mix and tier split.",
+      },
+      {
+        title: "Discovery & shortlist",
+        body: "A shortlist at two to three times the creators you need, sent as a data sheet rather than a name dump. Every profile clears three checks first: audience geography against the target market, an authenticity screen for inflated follower and engagement patterns, and a brand-safety scan of the last 90 days of content.",
+      },
+      {
+        title: "Negotiation & contracting",
+        body: "We close individual creator contracts covering deliverables and deadlines, usage and whitelisting rights with duration, exclusivity or category-block windows, revision limits, cancellation terms and mandatory FTC paid-partnership disclosure.",
+      },
+      {
+        title: "Briefing & creative",
+        body: "Each creator gets a brief pack: campaign context, hook direction, mandatory mentions and CTAs, dos and don'ts, tracked links or promo codes, and delivery dates. Scripts or storyboards come to you for approval before anyone shoots. One revision round is standard; two where the client needs tighter control.",
+      },
+      {
+        title: "Review & go-live",
+        body: "Draft content routes to you for approval, then posts on schedule in the relevant time zones. UTMs, tracked links, promo codes and partnership tags are set up at this stage, so paid amplification or whitelisting can run off the same assets without a re-clear.",
+      },
+      {
+        title: "Reporting",
+        body: "Per creator and campaign level: reach, impressions, views and watch-through, engagement rate, saves and shares, clicks, CPM, CPV and CPE, and conversions wherever tracking allows. Raw insights screenshots travel with the summary, plus a short read on what over-performed and what is worth scaling.",
+      },
+    ],
+    throughput: [
+      { value: "2–3 weeks", label: "Signed brief to first content live" },
+      { value: "7–10 days", label: "Fast-track, pre-cleared creators" },
+      { value: "One invoice", label: "Creator payouts handled by us" },
+      { value: "One manager", label: "Single point of contact, live tracker" },
+    ],
   },
 };
