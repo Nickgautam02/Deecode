@@ -11,10 +11,8 @@
 //       masonry reserves space from them, so a wrong pair shifts the layout
 //       when the image loads.
 //
-//  Entries in `creatives.items` show on BOTH /portfolio/MIT (the client's
-//  URL) and /UAT/portfolio/MIT. Entries in `creativesUat.items` show only
-//  on UAT — put anything unconfirmed there, review it, then move it up.
-//  The section is skipped entirely while a list is empty.
+//  Entries in `creatives.items` show on /portfolio/MIT, the client's URL.
+//  The section is skipped entirely while the list is empty.
 // ────────────────────────────────────────────────────────────────
 
 export type Creative = {
@@ -187,8 +185,3 @@ export const creatives: CreativesContent = {
 
 // Staging list — everything live, plus anything being trialled before it
 // reaches the client's URL. Add unconfirmed pieces here, review them at
-// /UAT/portfolio/MIT, then move them into `creatives.items` above.
-export const creativesUat: CreativesContent = {
-  ...creatives,
-  items: [...creatives.items],
-};

@@ -136,6 +136,17 @@ export default function StoryDigitalCredentials() {
             sub={sd.roster.sub}
           />
 
+          {/* The section title no longer names the US, so the first block
+              says which part of the roster it is. */}
+          <Reveal>
+            <div className="mb-5 flex items-baseline gap-4">
+              <p className="whitespace-nowrap text-[0.6875rem] uppercase tracking-[0.15em] text-muted">
+                {sd.roster.usLabel}
+              </p>
+              <Rule />
+            </div>
+          </Reveal>
+
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {usRoster.map((c, i) => (
               <Reveal key={c.name} delay={(i % 3) * 80} className="h-full">

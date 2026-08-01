@@ -3,9 +3,7 @@ import StoryDigitalCredentials from "@/components/StoryDigitalCredentials";
 import { site } from "@/content/site";
 import { storyDigital as sd } from "@/content/story-digital";
 
-// The live credentials page for Story Digital — this is the URL we hand out.
-// /uat-vidhistorydigital renders the same component and stays as the staging
-// copy, same arrangement as /portfolio/MIT and /UAT/portfolio/MIT.
+// The credentials page for Story Digital — the URL we hand out.
 //
 // Kept out of the index: it names the recipient and is meant for one reader,
 // not for search.

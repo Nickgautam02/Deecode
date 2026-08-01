@@ -1,6 +1,6 @@
 // ────────────────────────────────────────────────────────────────
 //  STORY DIGITAL CREDENTIALS PAGE — everything rendered at
-//  /uat-vidhistorydigital lives in this file.
+//  /storydigital lives in this file.
 //
 //  Context: Story Digital (Vidhi Makol, Business Development) asked for
 //  three things over two emails — our creator roster, an overview of our
@@ -96,9 +96,10 @@ export const storyDigital = {
   wireHub: { name: "Deecode", sub: "1000+ creators" },
 
   roster: {
-    kicker: "01 / The roster",
-    title: "The US bench, first.",
-    sub: "Your brief is the US market, so these lead. Every profile here is managed directly by us — we brief them, we contract them, we pay them.",
+    kicker: "01 / Top creators",
+    title: "Our top creators.",
+    sub: "Your brief is the US market, so those lead. Every profile here is managed directly by us — we brief them, we contract them, we pay them.",
+    usLabel: "Leading the US roster",
     widerLabel: "Also on the roster",
   },
 
