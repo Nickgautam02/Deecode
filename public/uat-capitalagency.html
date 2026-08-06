@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deecode Media House — Capital.com creator supply case study</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="How Deecode Media House supplied finance content creators into a Middle East market for Capital.com, as the creator-supply partner behind an agency.">
+
+<!-- Static file, so it gets no metadata from app/layout.tsx. These paths are the
+     routes Next serves app/favicon.ico, app/icon.png and app/apple-icon.png
+     from — the extension is part of the route. Absolute, because this deck
+     lives two levels down at /case-studies/capital-com.html. -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/icon.png" type="image/png" sizes="512x512">
+<link rel="apple-touch-icon" href="/apple-icon.png">
+
+<!-- Deliberately NOT the x-dc runtime used by /portfolio/MIT/deck.html. That
+     deck needs three generated bundles (~320KB) plus a design-system stylesheet
+     sitting beside it, so it only works when served. This one is a single file
+     with no dependencies: it opens off a USB stick, survives being forwarded as
+     an email attachment, and prints straight to PDF. The only network request
+     is the webfont, which falls back to the system stack when offline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap">
+
+<style>
+/* ── Tokens. Mirrors app/globals.css so the deck reads as part of
+      deecodemediahouse.com rather than as a one-off microsite. Change the
+      six values in :root to re-theme the whole deck. ── */
+:root {
+  --bg: #08080a;
+  --fg: #f4f4f0;
+  --muted: #9a9a92;
+  --accent: #877bf2;
+  --accent-2: #ec4899;
+  --card: #101013;
+  --line: rgba(255, 255, 255, 0.08);
+
+  --display: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Stage scale and vertical offset, both written by fit() below. */
+  --s: 1;
+  --dy: 0px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--body);
+  overflow: hidden;
+}
+
+/* ── Stage. Every slide is authored at a fixed 1920x1080 and the whole thing
+      is scaled to the viewport, so type never reflows and a slide looks
+      identical on a laptop, a projector and in the PDF. ── */
+#viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Centred with 50% + negative margins rather than grid/flex centring. An
+   oversized grid item resolves `place-items: center` to the start edge — it
+   will not take a negative offset — so the stage sat 160px right of centre
+   and clipped off the viewport. Margins have no such rule.
+   --dy is applied after the scale, so it is in real pixels: it lifts the
+   stage clear of the nav bar. */
+#stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1920px;
+  height: 1080px;
+  margin: -540px 0 0 -960px;
+  transform: translateY(var(--dy)) scale(var(--s));
+  transform-origin: center center;
+}
+
+/* Padding is deliberately tight. Every slide is authored to fit 1080px with
+   no scrolling and no shrink-to-fit, and the densest slides here run to six
+   cards plus a headline, a lede and a footnote. */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  padding: 82px 110px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.slide.is-active {
+  display: flex;
+  animation: slide-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide.is-active { animation: none; }
+}
+
+/* Soft accent wash, same treatment as the site's hero. */
+.slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(760px 520px at 12% 6%, rgba(135, 123, 242, 0.15), transparent 64%),
+    radial-gradient(820px 560px at 88% 92%, rgba(236, 72, 153, 0.08), transparent 66%);
+}
+
+.slide > * { position: relative; z-index: 1; }
+
+/* ── Shared furniture ── */
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  flex: none;
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wordmark span { color: var(--accent); }
+
+.kicker {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kicker b { color: var(--accent); font-weight: 500; }
+
+.body-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding: 42px 0;
+}
+
+h1, h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: 88px; margin-left: -0.045em; }
+h2 { font-size: 54px; max-width: 28ch; }
+
+.accent { color: var(--accent); }
+
+.lede {
+  font-size: 23px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 28px 0 0;
+}
+
+/* The rule runs the full width of the slide while the text stays at a
+   readable measure — constraining the element itself left the rule stopping
+   short of the right margin, which reads as a layout bug. */
+.note {
+  flex: none;
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.note span {
+  display: block;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 104ch;
+}
+
+.note b { color: var(--fg); font-weight: 600; }
+
+/* ── Cover ── */
+.cover .body-area { justify-content: center; }
+
+.cover-meta {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 44px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.cover-meta dt {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cover-meta dd {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 19px;
+  margin: 12px 0 0;
+  line-height: 1.3;
+}
+
+/* ── Cards, bullets, steps ── */
+.grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 42px;
+}
+
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  flex: none;
+  transform: translateY(-4px);
+}
+
+.num {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  flex: none;
+}
+
+/* Steps read as a numbered sequence rather than a set of parallel cards. */
+.steps { margin-top: 48px; border-top: 1px solid var(--line); }
+
+.step {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 28px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+
+.step .num { font-size: 17px; padding-top: 5px; }
+
+.step h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.step p {
+  margin: 9px 0 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 92ch;
+}
+
+/* ── Columns of chips ── */
+.col-label {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+
+.chips li {
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 11px;
+  padding: 10px 15px;
+  font-size: 18px;
+}
+
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 15px; }
+
+.list li {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted);
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.list li::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-top: 10px;
+}
+
+.list li b { color: var(--fg); font-weight: 600; }
+
+/* The split slide's two sides carry opposite weight: ours is lit, theirs is
+   not. That contrast is the argument, so it is not merely decorative. */
+.split-ours { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.split-ours .col-label { color: var(--accent); }
+.split-theirs { opacity: 0.72; }
+
+/* ── Statement + close ── */
+.statement, .close { justify-content: center; }
+.statement .body-area, .close .body-area { justify-content: center; }
+
+.close { background: var(--accent); }
+.close::after { display: none; }
+.close h2 { color: var(--bg); font-size: 68px; max-width: 22ch; }
+.close .lede { color: var(--bg); opacity: 0.86; }
+.close .kicker, .close .wordmark { color: var(--bg); }
+.close .wordmark span { color: var(--bg); }
+.close .masthead { border-color: rgba(8, 8, 10, 0.28); }
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 54px;
+  margin-top: 54px;
+  align-items: baseline;
+}
+
+.contact a, .contact span {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 27px;
+  color: var(--bg);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(8, 8, 10, 0.35);
+  padding-bottom: 3px;
+}
+
+/* .note span sets an explicit muted colour, so it has to be overridden here
+   rather than left to inherit — otherwise the close slide's footnote renders
+   grey on the accent field. */
+.close .note { border-color: rgba(8, 8, 10, 0.25); }
+.close .note span { color: var(--bg); opacity: 0.82; }
+.close .note b { color: var(--bg); }
+
+/* ── Chrome: progress, counter, controls. Screen only. ── */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  width: 0;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 20;
+}
+
+#chrome {
+  position: fixed;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  z-index: 20;
+  opacity: 0.42;
+  transition: opacity 0.3s ease;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+#chrome:hover, #chrome:focus-within { opacity: 1; }
+
+#chrome button {
+  font: inherit;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+#chrome button:hover { border-color: var(--accent); color: var(--accent); }
+#chrome button:disabled { opacity: 0.3; cursor: default; }
+#chrome button:disabled:hover { border-color: var(--line); color: var(--fg); }
+
+#counter { font-variant-numeric: tabular-nums; letter-spacing: 0.1em; min-width: 76px; text-align: center; }
+#counter b { color: var(--fg); font-weight: 600; }
+
+#label { max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+#hint {
+  position: fixed;
+  bottom: 22px;
+  right: 26px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.55;
+  z-index: 20;
+  transition: opacity 0.6s ease;
+}
+
+#hint.gone { opacity: 0; }
+
+kbd {
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 2px 6px;
+  color: var(--fg);
+}
+
+/* ── Print / PDF. Every slide on its own landscape page, chrome hidden,
+      transforms dropped so the browser lays them out at true size. ── */
+@page { size: 1920px 1080px; margin: 0; }
+
+@media print {
+  html, body { overflow: visible; height: auto; background: #fff; }
+  #viewport { position: static; display: block; overflow: visible; }
+  /* The margins that centre the stage on screen would drag it off the page
+     here, so they go along with the transform. */
+  #stage { position: static; width: auto; height: auto; margin: 0; transform: none; }
+  #progress, #chrome, #hint { display: none !important; }
+
+  .slide {
+    position: relative;
+    display: flex !important;
+    width: 1920px;
+    height: 1080px;
+    break-after: page;
+    page-break-after: always;
+    animation: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .slide:last-child { break-after: auto; page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="viewport"><div id="stage"></div></div>
+
+<div id="chrome">
+  <button id="prev" type="button" aria-label="Previous slide">&#8249;</button>
+  <span id="counter"><b>1</b> / 1</span>
+  <button id="next" type="button" aria-label="Next slide">&#8250;</button>
+  <span id="label"></span>
+</div>
+
+<p id="hint"><kbd>&#8592;</kbd> <kbd>&#8594;</kbd> to move &middot; <kbd>P</kbd> to save as PDF</p>
+
+<script>
+// ────────────────────────────────────────────────────────────────
+//  DECK CONTENT — everything the deck says lives in SLIDES below.
+//
+//  Written for a cold prospect: no recipient is named, and it has to work
+//  with no covering email and nobody presenting it.
+//
+//  ⚠ Two standing rules, both load-bearing:
+//
+//  1. No performance figures appear anywhere against the Capital.com work.
+//     Deecode was the supply partner behind another agency and never held
+//     the tracking, so there are no numbers to quote. The deck says so
+//     outright rather than leaving a gap a reader has to notice.
+//
+//  2. Nothing here may read as a direct Capital.com relationship. The work
+//     came through an agency partnership. "Supplied", never "delivered for";
+//     "the brand", never "our client".
+//
+//  The specific Middle East market and the partner agency are deliberately
+//  unnamed — see the FILL markers below if either is ever cleared for use.
+//
+//  Slide kinds: cover · statement · prose · bullets · steps · columns ·
+//  split · close. Add a slide by adding an object; the renderer handles the
+//  numbering, the nav and the PDF pagination.
+// ────────────────────────────────────────────────────────────────
+const SLIDES = [
+  {
+    kind: "cover",
+    label: "Cover",
+    kicker: "Case study <b>·</b> Creator supply <b>·</b> Finance <b>·</b> MENA",
+    headline: "We supplied the finance creators.",
+    accentTail: "Another agency held the brand.",
+    lede: "A supply-side mandate on Capital.com work in a MENA market. Sourced, vetted, contracted and paid by us. Briefed, run and reported by the agency. This deck sets out what we owned, what we did not, and what we can supply again.",
+    // The correction rides on the cover itself, not in a footnote — a
+    // screenshot of this slide alone still says we sat behind an agency.
+    meta: [
+      { k: "Brand", v: "Capital.com" },
+      { k: "Route in", v: "Agency partnership" },
+      { k: "Market", v: "MENA — country not disclosed" },
+      { k: "Our scope", v: "Creator supply — steps 01 to 03" },
+    ],
+  },
+
+  {
+    kind: "bullets",
+    label: "The mandate",
+    kicker: "01 / The mandate",
+    headline: "The creators came through us. The brand never spoke to us.",
+    lede: "A partner agency held the brand. We held the creators — sourced, vetted, negotiated, contracted and paid.",
+    bullets: [
+      {
+        title: "The brand",
+        text: "Capital.com — an online trading and investing platform. A category where creator selection carries more weight than most.",
+      },
+      {
+        title: "The route in",
+        text: "An agency partnership. We sat behind another agency: no direct contact with the brand at any point, no brand-side seat, no joint pitch.",
+      },
+      {
+        title: "The market",
+        text: "A MENA market. The country is the agency's to disclose rather than ours, so it is not named here.",
+      },
+      {
+        title: "The brief to us",
+        text: "Finance content creators, sourced against that market — not pulled off a general roster and re-labelled.",
+      },
+      {
+        title: "The output",
+        text: "UGC videos and paid ad creative, made by the creators to the agency's brief. Paid usage was written into our contracts at signing.",
+      },
+      {
+        title: "The cadence",
+        text: "Multiple waves over time. The agency returned for further creators as the programme ran.",
+      },
+    ],
+    note: "We are not naming the partner agency. There are no creator counts, dates or contract values anywhere in this deck. <b>Repeat waves describe how the mandate was structured — they are not a performance claim.</b>",
+  },
+
+  {
+    kind: "split",
+    label: "Who owned what",
+    kicker: "02 / Who owned what",
+    headline: "Six steps in our process. We owned the first three.",
+    lede: "Plus the delivery and payment mechanics that hang off them. Everything else sat with the agency.",
+    columns: [
+      {
+        label: "Ours",
+        items: [
+          "<b>01 Brief intake and feasibility</b>",
+          "<b>02 Discovery and shortlist</b> — three checks, then a data sheet at two to three times the number needed",
+          "<b>03 Negotiation and contracting</b> — rates, usage, exclusivity, disclosure",
+          "Delivery of the contracted creators and their finished files, wave by wave",
+          "Creator payouts, settled by us. One invoice back.",
+        ],
+      },
+      {
+        label: "Theirs",
+        items: [
+          "<b>04 Briefing and creative</b>",
+          "<b>05 Review and go-live</b>",
+          "<b>06 Reporting, tracking and attribution</b>",
+          "The brand relationship, start to finish",
+          "Strategy, channel plan and media buying",
+          "Content approvals",
+          "Financial-promotion and compliance sign-off",
+        ],
+      },
+    ],
+    note: "Supply-only was the shape of this brief. Where a client wants briefing, go-live and reporting as well, steps <b>04 to 06</b> come back to us.",
+  },
+
+  {
+    kind: "statement",
+    label: "On performance data",
+    kicker: "03 / On performance data",
+    headline: "We hold no performance figures for this work, and we should not.",
+    lede: "Tracking, attribution and reporting sat with the agency and the brand. We were never in the reporting line, so any return-on-ad-spend figure for this campaign would be someone else's screen, whoever was quoting it. What we can tell you in detail is the part we controlled: who was sourced, on what checks, and on what terms.",
+    note: "On an end-to-end mandate, reporting is step six and it is ours. This was not that mandate. The same holds on your brief — <b>if reporting sits with you, we will not later claim your numbers as ours.</b>",
+  },
+
+  {
+    kind: "bullets",
+    label: "The supply problem",
+    kicker: "04 / The supply problem",
+    headline: "The hard part was never finding creators. It was finding ones that survived the checks.",
+    bullets: [
+      {
+        title: "The pool is small",
+        text: "Finance creators in a single MENA market, publishing in the right language, are a short list before any filtering starts.",
+      },
+      {
+        title: "Stated location is not audience location",
+        text: "Plenty of regionally based profiles have most of their following somewhere else entirely.",
+      },
+      {
+        title: "The metrics are gameable",
+        text: "Finance is one of the worst categories for bought followers and engagement pods. None of it shows up on a screenshot.",
+      },
+      {
+        title: "The recent history matters",
+        text: "A creator with a bad 90 days is not merely off-brand in this category. It is a liability with a tail.",
+      },
+    ],
+    // Promoted out of the speaker notes on purpose: the deck ships with
+    // nobody presenting it, so a correction that is not on the slide is a
+    // correction that never happens.
+    note: "Category characteristics, not statistics from this engagement. No pool sizes, rejection rates or shortlist sizes here belong to the Capital.com work.",
+  },
+
+  {
+    kind: "bullets",
+    label: "The shortlist",
+    kicker: "05 / The shortlist",
+    headline: "Every profile clears three checks before it reaches a shortlist.",
+    lede: "What lands is a data sheet at two to three times the creators needed, not a name dump. You choose from evidence: audience geography, authenticity flags and the 90-day scan, per profile.",
+    bullets: [
+      {
+        title: "Audience geography",
+        text: "Checked against the target market, not against where the creator says they are based. A profile with the wrong audience is the wrong profile, however good the content is.",
+      },
+      {
+        title: "Authenticity screen",
+        text: "Inflated follower and engagement patterns get a profile cut before anyone downstream sees the name.",
+      },
+      {
+        title: "Brand-safety scan",
+        text: "The last 90 days of content, read in full — including what the creator has already promoted. That matters more when the end brand is a regulated trading platform than it would on a snack or a streaming app.",
+      },
+    ],
+    note: "These are creator-level checks. <b>Financial-promotions approval, risk-warning copy and regulatory sign-off sat with the agency and the brand — not with us.</b>",
+  },
+
+  {
+    kind: "bullets",
+    label: "The contract",
+    kicker: "06 / The contract",
+    headline: "Each creator signs with us, and the contract closes the questions ad usage normally leaves open.",
+    bullets: [
+      {
+        title: "Deliverables and deadlines",
+        text: "Written down per creator, per wave, with the dates attached.",
+      },
+      {
+        title: "Usage and whitelisting rights",
+        text: "With a stated duration, agreed before the shoot rather than after the creative performs.",
+      },
+      {
+        title: "Exclusivity or category-block windows",
+        text: "A creator working two trading platforms in a quarter is a problem for both of them.",
+      },
+      {
+        title: "Revision limits",
+        text: "Set per contract, so a fourth round of changes is either priced or refused before anyone asks for it.",
+      },
+      {
+        title: "Cancellation terms",
+        text: "Written down for both sides, so a late pull-out has an agreed answer rather than an argument.",
+      },
+      {
+        title: "Paid-partnership disclosure",
+        text: "Mandatory on every deliverable, and non-negotiable on our paper.",
+      },
+    ],
+    note: "Every creator on this mandate signed with us — not with the agency, and not with the brand. The terms above are our standing paper; this engagement's specific durations and fees are not ours to publish.",
+  },
+
+  {
+    kind: "prose",
+    label: "Cadence and payment",
+    kicker: "07 / Cadence and payment",
+    headline: "Supply ran in waves. Every creator was paid by us.",
+    lede: "This was not one drop followed by silence — the agency returned for further creators as the programme continued.",
+    points: [
+      "<b>Every wave ran the same three checks and the same contract terms as the first.</b> That is standing practice, not a special arrangement made once the programme was working.",
+      "<b>Because we pay the creators ourselves,</b> the agency settled one invoice instead of paying, chasing and reconciling every creator individually.",
+      "<b>A wave can be scoped up or down before it opens,</b> so a programme can build slowly instead of committing to its full creator count on day one.",
+    ],
+    note: "Repeat waves are a fact about how the mandate was structured. <b>They are not a performance claim: we hold no outcome data for this work.</b>",
+  },
+
+  {
+    kind: "columns",
+    label: "The house",
+    kicker: "08 / The house",
+    headline: "An influencer marketing and talent management house, based in Greater Noida, India.",
+    lede: "600+ creators on the roster. 100+ campaigns delivered. 80+ brand partners, among them Garnier, Red Bull, Monster, Jio Saavn, Ixigo and Cornitos.",
+    columns: [
+      {
+        label: "Markets served",
+        items: ["United States", "India", "Dubai / UAE", "Saudi Arabia", "Qatar", "Bahrain", "Kuwait", "Oman", "Jordan", "Lebanon", "Egypt", "Morocco"],
+      },
+      {
+        label: "Platforms",
+        items: ["Instagram", "YouTube", "TikTok", "Facebook", "X", "LinkedIn", "Reddit"],
+      },
+      {
+        label: "Categories",
+        items: ["Finance", "Tech", "Lifestyle", "Fashion & beauty", "Comedy", "Fitness", "Food & beverage"],
+      },
+    ],
+    // Firewalls the house figures off the case study. Without this line a
+    // reader can reasonably fold Capital.com into "80+ brand partners".
+    note: "House figures, across all our work. The brands named above are direct partnerships — <b>the Capital.com work sat behind an agency.</b> None of these figures belong to the engagement in this deck, and no views total appears anywhere in it.",
+  },
+
+  {
+    kind: "lists",
+    label: "What we can supply next",
+    kicker: "09 / What we can supply next",
+    headline: "The same sourcing, screening and contracting runs on MENA briefs and on Indian finance creators.",
+    columns: [
+      {
+        label: "MENA supply",
+        items: [
+          "Finance and trading creators sourced to a named market, not to the region",
+          "The same three checks and the same contract terms",
+          "Delivered in waves, where a programme wants to build up rather than land at once",
+          "Invisible to your end client, if that is the arrangement you want",
+          "Supply-only, or the full six steps where you want creative briefing, content approvals and reporting from us too — <b>financial-promotion clearance stays with you and the brand either way</b>",
+        ],
+      },
+      {
+        label: "Indian finance creators",
+        items: [
+          "Already on our roster and contracted by us, rather than sourced on receipt of a brief",
+          "Same three checks, same contract terms, same single invoice",
+          "UGC and paid ad creative, with usage agreed up front",
+          "Where a brief wants both, MENA and Indian supply run off one roster and one invoice",
+          "Available behind your agency, or direct",
+        ],
+      },
+    ],
+    note: "Stated availability of roster and process. Not a per-market finance track record, and not a claim that any of these creators worked on the engagement described in this deck. Finance is one of our standing categories, not something stood up for one brief.",
+  },
+
+  {
+    kind: "close",
+    label: "Next step",
+    kicker: "10 / Next step",
+    headline: "Send us a brief and a market.",
+    lede: "Tell us the market, the platforms, the deliverable count and the budget band. What comes back first is a feasibility read and a recommended creator mix — before a single name goes on a list. Turnaround is agreed when the brief lands; it depends on the market and the category. Supply-only mandates are normal work for us: say so in the brief and we will scope to the first three steps.",
+    note: "Deecode Media House · Technocity, Greater Noida, India · Confidential",
+  },
+];
+
+// ── Renderer ───────────────────────────────────────────────────
+const esc = (s) =>
+  String(s == null ? "" : s).replace(/[&<>"]/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// Copy is escaped, then two things are handed back: [bracketed] text becomes
+// an accent span — the convention content/site.ts uses for headlines — and
+// <b> survives for the emphasis inside notes and list items. Nothing else in
+// the copy is treated as markup, so a stray angle bracket stays literal.
+const mark = (s) =>
+  esc(s)
+    .replace(/\[([^\]]+)\]/g, '<span class="accent">$1</span>')
+    .replace(/&lt;(\/?)b&gt;/g, "<$1b>");
+
+function masthead(kicker) {
+  return (
+    '<div class="masthead">' +
+      '<p class="wordmark">Deecode <span>Media House</span></p>' +
+      (kicker ? '<p class="kicker">' + mark(kicker) + "</p>" : "<span></span>") +
+    "</div>"
+  );
+}
+
+function head(s) {
+  return (
+    (s.kicker ? '<p class="kicker">' + mark(s.kicker) + "</p>" : "") +
+    (s.headline ? "<h2>" + mark(s.headline) + "</h2>" : "") +
+    (s.lede ? '<p class="lede">' + mark(s.lede) + "</p>" : "")
+  );
+}
+
+function foot(s) {
+  return s.note ? '<div class="note"><span>' + mark(s.note) + "</span></div>" : "";
+}
+
+const RENDER = {
+  cover(s) {
+    return (
+      masthead(s.kicker) +
+      '<div class="body-area">' +
+        "<h1>" + mark(s.headline) +
+          (s.accentTail ? ' <span class="accent">' + esc(s.accentTail) + "</span>" : "") +
+        "</h1>" +
+        (s.lede ? '<p class="lede">' + mark(s.lede) + "</p>" : "") +
+      "</div>" +
+      (s.meta && s.meta.length
+        ? '<dl class="cover-meta">' +
+            s.meta.map((m) => "<div><dt>" + esc(m.k) + "</dt><dd>" + mark(m.v) + "</dd></div>").join("") +
+          "</dl>"
+        : "")
+    );
+  },
+
+  statement(s) {
+    return (
+      masthead(s.kicker) +
+      '<div class="body-area"><h2>' + mark(s.headline) + "</h2>" +
+        (s.lede ? '<p class="lede">' + mark(s.lede) + "</p>" : "") +
+      "</div>" +
+      foot(s)
+    );
+  },
+
+  prose(s) {
+    return (
+      masthead("") +
+      '<div class="body-area">' + head(s) +
+        (s.points && s.points.length
+          ? '<ul class="list" style="margin-top:44px;max-width:104ch">' +
+              s.points.map((p) => "<li><span>" + mark(p) + "</span></li>").join("") +
+            "</ul>"
+          : "") +
+      "</div>" +
+      foot(s)
+    );
+  },
+
+  bullets(s) {
+    // Five or six cards want three columns — at two they run to three rows
+    // and fall off the bottom of a 1080-high slide.
+    const n = s.bullets.length;
+    const cols = n === 1 ? 1 : n <= 4 ? 2 : 3;
+    return (
+      masthead("") +
+      '<div class="body-area">' + head(s) +
+        '<div class="grid cols-' + cols + '">' +
+          s.bullets.map((b) =>
+            '<div class="card"><h3><span class="dot"></span>' + mark(b.title) + "</h3>" +
+            (b.text ? "<p>" + mark(b.text) + "</p>" : "") + "</div>").join("") +
+        "</div>" +
+      "</div>" +
+      foot(s)
+    );
+  },
+
+  steps(s) {
+    return (
+      masthead("") +
+      '<div class="body-area">' + head(s) +
+        '<div class="steps">' +
+          s.bullets.map((b, i) =>
+            '<div class="step"><span class="num">' + String(i + 1).padStart(2, "0") + "</span>" +
+            "<div><h3>" + mark(b.title) + "</h3>" +
+            (b.text ? "<p>" + mark(b.text) + "</p>" : "") + "</div></div>").join("") +
+        "</div>" +
+      "</div>" +
+      foot(s)
+    );
+  },
+
+  columns(s) {
+    return (
+      masthead("") +
+      '<div class="body-area">' + head(s) +
+        '<div class="grid cols-' + s.columns.length + '">' +
+          s.columns.map((c) =>
+            "<div>" +
+              '<p class="col-label">' + esc(c.label) + "</p>" +
+              '<ul class="chips">' + c.items.map((i) => "<li>" + mark(i) + "</li>").join("") + "</ul>" +
+            "</div>").join("") +
+        "</div>" +
+      "</div>" +
+      foot(s)
+    );
+  },
+
+  split(s) {
+    return (
+      masthead("") +
+      '<div class="body-area">' + head(s) +
+        '<div class="grid cols-2">' +
+          s.columns.map((c, i) =>
+            '<div class="card ' + (i === 0 ? "split-ours" : "split-theirs") + '">' +
+              '<p class="col-label">' + esc(c.label) + "</p>" +
+              '<ul class="list">' + c.items.map((t) => "<li><span>" + mark(t) + "</span></li>").join("") + "</ul>" +
+            "</div>").join("") +
+        "</div>" +
+      "</div>" +
+      foot(s)
+    );
+  },
+
+  // Like split, but both columns carry equal weight. Used where the two sides
+  // are two offers rather than an argument about who owned what.
+  lists(s) {
+    return (
+      masthead("") +
+      '<div class="body-area">' + head(s) +
+        '<div class="grid cols-' + s.columns.length + '">' +
+          s.columns.map((c) =>
+            '<div class="card">' +
+              '<p class="col-label">' + esc(c.label) + "</p>" +
+              '<ul class="list">' + c.items.map((t) => "<li><span>" + mark(t) + "</span></li>").join("") + "</ul>" +
+            "</div>").join("") +
+        "</div>" +
+      "</div>" +
+      foot(s)
+    );
+  },
+
+  close(s) {
+    return (
+      masthead(s.kicker) +
+      '<div class="body-area">' +
+        "<h2>" + mark(s.headline) + "</h2>" +
+        (s.lede ? '<p class="lede">' + mark(s.lede) + "</p>" : "") +
+        '<div class="contact">' +
+          '<a href="mailto:deecode.mediahouse@gmail.com">deecode.mediahouse@gmail.com</a>' +
+          '<a href="tel:+918937066066">+91 89370 66066</a>' +
+          "<span>www.deecodemediahouse.com</span>" +
+        "</div>" +
+      "</div>" +
+      foot(s)
+    );
+  },
+};
+
+const stage = document.getElementById("stage");
+
+stage.innerHTML = SLIDES.map((s, i) => {
+  const render = RENDER[s.kind] || RENDER.prose;
+  return (
+    '<section class="slide ' + esc(s.kind) + '" data-label="' + esc(s.label || "") + '" ' +
+    'aria-hidden="true" aria-label="Slide ' + (i + 1) + " of " + SLIDES.length + '">' +
+    render(s) +
+    "</section>"
+  );
+}).join("");
+
+const slides = Array.from(stage.children);
+const counter = document.getElementById("counter");
+const labelEl = document.getElementById("label");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+const progress = document.getElementById("progress");
+const hint = document.getElementById("hint");
+
+let current = -1;
+
+function show(i, push) {
+  const next = Math.max(0, Math.min(SLIDES.length - 1, i));
+  if (next === current) return;
+  slides.forEach((el, j) => {
+    const on = j === next;
+    el.classList.toggle("is-active", on);
+    el.setAttribute("aria-hidden", on ? "false" : "true");
+  });
+  current = next;
+
+  counter.innerHTML = "<b>" + (next + 1) + "</b> / " + SLIDES.length;
+  labelEl.textContent = SLIDES[next].label || "";
+  progress.style.width = ((next + 1) / SLIDES.length) * 100 + "%";
+  prevBtn.disabled = next === 0;
+  nextBtn.disabled = next === SLIDES.length - 1;
+
+  // Deep-linkable, so a slide can be sent on its own.
+  const hash = "#" + (next + 1);
+  if (push && location.hash !== hash) history.replaceState(null, "", hash);
+}
+
+// Scale the fixed 1920x1080 stage to whatever it is being shown on, keeping
+// a strip clear at the foot for the nav bar. Without the reserve the bar sits
+// on top of each slide's closing note — which is exactly where the deck puts
+// the lines that stop it over-claiming, so they cannot be the ones obscured.
+const CHROME_RESERVE = 76;
+
+function fit() {
+  const pad = window.innerWidth < 700 ? 8 : 32;
+  const s = Math.min(
+    (window.innerWidth - pad) / 1920,
+    (window.innerHeight - pad - CHROME_RESERVE) / 1080
+  );
+  const root = document.documentElement.style;
+  root.setProperty("--s", String(s));
+  root.setProperty("--dy", -(CHROME_RESERVE / 2) + "px");
+}
+
+function fromHash() {
+  const n = parseInt(location.hash.replace("#", ""), 10);
+  show(Number.isFinite(n) && n >= 1 ? n - 1 : 0, false);
+}
+
+window.addEventListener("resize", fit);
+window.addEventListener("hashchange", fromHash);
+prevBtn.addEventListener("click", () => show(current - 1, true));
+nextBtn.addEventListener("click", () => show(current + 1, true));
+
+document.addEventListener("keydown", (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key;
+  if (k === "ArrowRight" || k === "PageDown" || k === " ") { e.preventDefault(); show(current + 1, true); }
+  else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); show(current - 1, true); }
+  else if (k === "Home") { e.preventDefault(); show(0, true); }
+  else if (k === "End") { e.preventDefault(); show(SLIDES.length - 1, true); }
+  else if (k === "p" || k === "P") { e.preventDefault(); window.print(); }
+});
+
+// Tap right half to advance, left half to go back — how a deck gets read on
+// a phone. Ignores taps on links so the contact details stay clickable.
+document.getElementById("viewport").addEventListener("click", (e) => {
+  if (e.target.closest("a")) return;
+  show(e.clientX > window.innerWidth / 2 ? current + 1 : current - 1, true);
+});
+
+fit();
+fromHash();
+setTimeout(() => hint.classList.add("gone"), 6000);
+</script>
+</body>
+</html>
