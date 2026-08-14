@@ -14,15 +14,14 @@ function Rule() {
   return <div className="h-px flex-1 bg-line" />;
 }
 
-/** Muted by default; accent where the line is a step up on the track below. */
-function Tick({ step }: { step: boolean }) {
+/** One treatment, everywhere on the page. Two tick colours inside a price
+    card made the dimmer lines read as "not included". */
+function Tick() {
   return (
     <svg
       viewBox="0 0 16 16"
       aria-hidden="true"
-      className={`mt-[0.3rem] h-3.5 w-3.5 shrink-0 ${
-        step ? "text-accent" : "text-muted"
-      }`}
+      className="mt-[0.3rem] h-3.5 w-3.5 shrink-0 text-accent"
     >
       <path
         d="M2.5 8.5l3.5 3.5 7.5-8"
@@ -160,7 +159,7 @@ export default function PersonalBrandProposal() {
                         key={item}
                         className="flex gap-3 text-[0.9375rem] leading-relaxed"
                       >
-                        <Tick step={false} />
+                        <Tick />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -225,7 +224,7 @@ export default function PersonalBrandProposal() {
                             key={point}
                             className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted"
                           >
-                            <Tick step={false} />
+                            <Tick />
                             <span>{point}</span>
                           </li>
                         ))}
@@ -297,11 +296,9 @@ export default function PersonalBrandProposal() {
                     {tier.includes.map((line) => (
                       <li
                         key={line.label}
-                        className={`flex gap-3 text-[0.9375rem] ${
-                          line.step ? "" : "text-muted"
-                        }`}
+                        className="flex gap-3 text-[0.9375rem] leading-relaxed"
                       >
-                        <Tick step={line.step} />
+                        <Tick />
                         <span>{line.label}</span>
                       </li>
                     ))}
@@ -312,13 +309,9 @@ export default function PersonalBrandProposal() {
           </div>
 
           <Reveal>
-            <div className="mt-8 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-t border-line pt-6 text-sm text-muted">
-              <p className="flex items-center gap-2">
-                <Tick step={true} />
-                {pb.packages.legend}
-              </p>
-              <p className="max-w-[70ch]">{pb.packages.footnote}</p>
-            </div>
+            <p className="mt-8 max-w-[70ch] border-t border-line pt-6 text-sm text-muted">
+              {pb.packages.footnote}
+            </p>
           </Reveal>
         </div>
       </section>

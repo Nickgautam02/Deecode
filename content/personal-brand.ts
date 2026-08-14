@@ -1,6 +1,6 @@
 // ────────────────────────────────────────────────────────────────
 //  PERSONAL BRAND & TALENT MANAGEMENT PROPOSAL — everything rendered
-//  at /personal-brand lives in this file.
+//  at /uat-richa lives in this file.
 //
 //  Built from the client's own outline. Their wording is kept wherever it
 //  was already doing the work: the cover line, the four transformation
@@ -30,8 +30,8 @@
 //  one for a personality who has not launched yet, and a number on a
 //  proposal becomes a commitment in the negotiation that follows.
 //
-//  Fill `recipient` before sending. While it is null the masthead prints a
-//  generic line, so the page is safe to share either way.
+//  `recipient` drives the masthead and the page title. Set to null for a
+//  generic line if this page is ever reused for other talent.
 // ────────────────────────────────────────────────────────────────
 
 export const personalBrand = {
@@ -201,8 +201,11 @@ export const personalBrand = {
     sub: "What changes between tracks is volume and depth of strategy — never the standard of the work.",
     // `figures` are the three numbers each track is judged on — pulled out
     // of the list so the tracks can be compared without reading prose.
-    // `step` marks a line that is new or stepped up from the track below;
-    // it renders in the accent tick, and the legend under the grid says so.
+    //
+    // Every line in `includes` renders identically. An earlier version
+    // marked the lines that stepped up from the track below in accent and
+    // dimmed the rest, which made included items read as excluded. Do not
+    // reintroduce a two-tier treatment inside a price card.
     tiers: [
       {
         name: "Foundation",
@@ -215,13 +218,13 @@ export const personalBrand = {
           { value: "10–12", label: "Scripts" },
         ],
         includes: [
-          { label: "Monthly content calendar", step: false },
-          { label: "Professional crew + equipment", step: false },
-          { label: "Editing & post-production", step: false },
-          { label: "Captions + posting", step: false },
-          { label: "Basic growth strategy", step: false },
-          { label: "Monthly analytics", step: false },
-          { label: "Personal branding direction", step: false },
+          { label: "Monthly content calendar" },
+          { label: "Professional crew + equipment" },
+          { label: "Editing & post-production" },
+          { label: "Captions + posting" },
+          { label: "Basic growth strategy" },
+          { label: "Monthly analytics" },
+          { label: "Personal branding direction" },
         ],
       },
       {
@@ -240,17 +243,17 @@ export const personalBrand = {
           { value: "16–18", label: "Scripts" },
         ],
         includes: [
-          { label: "Monthly + weekly planning", step: true },
-          { label: "Production crew + equipment", step: false },
-          { label: "Advanced editing", step: true },
-          { label: "Posting & optimisation", step: true },
-          { label: "Advanced growth strategy", step: true },
-          { label: "Trend-led content", step: true },
-          { label: "Personal brand positioning", step: true },
-          { label: "Collaboration strategy", step: true },
-          { label: "Monthly performance analysis", step: false },
-          { label: "Brand-deal positioning", step: true },
-          { label: "Product / brand positioning", step: true },
+          { label: "Monthly + weekly planning" },
+          { label: "Production crew + equipment" },
+          { label: "Advanced editing" },
+          { label: "Posting & optimisation" },
+          { label: "Advanced growth strategy" },
+          { label: "Trend-led content" },
+          { label: "Personal brand positioning" },
+          { label: "Collaboration strategy" },
+          { label: "Monthly performance analysis" },
+          { label: "Brand-deal positioning" },
+          { label: "Product / brand positioning" },
         ],
       },
       {
@@ -264,22 +267,21 @@ export const personalBrand = {
           { value: "22–26", label: "Scripts" },
         ],
         includes: [
-          { label: "Dedicated production planning", step: true },
-          { label: "Full crew + equipment", step: true },
-          { label: "Premium post-production", step: true },
-          { label: "Complete brand strategy", step: true },
-          { label: "Weekly strategy reviews", step: true },
-          { label: "Aggressive growth strategy", step: true },
-          { label: "Audience & community building", step: true },
-          { label: "Collaboration & campaign strategy", step: true },
-          { label: "Competitor analysis", step: true },
-          { label: "Brand positioning", step: false },
-          { label: "Brand-launch strategy", step: true },
-          { label: "Priority production support", step: true },
+          { label: "Dedicated production planning" },
+          { label: "Full crew + equipment" },
+          { label: "Premium post-production" },
+          { label: "Complete brand strategy" },
+          { label: "Weekly strategy reviews" },
+          { label: "Aggressive growth strategy" },
+          { label: "Audience & community building" },
+          { label: "Collaboration & campaign strategy" },
+          { label: "Competitor analysis" },
+          { label: "Brand positioning" },
+          { label: "Brand-launch strategy" },
+          { label: "Priority production support" },
         ],
       },
     ],
-    legend: "New or stepped up from the track before.",
     // ⚠ CONFIRM before sending — these exclusions are the usual ones for a
     // retainer of this shape, but they have not been agreed with anyone.
     // Delete the line rather than send terms we have not decided.
