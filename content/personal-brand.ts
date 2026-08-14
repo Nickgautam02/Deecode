@@ -1,0 +1,301 @@
+// ────────────────────────────────────────────────────────────────
+//  PERSONAL BRAND & TALENT MANAGEMENT PROPOSAL — everything rendered
+//  at /personal-brand lives in this file.
+//
+//  Built from the client's own outline. Their wording is kept wherever it
+//  was already doing the work: the cover line, the four transformation
+//  stages, the BUILD → GROW → POSITION → LAUNCH phase names, the prices
+//  and every package line item.
+//
+//  ⚠ COPY LENGTH IS A FEATURE HERE. This page was rewritten once because
+//  it read as a wall of text. Everything below is deliberately terse —
+//  phrases, not sentences, in every list; one line per section sub; one
+//  sentence per phase objective. If you add to it, cut something else.
+//
+//  Two structural changes to the outline, both deliberate:
+//   · The thirteen scope items are grouped into four ownership areas
+//     rather than listed flat. Every item survives, none were merged.
+//   · Reels, shoot days and script counts are lifted out of each package
+//     list into a three-up figure row, so the tracks can be compared at a
+//     glance instead of read line by line.
+//
+//  ⚠ THE REEL COUNTS ARE THE OUTLINE'S, PLUS TWO. Two extra reels a month
+//  were added to every track: 8–10 → 10–12, 14–16 → 16–18, 20–24 → 22–26.
+//  Script counts were raised to match, because the outline paired them 1:1
+//  and a track offering more reels than scripts reads as an error on a
+//  price card rather than as a bonus.
+//
+//  ⚠ No performance figures anywhere on this page, deliberately. Nothing
+//  here claims a follower, view or engagement outcome — we cannot evidence
+//  one for a personality who has not launched yet, and a number on a
+//  proposal becomes a commitment in the negotiation that follows.
+//
+//  Fill `recipient` before sending. While it is null the masthead prints a
+//  generic line, so the page is safe to share either way.
+// ────────────────────────────────────────────────────────────────
+
+export const personalBrand = {
+  /** The talent this went out to. Null → the masthead reads generically.
+   *  Taken from the /uat-richa route name — correct the spelling or use her
+   *  full name if that is what should appear on the masthead. */
+  recipient: "Richa" as string | null,
+
+  kicker: "Personal brand & talent management",
+  prepared: "Prepared 14 August 2026",
+
+  headline: {
+    // The accent half renders in the brand colour, matching the convention
+    // used across content/site.ts.
+    lead: "Building a face. Growing an audience.",
+    accent: "Creating a brand",
+  },
+  lede: "Positioning, calendar, concepts, shoots, edits, posting and growth — one team, one retainer. You show up on shoot day. The rest is ours.",
+
+  // Hero jump links. Hrefs match the section ids in the component.
+  contents: [
+    { label: "The vision", href: "#vision" },
+    { label: "Scope", href: "#scope" },
+    { label: "Roadmap", href: "#roadmap" },
+    { label: "Packages", href: "#packages" },
+  ],
+
+  vision: {
+    kicker: "01 / Our vision",
+    title: "Twelve months, four stages, one recognisable name.",
+    sub: "Each stage is only attempted once the one before it is real.",
+    stages: [
+      {
+        stage: "Emerging talent",
+        note: "Presence, but no position.",
+        via: "Where we start",
+      },
+      {
+        stage: "Recognisable face",
+        note: "A clear identity, and formats people know on sight.",
+        via: "Build + Grow",
+      },
+      {
+        stage: "Trusted creator",
+        note: "Authority, not just attention.",
+        via: "Position",
+      },
+      {
+        stage: "Brand-ready personality",
+        note: "An audience that can carry a partnership or a product.",
+        via: "Launch",
+      },
+    ],
+  },
+
+  scope: {
+    kicker: "02 / What we take care of",
+    title: "Everything except being on camera.",
+    // 13 items, grouped by who owns them on our side — the outline's full
+    // list, reordered but not edited.
+    sub: "Thirteen moving parts. One retainer, one point of contact.",
+    groups: [
+      {
+        label: "Strategy & positioning",
+        items: [
+          "Personal brand strategy",
+          "Content pillars & positioning",
+          "Long-term brand positioning",
+        ],
+      },
+      {
+        label: "Planning & creative",
+        items: [
+          "Monthly content calendar",
+          "Concepts & scripting",
+          "Trend & competitor research",
+        ],
+      },
+      {
+        label: "Production",
+        items: [
+          "Professional shoots",
+          "Production crew & equipment",
+          "Editing & post-production",
+        ],
+      },
+      {
+        label: "Growth & distribution",
+        items: [
+          "Posting & optimisation",
+          "Growth strategy",
+          "Audience building",
+          "Collaboration positioning",
+        ],
+      },
+    ],
+    // A closing statement on the section rather than a stat card — same
+    // treatment as the credentials page at /storydigital.
+    statement: {
+      value: "You show up.",
+      label: "Everything either side of the shoot is ours.",
+    },
+  },
+
+  roadmap: {
+    kicker: "03 / The 12-month roadmap",
+    title: "Build → Grow → Position → Launch.",
+    sub: "Four phases of three months. Each one closes with a review.",
+    phases: [
+      {
+        name: "Build",
+        months: "Months 1–3",
+        outcome: "A defined identity",
+        objective: "Stop posting, start positioning.",
+        points: [
+          "Brand discovery — audience, tone, what you're known for",
+          "Content pillars locked",
+          "Profile rebuild: bio, highlights, grid",
+          "First shoots — finding your register on camera",
+          "Baseline metrics recorded",
+        ],
+      },
+      {
+        name: "Grow",
+        months: "Months 4–6",
+        outcome: "A recognisable face",
+        objective: "Turn a consistent feed into compounding reach.",
+        points: [
+          "Full cadence, shipped on schedule",
+          "Trend formats mapped onto your pillars",
+          "Hook and retention testing — winners get sequels",
+          "First creator collaborations",
+          "Analytics read as an editorial decision",
+        ],
+      },
+      {
+        name: "Position",
+        months: "Months 7–9",
+        outcome: "A trusted creator",
+        objective: "Recognisable becomes credible.",
+        points: [
+          "Signature formats — a series people return for",
+          "Authority content: opinion, teaching, the real work",
+          "Media kit and rate card, outreach-ready",
+          "Brand-deal positioning — what to take, what to refuse",
+          "Community layer: comments, DMs, closer channels",
+        ],
+      },
+      {
+        name: "Launch",
+        months: "Months 10–12",
+        outcome: "A brand-ready personality",
+        objective: "Turn the audience into commercial optionality.",
+        points: [
+          "Partnerships negotiated against the rate card",
+          "Product positioning, audience-tested before spend",
+          "Cross-platform expansion, where the audience justifies it",
+          "Year-one review — keep, kill, or double down",
+        ],
+      },
+    ],
+  },
+
+  packages: {
+    kicker: "04 / Packages",
+    title: "Three tracks. Same team, different intensity.",
+    sub: "What changes between tracks is volume and depth of strategy — never the standard of the work.",
+    // `figures` are the three numbers each track is judged on — pulled out
+    // of the list so the tracks can be compared without reading prose.
+    // `step` marks a line that is new or stepped up from the track below;
+    // it renders in the accent tick, and the legend under the grid says so.
+    tiers: [
+      {
+        name: "Foundation",
+        price: "₹59,999",
+        badge: null as string | null,
+        for: "A strong, consistent digital identity.",
+        figures: [
+          { value: "10–12", label: "Reels / month" },
+          { value: "2", label: "Shoot days" },
+          { value: "10–12", label: "Scripts" },
+        ],
+        includes: [
+          { label: "Monthly content calendar", step: false },
+          { label: "Professional crew + equipment", step: false },
+          { label: "Editing & post-production", step: false },
+          { label: "Captions + posting", step: false },
+          { label: "Basic growth strategy", step: false },
+          { label: "Monthly analytics", step: false },
+          { label: "Personal branding direction", step: false },
+        ],
+      },
+      {
+        name: "Growth",
+        price: "₹89,999",
+        // The outline starred this tier. This badge is that star, in words —
+        // and it is the *only* thing marking the recommended track. The card
+        // itself is styled identically to the other two on purpose; see the
+        // note in components/PersonalBrandProposal.tsx. Move the badge to
+        // another tier to change the recommendation.
+        badge: "Most chosen",
+        for: "Aggressive reach, recognition and audience.",
+        figures: [
+          { value: "16–18", label: "Reels / month" },
+          { value: "4", label: "Shoot days" },
+          { value: "16–18", label: "Scripts" },
+        ],
+        includes: [
+          { label: "Monthly + weekly planning", step: true },
+          { label: "Production crew + equipment", step: false },
+          { label: "Advanced editing", step: true },
+          { label: "Posting & optimisation", step: true },
+          { label: "Advanced growth strategy", step: true },
+          { label: "Trend-led content", step: true },
+          { label: "Personal brand positioning", step: true },
+          { label: "Collaboration strategy", step: true },
+          { label: "Monthly performance analysis", step: false },
+          { label: "Brand-deal positioning", step: true },
+          { label: "Product / brand positioning", step: true },
+        ],
+      },
+      {
+        name: "Signature",
+        price: "₹1,29,999",
+        badge: null as string | null,
+        for: "A high-value brand with commercial potential.",
+        figures: [
+          { value: "22–26", label: "Reels / month" },
+          { value: "6", label: "Shoot days" },
+          { value: "22–26", label: "Scripts" },
+        ],
+        includes: [
+          { label: "Dedicated production planning", step: true },
+          { label: "Full crew + equipment", step: true },
+          { label: "Premium post-production", step: true },
+          { label: "Complete brand strategy", step: true },
+          { label: "Weekly strategy reviews", step: true },
+          { label: "Aggressive growth strategy", step: true },
+          { label: "Audience & community building", step: true },
+          { label: "Collaboration & campaign strategy", step: true },
+          { label: "Competitor analysis", step: true },
+          { label: "Brand positioning", step: false },
+          { label: "Brand-launch strategy", step: true },
+          { label: "Priority production support", step: true },
+        ],
+      },
+    ],
+    legend: "New or stepped up from the track before.",
+    // ⚠ CONFIRM before sending — these exclusions are the usual ones for a
+    // retainer of this shape, but they have not been agreed with anyone.
+    // Delete the line rather than send terms we have not decided.
+    footnote:
+      "Monthly retainers. Ad spend, outstation travel and licensing are quoted separately.",
+  },
+
+  close: {
+    kicker: "05 / Next steps",
+    headline: "Pick a track. We take it from there.",
+    body: "Tracks can move up mid-engagement. Starting takes four steps:",
+    steps: [
+      "Pick your track",
+      "Brand discovery session",
+      "Month one's calendar and scripts, for approval",
+      "First shoot day",
+    ],
+  },
+};
