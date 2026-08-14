@@ -316,41 +316,22 @@ export default function PersonalBrandProposal() {
         </div>
       </section>
 
-      {/* ── 05 Next steps. Deliberately NOT wrapped in <Reveal>: that starts
-             at opacity 0 and only clears when its observer fires, so a
-             missed trigger would leave the closing block blank. ── */}
-      <section className="border-b border-line/60 bg-accent/[0.06]">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-            {pb.close.kicker}
-          </p>
-          <h2 className="font-display max-w-2xl text-3xl font-extrabold tracking-tight md:text-4xl">
-            {pb.close.headline}
-          </h2>
-          <p className="mt-4 max-w-[58ch] text-muted">{pb.close.body}</p>
+      {/* ── Footer. Carries the contact routes now that the closing "next
+             steps" block is gone — same fix as the credentials page at
+             /storydigital. Without them the page ends on a price list with
+             no way to reply to it.
 
-          <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {pb.close.steps.map((step, i) => (
-              <li
-                key={step}
-                className="rounded-2xl border border-line bg-card p-5"
-              >
-                <span className="font-display text-xs tabular-nums tracking-wider text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="mt-2.5 text-[0.9375rem] leading-relaxed">
-                  {step}
-                </p>
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+             Deliberately NOT wrapped in <Reveal>: that starts at opacity 0
+             and only clears when its observer fires, so a missed trigger
+             would leave the only response routes on the page invisible. ── */}
+      <footer>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-baseline justify-between gap-x-8 gap-y-4 px-5 py-10">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <a
               href={`mailto:${site.email}?subject=${encodeURIComponent(
                 `${site.name} — personal brand & talent management`,
               )}`}
-              className="rounded-full bg-accent px-7 py-3.5 font-semibold text-background transition-transform hover:scale-105"
+              className="border-b border-line pb-0.5 transition-colors hover:border-accent hover:text-accent"
             >
               {site.email}
             </a>
@@ -358,24 +339,19 @@ export default function PersonalBrandProposal() {
               href={site.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-line px-7 py-3.5 font-semibold transition-colors hover:border-accent hover:text-accent"
+              className="border-b border-line pb-0.5 transition-colors hover:border-accent hover:text-accent"
             >
               WhatsApp {site.phone}
             </a>
+            <a
+              href={`https://${site.domain}`}
+              target="_blank"
+              rel="noopener"
+              className="border-b border-line pb-0.5 transition-colors hover:border-accent hover:text-accent"
+            >
+              {site.domain}
+            </a>
           </div>
-        </div>
-      </section>
-
-      <footer>
-        <div className="mx-auto flex max-w-6xl flex-wrap items-baseline justify-between gap-x-8 gap-y-4 px-5 py-10">
-          <a
-            href={`https://${site.domain}`}
-            target="_blank"
-            rel="noopener"
-            className="border-b border-line pb-0.5 text-sm transition-colors hover:border-accent hover:text-accent"
-          >
-            {site.domain}
-          </a>
           <p className="text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
             {site.name} · {site.tagline} · Confidential
           </p>

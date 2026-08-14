@@ -224,6 +224,7 @@ export const personalBrand = {
           { label: "Captions + posting" },
           { label: "Basic growth strategy" },
           { label: "Monthly analytics" },
+          { label: "Fortnightly 1:1 review call" },
           { label: "Personal branding direction" },
         ],
       },
@@ -252,6 +253,7 @@ export const personalBrand = {
           { label: "Personal brand positioning" },
           { label: "Collaboration strategy" },
           { label: "Monthly performance analysis" },
+          { label: "Fortnightly 1:1 review call" },
           { label: "Brand-deal positioning" },
           { label: "Product / brand positioning" },
         ],
@@ -271,7 +273,10 @@ export const personalBrand = {
           { label: "Full crew + equipment" },
           { label: "Premium post-production" },
           { label: "Complete brand strategy" },
-          { label: "Weekly strategy reviews" },
+          // Replaces the outline's "Weekly strategy reviews" rather than
+          // sitting beside it — two weekly cadence lines on one card just
+          // invites "what's the difference?".
+          { label: "Weekly 1:1 review call" },
           { label: "Aggressive growth strategy" },
           { label: "Audience & community building" },
           { label: "Collaboration & campaign strategy" },
@@ -289,15 +294,8 @@ export const personalBrand = {
       "Monthly retainers. Ad spend, outstation travel and licensing are quoted separately.",
   },
 
-  close: {
-    kicker: "05 / Next steps",
-    headline: "Pick a track. We take it from there.",
-    body: "Tracks can move up mid-engagement. Starting takes four steps:",
-    steps: [
-      "Pick your track",
-      "Brand discovery session",
-      "Month one's calendar and scripts, for approval",
-      "First shoot day",
-    ],
-  },
+  // The "05 / Next steps" closing block was removed at Nikhil's request. Its
+  // email and WhatsApp links moved into the page footer — the page must keep
+  // a way to reply to it. To bring the section back, restore a `close` key
+  // here and the matching <section> before the footer in the component.
 };
