@@ -19,11 +19,15 @@
 //     list into a three-up figure row, so the tracks can be compared at a
 //     glance instead of read line by line.
 //
-//  ⚠ THE REEL COUNTS ARE THE OUTLINE'S, PLUS TWO. Two extra reels a month
-//  were added to every track: 8–10 → 10–12, 14–16 → 16–18, 20–24 → 22–26.
-//  Script counts were raised to match, because the outline paired them 1:1
-//  and a track offering more reels than scripts reads as an error on a
-//  price card rather than as a bonus.
+//  ⚠ THE FIGURES ARE NOT THE OUTLINE'S. Reels went up by two on every
+//  track (8–10 → 10–12, 14–16 → 16–18, 20–24 → 22–26) and script counts
+//  were raised to match, because the outline paired them 1:1 and a track
+//  offering more reels than scripts reads as an error rather than a bonus.
+//  Shoot days then came down: 4 → 3 on Growth, 6 → 5 on Signature.
+//
+//  Net effect, worth knowing before the call: every track now lands at
+//  roughly 5–6 reels per shoot day (10–12 from 2, 16–18 from 3, 22–26 from
+//  5), so the numbers hold up if she asks how the day is used.
 //
 //  ⚠ No performance figures anywhere on this page, deliberately. Nothing
 //  here claims a follower, view or engagement outcome — we cannot evidence
@@ -224,9 +228,10 @@ export const personalBrand = {
           { label: "Captions + posting" },
           { label: "Basic growth strategy" },
           { label: "Monthly analytics" },
-          // Monthly here, fortnightly on Growth, weekly on Signature — the
-          // call cadence is one of the things the tracks step up on.
-          { label: "Monthly 1:1 review call" },
+          // The call line is phrased identically on all three tracks so the
+          // cadence is the only thing that changes between them: monthly
+          // here, every 2 weeks on Growth, weekly on Signature.
+          { label: "1:1 review call, monthly" },
           { label: "Personal branding direction" },
         ],
       },
@@ -242,7 +247,7 @@ export const personalBrand = {
         for: "Aggressive reach, recognition and audience.",
         figures: [
           { value: "16–18", label: "Reels / month" },
-          { value: "4", label: "Shoot days" },
+          { value: "3", label: "Shoot days" },
           { value: "16–18", label: "Scripts" },
         ],
         includes: [
@@ -255,7 +260,10 @@ export const personalBrand = {
           { label: "Personal brand positioning" },
           { label: "Collaboration strategy" },
           { label: "Monthly performance analysis" },
-          { label: "Fortnightly 1:1 review call" },
+          // "every 2 weeks" rather than "fortnightly" or "bi-weekly" — the
+          // latter reads as both "twice a week" and "every two weeks", which
+          // is not an ambiguity to leave in a priced deliverable.
+          { label: "1:1 review call, every 2 weeks" },
           { label: "Brand-deal positioning" },
           { label: "Product / brand positioning" },
         ],
@@ -267,7 +275,7 @@ export const personalBrand = {
         for: "A high-value brand with commercial potential.",
         figures: [
           { value: "22–26", label: "Reels / month" },
-          { value: "6", label: "Shoot days" },
+          { value: "5", label: "Shoot days" },
           { value: "22–26", label: "Scripts" },
         ],
         includes: [
@@ -278,7 +286,7 @@ export const personalBrand = {
           // Replaces the outline's "Weekly strategy reviews" rather than
           // sitting beside it — two weekly cadence lines on one card just
           // invites "what's the difference?".
-          { label: "Weekly 1:1 review call" },
+          { label: "1:1 review call, weekly" },
           { label: "Aggressive growth strategy" },
           { label: "Audience & community building" },
           { label: "Collaboration & campaign strategy" },
