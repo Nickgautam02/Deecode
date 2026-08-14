@@ -224,7 +224,9 @@ export const personalBrand = {
           { label: "Captions + posting" },
           { label: "Basic growth strategy" },
           { label: "Monthly analytics" },
-          { label: "Fortnightly 1:1 review call" },
+          // Monthly here, fortnightly on Growth, weekly on Signature — the
+          // call cadence is one of the things the tracks step up on.
+          { label: "Monthly 1:1 review call" },
           { label: "Personal branding direction" },
         ],
       },
