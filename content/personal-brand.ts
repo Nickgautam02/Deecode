@@ -1,6 +1,6 @@
 // ────────────────────────────────────────────────────────────────
 //  PERSONAL BRAND & TALENT MANAGEMENT PROPOSAL — everything rendered
-//  at /uat-richa lives in this file.
+//  at /richa-proposal lives in this file.
 //
 //  Built from the client's own outline. Their wording is kept wherever it
 //  was already doing the work: the cover line, the four transformation
@@ -40,8 +40,8 @@
 
 export const personalBrand = {
   /** The talent this went out to. Null → the masthead reads generically.
-   *  Taken from the /uat-richa route name — correct the spelling or use her
-   *  full name if that is what should appear on the masthead. */
+   *  Taken from the /richa-proposal route name — correct the spelling or use
+   *  her full name if that is what should appear on the masthead. */
   recipient: "Richa" as string | null,
 
   kicker: "Personal brand & talent management",

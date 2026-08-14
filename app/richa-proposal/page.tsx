@@ -20,6 +20,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function UatRichaPage() {
+export default function RichaProposalPage() {
   return <PersonalBrandProposal />;
 }
