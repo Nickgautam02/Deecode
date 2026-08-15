@@ -13,7 +13,7 @@
 //  sentence per phase objective. If you add to it, cut something else.
 //
 //  ⚠ HOW THIS DIFFERS FROM /richa-proposal — three things:
-//   · Prices. ₹30,000 / ₹50,000 / ₹70,000, against ₹59,999 / ₹89,999 /
+//   · Prices. ₹29,999 / ₹49,999 / ₹69,999, against ₹59,999 / ₹89,999 /
 //     ₹1,29,999 there. Do not quote one page's figures on a call about
 //     the other.
 //   · Reels, down two on every track (10–12 → 8–10, 16–18 → 14–16,
@@ -234,7 +234,7 @@ export const personalBrandSurbhi = {
     tiers: [
       {
         name: "Foundation",
-        price: "₹30,000",
+        price: "₹29,999",
         badge: null as string | null,
         for: "A strong, consistent digital identity.",
         figures: [
@@ -258,7 +258,7 @@ export const personalBrandSurbhi = {
       },
       {
         name: "Growth",
-        price: "₹50,000",
+        price: "₹49,999",
         // The outline starred this tier. This badge is that star, in words —
         // and it is the *only* thing marking the recommended track. The card
         // itself is styled identically to the other two on purpose; see the
@@ -291,7 +291,7 @@ export const personalBrandSurbhi = {
       },
       {
         name: "Signature",
-        price: "₹70,000",
+        price: "₹69,999",
         badge: null as string | null,
         for: "A high-value brand with commercial potential.",
         figures: [
