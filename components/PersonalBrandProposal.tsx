@@ -1,10 +1,14 @@
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import { site } from "@/content/site";
-import { personalBrand as pb } from "@/content/personal-brand";
+import { personalBrand } from "@/content/personal-brand";
 
 /* Personal brand & talent management proposal, written for one recipient.
    Deliberately not in site.nav — it is reached by the link we send.
+
+   One layout, one content file per recipient: pass `content` to render a
+   different set of prices and figures (see /surbhi-proposal). It defaults to
+   content/personal-brand.ts, which is /richa-proposal.
 
    Uses the site's own tokens and components (Reveal, SectionHeading, the
    .card-hover and .hero-glow treatments) so it reads as part of
@@ -35,7 +39,14 @@ function Tick() {
   );
 }
 
-export default function PersonalBrandProposal() {
+export default function PersonalBrandProposal({
+  content: pb = personalBrand,
+}: {
+  /** A recipient's content file. Must match the shape of `personalBrand` —
+      the pages that render this each own one, so prices and figures can
+      differ per proposal without branching in here. */
+  content?: typeof personalBrand;
+}) {
   return (
     <main className="bg-background text-foreground">
       {/* ── Masthead ── */}
