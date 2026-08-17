@@ -79,7 +79,23 @@ const organizationSchema = {
     addressRegion: "Uttar Pradesh",
     addressCountry: "IN",
   },
-  sameAs: [site.socials.linkedin],
+  // ⚠ THE MOST LOAD-BEARING FIELD ON THIS PAGE, for one specific reason:
+  // Google rewrites "deecode" to "decode" and serves results for Decode
+  // Media House Pvt Ltd, Decode House and Decode Mediacom instead. It does
+  // that because it does not yet believe "Deecode" is a real name.
+  //
+  // What teaches it otherwise is the same spelling appearing on several
+  // independent sources it already trusts. These profiles ALREADY outrank
+  // this website on a brand search, so they are the corroboration — listing
+  // them here ties them to this domain as one entity.
+  //
+  // Add every profile as it goes live (YouTube, X, Google Business Profile)
+  // and keep the name spelt identically on each. One inconsistent listing
+  // is a wasted signal.
+  sameAs: [
+    site.socials.linkedin,
+    "https://www.instagram.com/deecode.media/",
+  ],
   // The services block on the homepage, restated in a form a crawler can
   // read. Keep in step with site.services.
   knowsAbout: site.services.map((service) => service.title),
