@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(`https://${site.domain}`),
   title: `${site.name} — ${site.tagline}`,
   description: site.hero.sub,
+  // Self-referencing canonical. Without it the homepage had none, which
+  // leaves Google to pick its own preferred URL if the page is ever reached
+  // with tracking params (?fbclid=, ?utm_source=) — each of those is a
+  // separate URL to a crawler, splitting the signals across duplicates.
+  alternates: { canonical: "/" },
+  // Google has ignored the keywords meta since 2009. Kept only because it
+  // costs nothing; do not spend time tuning it. Ranking comes from the
+  // JSON-LD below, the page copy, and links pointing at the domain.
   keywords: [
     "influencer marketing agency",
     "talent management",
@@ -42,6 +50,41 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data — how Google learns that this domain IS an organisation
+// called Deecode Media House, rather than guessing from the copy. This is
+// what feeds the knowledge panel on a brand search, and it is why `sameAs`
+// matters: each link is a claim Google can corroborate elsewhere.
+//
+// ⚠ EVERY FIELD HERE MUST BE TRUE AND VISIBLE ON THE PAGE. Structured data
+// that disagrees with the rendered page is a manual-action risk, not a
+// clever shortcut. Add awards, ratings or review counts only when they are
+// real and shown on the site.
+//
+// Add profiles to `sameAs` as they go live (Instagram, YouTube, X) — a
+// single LinkedIn is thin, and this list is one of the cheapest wins left.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: site.name,
+  url: `https://${site.domain}`,
+  logo: `https://${site.domain}/icon.png`,
+  image: `https://${site.domain}/opengraph-image.jpg`,
+  description: site.hero.sub,
+  email: site.email,
+  telephone: site.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Technocity",
+    addressLocality: "Greater Noida",
+    addressRegion: "Uttar Pradesh",
+    addressCountry: "IN",
+  },
+  sameAs: [site.socials.linkedin],
+  // The services block on the homepage, restated in a form a crawler can
+  // read. Keep in step with site.services.
+  knowsAbout: site.services.map((service) => service.title),
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +100,14 @@ export default function RootLayout({
       className={`${inter.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Rendered server-side so it is in the HTML Googlebot receives on
+            the first pass, rather than something it has to run JS to find. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         {children}
         <Analytics />
         <SpeedInsights />

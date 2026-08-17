@@ -10,6 +10,17 @@ export const metadata: Metadata = {
   title: `Gallery — ${site.name}`,
   description: gallery.intro,
   alternates: { canonical: "/gallery" },
+  // Out of search on purpose: the homepage is the only page we want indexed.
+  //
+  // `follow: true` — unlike the noindex on the proposal routes, which is
+  // `follow: false`. This page stays crawlable and its links still count,
+  // so the nav links back to the homepage keep passing signal to the one
+  // page that is meant to rank. noindex removes the page from results;
+  // nofollow would also throw away what it contributes.
+  //
+  // To put the gallery back in search, delete this key and add /gallery to
+  // app/sitemap.ts. Both, or nothing happens.
+  robots: { index: false, follow: true },
   openGraph: {
     title: `Gallery — ${site.name}`,
     description: gallery.intro,
