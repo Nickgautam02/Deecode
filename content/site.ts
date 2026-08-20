@@ -48,7 +48,7 @@ export const site = {
     kicker: "Influencer Marketing · Talent Management",
     // The word wrapped in [brackets] is rendered in the accent color
     headline: "We Don't Just Create Campaigns.\nWe Create [Brand Momentum].",
-    sub: "From first brief to billion views — we build digital stars and run creator campaigns that drive massive, measurable brand growth.",
+    sub: "From first brief to millions of views — we build digital stars and run creator campaigns that drive massive, measurable brand growth.",
     primaryCta: { label: "Let's Talk", href: "#contact" },
     secondaryCta: { label: "Explore our services", href: "#services" },
   },
@@ -56,7 +56,7 @@ export const site = {
   stats: [
     { value: 600, suffix: "+", label: "Creator roster", decimals: 0 },
     { value: 100, suffix: "+", label: "Campaigns delivered", decimals: 0 },
-    { value: 2, suffix: "B+", label: "Views generated", decimals: 0 },
+    { value: 10, suffix: "M+", label: "Views generated", decimals: 0 },
     { value: 80, suffix: "+", label: "Brand partners", decimals: 0 },
   ],
 
@@ -157,11 +157,11 @@ export const site = {
     {
       brand: "FinPeak",
       category: "Fintech · Performance Campaign",
-      title: "50M+ views in 45 days for a fintech launch",
+      title: "3M+ views in 45 days for a fintech launch",
       description:
         "A 40-creator finance squad took FinPeak's new investing app from unknown to unmissable — short-form explainers, long-form deep dives and a viral challenge that made investing feel simple.",
       metrics: [
-        { value: "50M+", label: "Views" },
+        { value: "3M+", label: "Views" },
         { value: "12x", label: "ROAS" },
         { value: "40+", label: "Creators" },
       ],
@@ -169,12 +169,12 @@ export const site = {
     {
       brand: "TuneVerse Records",
       category: "Music Label · Creator Growth",
-      title: "120M views across three artist launches",
+      title: "5M+ views across three artist launches",
       description:
         "We paired a leading music label with our dance and music roster to launch three artists in six months — choreography trends, creator remixes and fan-first content that kept every drop trending.",
       metrics: [
-        { value: "120M", label: "Views" },
-        { value: "2.1M", label: "Subscribers gained" },
+        { value: "5M+", label: "Views" },
+        { value: "120K", label: "Subscribers gained" },
         { value: "3", label: "Chart-topping launches" },
       ],
     },
@@ -183,7 +183,7 @@ export const site = {
   about: {
     // The words wrapped in [brackets] are rendered in the accent color
     heading: "Where brands meet the [creator economy].",
-    body: "Deecode Media House connects ambitious brands with a network of 600+ creators across India, the USA and Dubai. From Garnier to Red Bull to Ixigo, we've turned briefs into 2B+ views by matching the right voices to the right audiences — and backing every campaign with strategy, production muscle and numbers that hold up in the boardroom.",
+    body: "Deecode Media House connects ambitious brands with a network of 600+ creators across India, the USA and Dubai. From Garnier to Red Bull to Ixigo, we've turned briefs into 10M+ views by matching the right voices to the right audiences — and backing every campaign with strategy, production muscle and numbers that hold up in the boardroom.",
     pillars: [
       {
         title: "Right creator, right audience",
