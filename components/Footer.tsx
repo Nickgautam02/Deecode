@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { locations } from "@/content/locations";
 import { site } from "@/content/site";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
@@ -57,7 +58,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-card/40">
       <div className="mx-auto max-w-6xl px-5 py-16">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <p className="font-display text-2xl font-bold">
               {site.name}
@@ -127,6 +128,35 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* ── Locations ──────────────────────────────────────────────
+              The only links on the site pointing at the city landing
+              pages. They are kept out of `site.nav` on purpose: that
+              array feeds the header too, and these do not belong in the
+              main menu.
+
+              This is not decoration. Those pages are in no navigation
+              menu, so without this column they are orphans — indexed via
+              app/sitemap.ts but inheriting no link equity from the one
+              page on this domain that has any. A sitewide footer link is
+              the cheapest fix and costs nothing above the fold. */}
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+              Locations
+            </p>
+            <ul className="space-y-2.5 text-sm">
+              {locations.map((location) => (
+                <li key={location.slug}>
+                  <Link
+                    href={`/influencer-marketing-agency-${location.slug}`}
+                    className="text-muted transition-colors hover:text-foreground"
+                  >
+                    {location.city}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

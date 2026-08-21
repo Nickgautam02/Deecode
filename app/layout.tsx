@@ -3,6 +3,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter, Montserrat } from "next/font/google";
+import { locations } from "@/content/locations";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -65,6 +66,11 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  // A stable identifier for this company, so the ProfessionalService
+  // entity each city page emits can point `parentOrganization` at it.
+  // Without an @id those pages describe an unrelated business that
+  // happens to share a name.
+  "@id": `https://${site.domain}/#organization`,
   name: site.name,
   url: `https://${site.domain}`,
   logo: `https://${site.domain}/icon.png`,
@@ -99,6 +105,18 @@ const organizationSchema = {
   // The services block on the homepage, restated in a form a crawler can
   // read. Keep in step with site.services.
   knowsAbout: site.services.map((service) => service.title),
+  // Where the company works, as distinct from where it sits. `address`
+  // above is the office; this is the catchment. Both are true, and a
+  // search for an agency "in Noida" is matched by this field, not by
+  // the address — which is why claiming a fake Noida address is both
+  // unnecessary and a Business Profile risk.
+  //
+  // Keep in step with content/locations.ts: a city listed here with no
+  // page behind it is a claim with nothing to land on.
+  areaServed: locations.map((location) => ({
+    "@type": location.areaType,
+    name: location.city,
+  })),
 };
 
 export default function RootLayout({
