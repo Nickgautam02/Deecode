@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local media working folders — source footage and shoot exports.
+# DEE VIDEOS alone is ~1.1GB and holds single files over GitHub's 100MB
+# limit, so these are kept out of the repo entirely rather than trimmed.
+/DEE VIDEOS/
+/Deecode Images/
+/Portfolio MIT/
