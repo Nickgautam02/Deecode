@@ -164,6 +164,12 @@ export const rootedActives = {
     // the price nearly doubles each time, so the licence is not the
     // reason to move up a track; cast size and the extras are.
     //
+    // ⚠ CREATOR POSTS = 2 x CREATORS, on every track. 10–12 creators
+    // gives 20–24 posts, 18–22 gives 36–44, 35–40 gives 70–80. If the
+    // creator count changes, recompute the posts figure with it — they
+    // are one decision, and a card where the ratio slips is the kind of
+    // thing a client checks with a calculator.
+    //
     // `figures` are the three numbers the tracks are compared on. They
     // deliberately separate creator posts from UGC videos — one figure
     // covering "deliverables" hides the half of this retainer the brand
@@ -177,7 +183,7 @@ export const rootedActives = {
         for: "A measured start — see the engine work before scaling it.",
         figures: [
           { value: "10–12", label: "Creators / month" },
-          { value: "10–12", label: "Creator posts" },
+          { value: "20–24", label: "Creator posts" },
           { value: "5–6", label: "UGC videos" },
         ],
         // Ordered by what the client is buying, not by workflow: cast,
@@ -200,16 +206,14 @@ export const rootedActives = {
           { label: "Product-to-audience mapping" },
           { label: "Contracting and creator payouts" },
           { label: "Delivery QC and disclosure checks" },
-          { label: "Fortnightly report, per creator and per product" },
-          // Cadence: twice a month here, four times a month on Scale
-          // and on Category Lead — all Nikhil's numbers. Written as
+          { label: "Monthly report, per creator and per product" },
+          // Cadence: twice a month here, three times a month on Scale
+          // and four on Category Lead — all Nikhil's numbers. Written as
           // counts per month, never "bi-monthly" or "bi-weekly": both
           // read two ways, which is not an ambiguity to leave in a
           // priced deliverable.
           //
-          // ⚠ Scale and Category Lead are now identical on cadence, so
-          // it no longer separates them. Their gap is cast size, the
-          // expert panel, exclusivity and the dedicated lead.
+          // Reporting steps with it: monthly, fortnightly, weekly.
           { label: "Review calls, twice a month" },
         ],
       },
@@ -223,7 +227,7 @@ export const rootedActives = {
         for: "Everything in Seed, at twice the cast — plus expert voices, regional reach and a longer licence.",
         figures: [
           { value: "18–22", label: "Creators / month" },
-          { value: "30–35", label: "Creator posts" },
+          { value: "36–44", label: "Creator posts" },
           { value: "15–18", label: "UGC videos" },
         ],
         // Ordered by what the client is buying, not by workflow: cast,
@@ -247,7 +251,7 @@ export const rootedActives = {
           { label: "In-house editing — we deliver the final product" },
           { label: "Ready-to-run cuts plus raw footage" },
           { label: "3-month ad licence" },
-          { label: "Three credentialed expert voices" },
+          { label: "Credentialed expert voices" },
           { label: "Regional-language creators, Hindi first" },
           { label: "Scripts written and pre-cleared" },
           { label: "Product-to-audience mapping" },
@@ -256,7 +260,7 @@ export const rootedActives = {
           { label: "Creative refresh on the assets that work" },
           { label: "Named point of contact" },
           { label: "Fortnightly report, per creator and per product" },
-          { label: "Review calls, four times a month" },
+          { label: "Review calls, three times a month" },
         ],
       },
       {
@@ -266,7 +270,7 @@ export const rootedActives = {
         for: "Everything in Scale, across the full catalogue and every language.",
         figures: [
           { value: "35–40", label: "Creators / month" },
-          { value: "60–70", label: "Creator posts" },
+          { value: "70–80", label: "Creator posts" },
           { value: "30–35", label: "UGC videos" },
         ],
         // Ordered by what the client is buying, not by workflow: cast,
@@ -275,6 +279,9 @@ export const rootedActives = {
         // the top, so the lines that justify the number lead. Keep the
         // same order on all three tracks — they are read side by side.
         includes: [
+          // ⚠ "UGC shot to your ad brief" is deliberately absent here and
+          // on Scale. It survives on Seed alone. Do not restore it.
+          //
           // Contains Scale, which contains Seed — same rule as above, so
           // the three cards grow strictly rightwards. Category Lead's own
           // upgrades are the perpetual licence, macro casting, the expert
@@ -287,7 +294,6 @@ export const rootedActives = {
           { label: "A standing panel of expert voices" },
           { label: "Category exclusivity where it's worth holding" },
           { label: "Multi-language creators beyond Hindi" },
-          { label: "UGC shot to your ad brief" },
           { label: "Scripts written and pre-cleared" },
           { label: "Product-to-audience mapping" },
           { label: "Contracting and creator payouts" },
@@ -296,7 +302,7 @@ export const rootedActives = {
           { label: "Signature formats — a series, not one-offs" },
           { label: "Creative testing roadmap" },
           { label: "Dedicated campaign lead" },
-          { label: "Fortnightly report, per creator and per product" },
+          { label: "Weekly report, per creator and per product" },
           { label: "Review calls, four times a month" },
         ],
       },
