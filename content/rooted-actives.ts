@@ -145,9 +145,9 @@ export const rootedActives = {
     //   · Seed's three figures (10–12 creators, 10–12 posts, 5–6 UGC)
     //     are Nikhil's numbers. Do not "tidy" them.
     //   · EVERY PRICE, including Seed's, is still a placeholder.
-    //   · Scale and Category Lead figures are still placeholders, kept
-    //     scaling off the old Seed draft — they will not be right until
-    //     Nikhil gives them.
+    //   · Scale's creators and UGC, and Category Lead's UGC, are also
+    //     Nikhil's now. The ONLY figure still mine is Category Lead's
+    //     35–40 creators (and the 70–80 posts derived from it).
     // They are drafted to be credible for an Indian influencer-marketing
     // retainer of this shape. Set or confirm the rest before this URL is
     // sent. Same caution as the footnote in content/personal-brand.ts.
@@ -165,7 +165,7 @@ export const rootedActives = {
     // reason to move up a track; cast size and the extras are.
     //
     // ⚠ CREATOR POSTS = 2 x CREATORS, on every track. 10–12 creators
-    // gives 20–24 posts, 18–22 gives 36–44, 35–40 gives 70–80. If the
+    // gives 20–24 posts, 18–20 gives 36–40, 35–40 gives 70–80. If the
     // creator count changes, recompute the posts figure with it — they
     // are one decision, and a card where the ratio slips is the kind of
     // thing a client checks with a calculator.
@@ -226,9 +226,9 @@ export const rootedActives = {
         badge: "Recommended",
         for: "Everything in Seed, at twice the cast — plus expert voices, regional reach and a longer licence.",
         figures: [
-          { value: "18–22", label: "Creators / month" },
-          { value: "36–44", label: "Creator posts" },
-          { value: "15–18", label: "UGC videos" },
+          { value: "18–20", label: "Creators / month" },
+          { value: "36–40", label: "Creator posts" },
+          { value: "10–12", label: "UGC videos" },
         ],
         // Ordered by what the client is buying, not by workflow: cast,
         // then the UGC output and its licence, then supporting work,
@@ -271,7 +271,7 @@ export const rootedActives = {
         figures: [
           { value: "35–40", label: "Creators / month" },
           { value: "70–80", label: "Creator posts" },
-          { value: "30–35", label: "UGC videos" },
+          { value: "20–25", label: "UGC videos" },
         ],
         // Ordered by what the client is buying, not by workflow: cast,
         // then the UGC output and its licence, then supporting work,
