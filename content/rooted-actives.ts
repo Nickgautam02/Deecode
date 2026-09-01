@@ -311,11 +311,13 @@ export const rootedActives = {
         ],
       },
     ],
-    // ⚠ CONFIRM before sending. This is the usual shape for a retainer
-    // of this kind, but it has not been agreed with anyone. Delete a
-    // line rather than send terms we have not decided.
+    // ⚠ AD SPEND IS NAMED EXPLICITLY on Nikhil's instruction. It used to
+    // read "paid amplification", which is agency wording a client can
+    // reasonably hear as a service rather than as media budget they
+    // fund. Ad charges are the single largest pass-through here, so the
+    // line has to be unmissable — do not shorten it back.
     footnote:
-      "Agency retainers, billed monthly, inclusive of UGC production and the ad licence terms listed. Creator fees, paid amplification, product seeding, shipping and outstation travel are quoted separately and passed through at cost.",
+      "Agency retainers, billed monthly, inclusive of UGC production and the ad licence terms listed. Creator fees, ad spend and amplification charges, product seeding, shipping and outstation travel are quoted separately and passed through at cost.",
   },
 
   // Credentials strip. Derived from content/site.ts rather than retyped
