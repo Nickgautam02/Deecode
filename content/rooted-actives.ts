@@ -141,17 +141,21 @@ export const rootedActives = {
     kicker: "03 / Packages",
     title: "Three tracks. Same desk, different intensity.",
     sub: "What changes is the size of the cast and the depth of the read — never the standard of the work.",
-    // ⚠ WHAT IS CONFIRMED AND WHAT IS NOT, as of 1 September 2026:
-    //   · Seed's three figures (10–12 creators, 10–12 posts, 5–6 UGC)
-    //     are Nikhil's numbers. Do not "tidy" them.
-    //   · EVERY PRICE, including Seed's, is still a placeholder.
-    //   · Scale's creators and UGC, and Category Lead's UGC, are also
-    //     Nikhil's now. The ONLY figure still mine is Category Lead's
-    //     35–40 creators (and the 70–80 posts derived from it).
-    // They are drafted to be credible for an Indian influencer-marketing
-    // retainer of this shape. Set or confirm the rest before this URL is
-    // sent. Same caution as the footnote in content/personal-brand.ts.
+    // Prices are Nikhil's: 39,999 / 79,999 / 1,19,999, agency fee only.
     //
+    // ⚠ ONE FIGURE ON THIS PAGE IS STILL INVENTED — Category Lead's
+    // 35–40 creators, and the 70–80 posts derived from it. Everything
+    // else came from Nikhil.
+    //
+    // ⚠ SCALE IS THE WORST VALUE PER CREATOR, which matters because it
+    // is the track badged "Recommended". At the mid-points that is
+    // ~₹3,640 a creator on Seed, ~₹4,210 on Scale and ~₹3,200 on
+    // Category Lead, and UGC is flat at ~₹7,270 a video across the
+    // first two. Anyone dividing price by volume will find Scale the
+    // weakest buy, so its case has to rest on the extras it alone adds:
+    // expert voices, regional creators, the creative refresh, a named
+    // contact, the longer licence and the tighter cadence. Worth having
+    // that answer ready rather than discovering it on the call.
     // ⚠ AGENCY FEE ONLY. Creator fees sit outside the retainer, which is
     // the honest structure for this service and the one the footnote
     // states. Folding creator cost into a headline price either caps the
@@ -178,7 +182,7 @@ export const rootedActives = {
     tiers: [
       {
         name: "Seed",
-        price: "₹1,25,000",
+        price: "₹39,999",
         badge: null as string | null,
         for: "A measured start — see the engine work before scaling it.",
         figures: [
@@ -219,7 +223,7 @@ export const rootedActives = {
       },
       {
         name: "Scale",
-        price: "₹2,50,000",
+        price: "₹79,999",
         // The badge is the ONLY thing marking the recommended track —
         // the card is styled identically to the other two on purpose.
         // Move the badge to change the recommendation.
@@ -265,7 +269,7 @@ export const rootedActives = {
       },
       {
         name: "Category Lead",
-        price: "₹4,50,000",
+        price: "₹1,19,999",
         badge: null as string | null,
         for: "Everything in Scale, across the full catalogue and every language.",
         figures: [
