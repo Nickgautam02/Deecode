@@ -33,7 +33,7 @@
 //  it is true.
 //
 //  ── WHERE THE BRAND FACTS CAME FROM ────────────────────────────
-//  Read off rootedactives.com on 1 September 2026: the mushroom-first
+//  Read off rootedactives.com on 1 September 2026: the catalogue, the
 //  catalogue, the "backed by science, not marketing" positioning, the
 //  USDA-organic and third-party-batch-testing claims, and the
 //  2M-customers, 40+-SKU and 4.6/5 figures. They are the client's own
@@ -42,9 +42,17 @@
 //  worse first impression than not quoting it at all.
 //
 //  ── THE ARGUMENT, IN ONE LINE ──────────────────────────────────
-//  Functional mushrooms are still being discovered rather than searched
-//  for in India, so influencer marketing is how the category gets
-//  introduced — not simply a reach buy. Every section follows from that.
+//  Functional supplements are still being discovered rather than
+//  searched for in India, so influencer marketing is how the category
+//  gets introduced — not simply a reach buy. Every section follows.
+//
+//  ⚠ DO NOT LET THIS BECOME A MUSHROOM DECK. An earlier draft leaned so
+//  hard on Lion's Mane, Cordyceps and Reishi that it read as though
+//  mushrooms were the whole catalogue. They are the origin story, not
+//  the range: collagen, beets, ashwagandha, maca, berberine and the
+//  greens/reds line all carry the same argument, and several reach
+//  bigger audiences. Keep product mentions spread across the catalogue
+//  and keep the framing at category level.
 //
 //  ⚠ NO PERFORMANCE FIGURES ANYWHERE ON THIS PAGE, DELIBERATELY.
 //  The `caseStudies` in content/site.ts are template placeholders, not
@@ -57,25 +65,24 @@
 //
 //  ⚠ NO INVENTED CREATORS. Our public roster in content/site.ts is
 //  Tech, Comedy, Fashion & Beauty and Lifestyle — it contains no
-//  health, fitness or nutrition names. `casting` therefore sells
-//  archetypes and the sourcing process, and names real people only
-//  where the niche genuinely matches (see `casting.proven`). Do not
-//  add a wellness creator here with a follower count unless they are
-//  in site.creators.
+//  health, fitness or nutrition names. The casting section that listed
+//  audience archetypes has been removed entirely, so nothing on the
+//  page now describes who we would cast. If any of it comes back, it
+//  sells archetypes only — never a named person or a follower count
+//  unless they are actually in site.creators.
+//
+//  ⚠ The block that said this out loud on the page ("What we hold
+//  today, and what we source") was removed on Nikhil's instruction.
+//  Nothing on the page now tells the client that doctors and dieticians
+//  are sourced to brief rather than already on the roster — so it must
+//  be said on the call instead. Do not let the copy start implying we
+//  hold them.
 //
 //  ⚠ COPY LENGTH IS A FEATURE. Phrases, not sentences, in every list.
 //  One line per section sub. If you add to it, cut something else.
 // ────────────────────────────────────────────────────────────────
 
 import { site } from "./site";
-
-/** Brand partners from site.brands that are actually relevant to a
- *  supplement pitch, grouped by why they are relevant. Three energy
- *  drinks is the strongest adjacency we have to a stamina SKU, so it
- *  leads. Kept as a lookup into site.brands — if a name is dropped
- *  from the public list it should disappear from here too. */
-const relevantBrands = (names: string[]) =>
-  names.filter((name) => site.brands.includes(name));
 
 export const rootedActives = {
   /** Drives the masthead and the page title. */
@@ -92,295 +99,46 @@ export const rootedActives = {
     lead: "You didn't launch a product. You launched a",
     accent: "category",
   },
-  lede: "You brought functional mushrooms to India. The next chapter is introducing them at scale — in the words of the people your customer already trusts.",
+  lede: "You've built a range that covers focus, stamina, sleep, skin and immunity. The next chapter is introducing it at scale — in the words of the people your customer already trusts.",
 
   // Hero jump links. Hrefs match the section ids in the component.
   contents: [
     { label: "The opportunity", href: "#opportunity" },
-    { label: "Casting", href: "#casting" },
     { label: "What you get", href: "#outputs" },
-    { label: "How we run it", href: "#process" },
-    { label: "Guardrails", href: "#guardrails" },
     { label: "Packages", href: "#packages" },
   ],
 
+  // ⚠ INTRO ONLY. This section used to carry four "here is what is true
+  // about your category" cards and a closing statement. They were cut:
+  // read together they oversold, and a proposal that spends its first
+  // screen telling a brand about its own market is posturing. It sets
+  // the frame in three sentences and moves on.
   opportunity: {
     kicker: "01 / The opportunity",
-    title: "You built the category. Now it gets an introduction.",
-    sub: "Four things already true about Rooted Actives, and what each one opens up.",
-    // Strength → what it makes possible. The `implication` line is the
-    // point of each card. Note that all four start from something the
-    // client has done well; see the tone note at the top of this file.
-    notes: [
-      {
-        observation: "You got here first",
-        note: "The brand that brought medicinal mushrooms to India, with two million customers behind it. That is a head start most challengers never get.",
-        implication: "A lead worth compounding",
-      },
-      {
-        observation: "Discovery happens on feeds",
-        note: "Few people look up Lion's Mane by name — they meet it in someone's morning routine. A viewer who understands it before they click arrives ready to buy.",
-        implication: "Creators are where it starts",
-      },
-      {
-        observation: "Your proof deserves an audience",
-        note: "USDA-organic, third-party tested every batch, 4.6 out of 5 across roughly 1,500 reviews. Proof like that travels furthest in someone else's voice.",
-        implication: "Trust carries when it's told",
-      },
-      {
-        observation: "Forty products, many ways in",
-        note: "Brain, stamina, sleep, skin and immunity reach different people for different reasons. Each one deserves an audience of its own.",
-        implication: "One roster, seven audiences",
-      },
-    ],
-    // Closing statement on the section rather than a stat card — the
-    // same treatment the other proposal pages use.
-    statement: {
-      value: "You built it.",
-      label: "We'd like to help introduce it to the people who haven't met it yet.",
-    },
+    title: "Wellness is bought on trust.",
+    sub: "Few people search for a supplement by name. They hear about it from someone they already follow.",
+    intro: "Rooted Actives has the products, the certifications and the reviews. What creator marketing adds is reach and explanation — the right people describing what each product does, to audiences who take their word for it.",
   },
 
-  casting: {
-    kicker: "02 / Casting",
-    title: "Cast for the reason someone starts.",
-    sub: "Your customer feels a mid-afternoon slump. The ingredient is how you answer it.",
-    // Product names are the client's own, so each archetype is visibly
-    // tied to something they actually sell. Keep it that way — a
-    // generic archetype list is the part of a pitch a brand skims.
-    archetypes: [
-      {
-        label: "Doctors, nutritionists & dietitians",
-        problem: "“Is this the real thing?”",
-        products: "Mushroom Complex · Berberine · Ashwagandha",
-        note: "The reassurance a first-time buyer looks for, from someone qualified to give it.",
-      },
-      {
-        label: "Fitness & performance",
-        problem: "“I stall on the last set.”",
-        products: "Cordyceps · Power Beets · Power Reds",
-        note: "A pre-workout that isn't another scoop of caffeine — the most demonstrable story in the range.",
-      },
-      {
-        label: "Work & productivity",
-        problem: "“Focus goes by mid-afternoon.”",
-        products: "Lion's Mane · Brain Boost · mushroom coffee",
-        note: "Desk-life and day-in-the-life creators. The widest audience in the catalogue.",
-      },
-      {
-        label: "Beauty & skin",
-        problem: "“Hair fall, dull skin.”",
-        products: "Vegan collagen · Tremella",
-        note: "Ingestible beauty, told from the inside out. The niche our own roster is strongest in.",
-      },
-      {
-        label: "Sleep, stress & calm",
-        problem: "“Still wired at midnight.”",
-        products: "Reishi · Calm · Sleep Better",
-        note: "High trust, and handled carefully — these scripts get our closest read.",
-      },
-      {
-        label: "Food & recipe",
-        problem: "“How do I actually take this?”",
-        products: "Mushroom coffee · powders · honey sticks",
-        note: "Answers the question every powder gets. Where repeat purchase begins.",
-      },
-      {
-        label: "Regional language",
-        // Set in Hindi on purpose: every other row quotes the customer's
-        // own words, and the case for vernacular casting is better
-        // demonstrated than described.
-        problem: "“Yeh actually kaam karta hai?”",
-        products: "Full catalogue",
-        note: "Hindi belt first. Vernacular is where the category has the most room left to grow.",
-      },
-    ],
-    // ⚠ HONEST FRAMING, DO NOT INFLATE. Our public roster carries no
-    // health or fitness names. This block says what we genuinely have
-    // and how the rest gets sourced. A science-forward brand will check.
-    proven: {
-      label: "What we hold today, and what we source",
-      held: "Fashion, beauty and lifestyle creators are on our roster now — the archetype your collagen and Tremella range needs.",
-      sourced: "Health, fitness, nutrition and regional-language casting is sourced against your brief and shortlisted with rate cards before anything is contracted.",
-      // Adjacency argument, built from the public brand list so it can
-      // never claim a logo the site does not.
-      adjacencyLabel: "Closest category experience",
-      energy: relevantBrands(["Red Bull", "Monster", "Hell"]),
-      energyNote: "Energy and stamina — the same promise your Cordyceps and beet range makes.",
-      fmcg: relevantBrands(["Garnier", "Coolberg", "Cornitos"]),
-      fmcgNote: "Beauty and better-for-you FMCG — ingestible-benefit storytelling, already run.",
-    },
-  },
-
-  // The two things the retainer produces. This section exists because
-  // "influencer marketing" reads as one deliverable — posts — and half
-  // of what Rooted Actives is buying here is ad creative they own. A
-  // brand that only hears "posts" prices this against a reach buy.
+  // The two things the retainer produces. Stripped to the two names on
+  // Nikhil's instruction — the per-output detail (where each lands, the
+  // bullet lists, the ad-licence note) was cut as overselling. The
+  // section heading carries the distinction now; the numbers that differ
+  // per track live in `packages.tiers[].figures`.
   //
-  // ⚠ THE TWO OUTPUTS ARE COMMERCIALLY DIFFERENT, keep them separated.
-  // Creator posts borrow someone else's audience and expire from the
-  // feed. UGC assets are licensed to the brand and keep working in a
-  // performance account long after. Merging them into one figure is
-  // what makes a proposal look like a reach buy.
+  // ⚠ The commercial difference still matters even though the copy no
+  // longer spells it out: creator posts borrow someone else's audience,
+  // UGC assets are licensed to the brand and keep working in an ad
+  // account. Do not merge them into one figure.
   whatYouGet: {
-    kicker: "03 / What you get",
+    kicker: "02 / What you get",
     title: "Two outputs, not one.",
     sub: "Reach on their handles, and a library of ad creative on yours.",
-    outputs: [
-      {
-        name: "Creator posts",
-        where: "Live on the creator's handle",
-        note: "Reach and credibility borrowed from an audience that already trusts the person talking. This is what introduces the category.",
-        points: [
-          "Reels, carousels and stories, to the brief",
-          "Posted to the creator's own audience",
-          "Disclosure handled per ASCI",
-          "Amplifiable from the creator's handle",
-        ],
-      },
-      {
-        name: "UGC videos",
-        where: "Yours to run anywhere",
-        note: "Creator-shot, brand-owned footage built for paid media — an asset rather than a post. On a performance account, creative volume is usually the constraint long before budget is.",
-        // The chain matters commercially: creators supply raw, the edit
-        // is ours, and the client receives a finished product. Agencies
-        // that hand over a drive of rushes call that a deliverable too,
-        // so the difference has to be said rather than implied.
-        points: [
-          "Shot to your ad brief, in creator register",
-          "Ready-to-run cuts plus the raw footage",
-          "Creators send the raw; the editing is in-house",
-          "Final product delivered by us, not by your team",
-          "Hook and opener variants for testing",
-          "Cast for craft, not follower count",
-        ],
-      },
-    ],
-    // Licence admin, stated upfront. An expired term on an asset still
-    // running in an ad account is a real and avoidable exposure, and
-    // saying so is more reassuring than leaving it unmentioned.
-    // ⚠ AD LICENCE, not a blanket usage grant. The term covers running
-    // the asset as advertising. If Rooted Actives also want it on the
-    // website, the PDP or organic social, that is a separate grant and
-    // has to be negotiated with the creator — do not let the copy imply
-    // it is already included.
-    note: "Every UGC asset is delivered with its ad licence term recorded, and we flag renewals before they lapse — so nothing you are still running quietly falls out of rights.",
-  },
-
-  process: {
-    kicker: "04 / How we run it",
-    title: "Sourcing to reporting, on one desk.",
-    sub: "Six steps. You approve twice — the shortlist and the scripts.",
-    steps: [
-      {
-        name: "Brief & cast",
-        outcome: "A shortlist you approve",
-        objective: "Map the range onto reasons to start, then cast the reason.",
-        points: [
-          "Product-to-audience map, signed off before outreach",
-          "Shortlist with reach, rates and audience split",
-          "Audience quality checked, not just follower count",
-          "Category conflicts and past supplement deals flagged",
-        ],
-      },
-      {
-        name: "Contract & clear",
-        outcome: "Everything in writing",
-        objective: "Terms agreed before anyone picks up a camera.",
-        points: [
-          "Rates negotiated and paid by us",
-          "Usage rights and term agreed upfront",
-          "Category exclusivity where it's worth holding",
-          "Delivery dates that hold against your launch calendar",
-        ],
-      },
-      {
-        name: "Script & pre-clear",
-        outcome: "Claims checked before the shoot",
-        objective: "Better to settle a claim at script stage than after it posts.",
-        points: [
-          "Hooks written to the reason, not the ingredient",
-          "Every claim traced to your own label or dossier",
-          "Compliance read before a camera is switched on",
-          "Your approval on scripts — the second and last gate",
-        ],
-      },
-      {
-        name: "Shoot & ship",
-        outcome: "Posted on schedule",
-        objective: "Creator-led execution, quality-controlled by us.",
-        points: [
-          "Creator's own format and voice, kept intact",
-          // The efficiency that makes bundling the two outputs work: one
-          // call sheet, one creator, both deliverables.
-          "Posts and UGC shot in the same session",
-          "Raw in from creators, edited in-house by us",
-          "Every cut reviewed before it goes live or ships",
-          "Disclosure verified on the live post, not the draft",
-        ],
-      },
-      {
-        name: "Amplify",
-        outcome: "Budget behind the winners",
-        objective: "Let the posts that already work do more work.",
-        points: [
-          "Creator-handle amplification on the top performers",
-          "Winning hooks re-cut for paid placements",
-          "Best-performing assets handed to your performance team",
-          "Spend follows evidence, never the plan",
-        ],
-      },
-      {
-        name: "Read & recast",
-        outcome: "A decision, not a dashboard",
-        objective: "Say what converted, who to re-book, what to retire.",
-        points: [
-          "Reporting per creator and per product",
-          "Hook and retention read as an editorial decision",
-          "Re-book, renegotiate or step away — stated plainly",
-          "Next month's cast built from this month's evidence",
-        ],
-      },
-    ],
-  },
-
-  guardrails: {
-    kicker: "05 / Guardrails",
-    title: "Your standards, built into the process.",
-    // Describes our own commitments, not their exposure. The earlier
-    // draft framed this section as what the client stood to lose, which
-    // is the same information delivered as a warning.
-    sub: "Nutraceutical claims in India sit under FSSAI and ASCI rules. We work inside those lines by default, so it never becomes something you have to check.",
-    rules: [
-      {
-        rule: "No disease claims, ever",
-        note: "“Supports focus” is sayable. “Treats”, “cures” and “prevents” are not — in any language or caption.",
-      },
-      {
-        rule: "Claims come from your dossier",
-        note: "We quote your label and your test data. We don't write new benefits for a creator to say.",
-      },
-      {
-        rule: "Disclosure on every paid post",
-        note: "ASCI-compliant, in the opening lines and visible without a tap.",
-      },
-      {
-        rule: "Scripts cleared before the shoot",
-        note: "A pre-clear costs an hour. A correction after posting costs a good deal more.",
-      },
-      {
-        rule: "Claims stay inside the label",
-        note: "We keep the framing to what your own testing supports, and leave the rest out.",
-      },
-      {
-        rule: "One escalation route",
-        note: "If something goes off-script once it's live, we hold the relationship and the correction. You hear it from us first.",
-      },
-    ],
+    outputs: [{ name: "Creator posts" }, { name: "UGC videos" }],
   },
 
   packages: {
-    kicker: "06 / Packages",
+    kicker: "03 / Packages",
     title: "Three tracks. Same desk, different intensity.",
     sub: "What changes is the size of the cast and the depth of the read — never the standard of the work.",
     // ⚠ WHAT IS CONFIRMED AND WHAT IS NOT, as of 1 September 2026:
@@ -399,12 +157,12 @@ export const rootedActives = {
     // states. Folding creator cost into a headline price either caps the
     // cast or hides the margin, and both come apart on the call.
     //
-    // ⚠ UGC AD LICENCE TERMS. Seed's 2 months is Nikhil's number. Scale's
-    // 12 months and Category Lead's perpetual-on-flagships are still
-    // mine and are now out of proportion to it — a 2 → 12 month jump is
-    // a six-fold step where the price only doubles. Get those two
-    // confirmed; a licence ladder is a real reason to move up a track,
-    // but only if the steps are defensible on the call.
+    // ⚠ UGC AD LICENCE TERMS. All three are Nikhil's: 2 months on
+    // Seed, 3 on Scale, 4 on Category Lead. Finite on every track — an
+    // earlier draft gave Category Lead a perpetual licence on flagship
+    // assets and that was replaced. The steps are one month apart while
+    // the price nearly doubles each time, so the licence is not the
+    // reason to move up a track; cast size and the extras are.
     //
     // `figures` are the three numbers the tracks are compared on. They
     // deliberately separate creator posts from UGC videos — one figure
@@ -428,6 +186,10 @@ export const rootedActives = {
         // the top, so the lines that justify the number lead. Keep the
         // same order on all three tracks — they are read side by side.
         includes: [
+          // ⚠ ORDER IS NIKHIL'S, on all three tracks. Lines 3 and 4 are
+          // deliberately two lines and not one merged "edited in-house,
+          // final cuts plus raw footage" — that merge was tried and
+          // reversed. Do not re-merge them.
           { label: "Influencer casting sourced to brief" },
           { label: "UGC shot to your ad brief" },
           { label: "In-house editing — we deliver the final product" },
@@ -438,18 +200,16 @@ export const rootedActives = {
           { label: "Product-to-audience mapping" },
           { label: "Contracting and creator payouts" },
           { label: "Delivery QC and disclosure checks" },
-          { label: "Monthly report, per creator and per product" },
-          // The call line is phrased identically on all three tracks so
-          // cadence is the only thing that changes.
+          { label: "Fortnightly report, per creator and per product" },
+          // Cadence: twice a month here, four times a month on Scale
+          // and on Category Lead — all Nikhil's numbers. Written as
+          // counts per month, never "bi-monthly" or "bi-weekly": both
+          // read two ways, which is not an ambiguity to leave in a
+          // priced deliverable.
           //
-          // ⚠ THE CADENCE LADDER HAS COLLAPSED. Seed's twice a month is
-          // Nikhil's number, but Scale's "every 2 weeks" is the same
-          // thing said differently, so the two tracks now offer an
-          // identical cadence. Scale needs to move to weekly and
-          // Category Lead beyond it, or drop cadence as a differentiator
-          // altogether — leaving it as-is invites the question on the
-          // call. "Twice a month" and not "bi-monthly": the latter reads
-          // as both twice a month and every two months.
+          // ⚠ Scale and Category Lead are now identical on cadence, so
+          // it no longer separates them. Their gap is cast size, the
+          // expert panel, exclusivity and the dedicated lead.
           { label: "Review calls, twice a month" },
         ],
       },
@@ -460,7 +220,7 @@ export const rootedActives = {
         // the card is styled identically to the other two on purpose.
         // Move the badge to change the recommendation.
         badge: "Recommended",
-        for: "Reach every audience in the catalogue at once.",
+        for: "Everything in Seed, at twice the cast — plus expert voices, regional reach and a longer licence.",
         figures: [
           { value: "18–22", label: "Creators / month" },
           { value: "30–35", label: "Creator posts" },
@@ -472,34 +232,38 @@ export const rootedActives = {
         // the top, so the lines that justify the number lead. Keep the
         // same order on all three tracks — they are read side by side.
         includes: [
-          // ⚠ FIRST FOUR LINES ARE SEED'S, VERBATIM AND IN ORDER, so the
-          // two cards line up when read side by side and Scale visibly
-          // contains Seed. Change one here and change it in Seed too.
+          // ⚠ "UGC shot to your ad brief" IS DELIBERATELY ABSENT HERE.
+          // Nikhil has removed it from this track twice; it was put back
+          // by accident during the rebuild below. Do not restore it.
+          //
+          // ⚠ SCALE MUST CONTAIN SEED. It briefly listed 9 lines against
+          // Seed's 12, so the cheaper card read as the richer one — for
+          // the track badged "Recommended". Every operational line Seed
+          // states is repeated here (they were always included, just
+          // unlisted), then Scale's own upgrades on top. If you add a
+          // line to Seed, add it here too or this inverts again.
           { label: "Influencer casting sourced to brief" },
-          { label: "UGC shot to your ad brief" },
+          { label: "UGC hook and opener variants for testing" },
           { label: "In-house editing — we deliver the final product" },
           { label: "Ready-to-run cuts plus raw footage" },
-          // Scale's own, from here down.
-          { label: "12-month ad licence" },
-          { label: "Mid-tier casting alongside micro" },
-          { label: "UGC hook and opener variants for testing" },
-          { label: "Three credentialed experts — doctors, nutritionists" },
-          { label: "Regional-language pod, Hindi first" },
-          { label: "Creator-handle amplification setup" },
-          { label: "Winning assets handed to your paid team" },
-          { label: "Competitor and category monitoring" },
-          { label: "Monthly report, per creator and per product" },
-          // "every 2 weeks" rather than "fortnightly" or "bi-weekly" —
-          // the latter reads as both "twice a week" and "every two
-          // weeks", not an ambiguity to leave in a priced deliverable.
-          { label: "Review call, every 2 weeks" },
+          { label: "3-month ad licence" },
+          { label: "Three credentialed expert voices" },
+          { label: "Regional-language creators, Hindi first" },
+          { label: "Scripts written and pre-cleared" },
+          { label: "Product-to-audience mapping" },
+          { label: "Contracting and creator payouts" },
+          { label: "Delivery QC and disclosure checks" },
+          { label: "Creative refresh on the assets that work" },
+          { label: "Named point of contact" },
+          { label: "Fortnightly report, per creator and per product" },
+          { label: "Review calls, four times a month" },
         ],
       },
       {
         name: "Category Lead",
         price: "₹4,50,000",
         badge: null as string | null,
-        for: "Be the name that answers the category when it's searched.",
+        for: "Everything in Scale, across the full catalogue and every language.",
         figures: [
           { value: "35–40", label: "Creators / month" },
           { value: "60–70", label: "Creator posts" },
@@ -511,18 +275,29 @@ export const rootedActives = {
         // the top, so the lines that justify the number lead. Keep the
         // same order on all three tracks — they are read side by side.
         includes: [
-          { label: "Macro casting and a standing expert panel" },
+          // Contains Scale, which contains Seed — same rule as above, so
+          // the three cards grow strictly rightwards. Category Lead's own
+          // upgrades are the perpetual licence, macro casting, the expert
+          // panel, exclusivity and the dedicated lead.
+          { label: "Influencer casting sourced to brief" },
           { label: "A UGC library built month over month" },
           { label: "In-house editing — we deliver the final product" },
-          { label: "Perpetual ad licence on flagship assets" },
-          { label: "Always-on cadence plus launch moments" },
+          { label: "Ready-to-run cuts plus raw footage" },
+          { label: "4-month ad licence" },
+          { label: "A standing panel of expert voices" },
           { label: "Category exclusivity where it's worth holding" },
-          { label: "Multi-language pods beyond Hindi" },
-          { label: "Full amplification management" },
+          { label: "Multi-language creators beyond Hindi" },
+          { label: "UGC shot to your ad brief" },
+          { label: "Scripts written and pre-cleared" },
+          { label: "Product-to-audience mapping" },
+          { label: "Contracting and creator payouts" },
+          { label: "Delivery QC and disclosure checks" },
+          { label: "Always-on cadence plus launch moments" },
           { label: "Signature formats — a series, not one-offs" },
           { label: "Creative testing roadmap" },
           { label: "Dedicated campaign lead" },
-          { label: "Review call, weekly" },
+          { label: "Fortnightly report, per creator and per product" },
+          { label: "Review calls, four times a month" },
         ],
       },
     ],

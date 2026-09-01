@@ -20,10 +20,6 @@ import { rootedActives } from "@/content/rooted-actives";
    earthy re-skin was tried here and reverted — this page stays on the
    site palette, like every other proposal route except /portfolio/MIT. */
 
-function Rule() {
-  return <div className="h-px flex-1 bg-line" />;
-}
-
 /** One treatment, everywhere on the page. Two tick colours inside a price
     card made the dimmer lines read as "not included". */
 function Tick() {
@@ -133,8 +129,8 @@ export default function InfluencerCampaignProposal({
         </div>
       </section>
 
-      {/* ── 01 The opportunity. Four parallel strengths, not a sequence,
-             so the cards are numbered but not chained. ── */}
+      {/* ── 01 The opportunity. Intro only — the four cards and the
+             closing statement were cut as overselling. ── */}
       <section id="opportunity" className="scroll-mt-4 border-b border-line/60">
         <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
           <SectionHeading
@@ -142,139 +138,17 @@ export default function InfluencerCampaignProposal({
             title={ra.opportunity.title}
             sub={ra.opportunity.sub}
           />
-
-          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {ra.opportunity.notes.map((item, i) => (
-              <Reveal key={item.observation} delay={i * 90} className="h-full">
-                <li className="card-hover flex h-full flex-col gap-3 rounded-2xl border border-line bg-card p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="font-display text-xs tabular-nums tracking-wider text-accent">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <Rule />
-                  </div>
-                  <h3 className="font-display text-lg font-bold leading-tight tracking-tight">
-                    {item.observation}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted">
-                    {item.note}
-                  </p>
-                  {/* The point of the card. Accent, and always last. */}
-                  <p className="mt-auto pt-3 text-[0.625rem] uppercase tracking-[0.11em] text-accent">
-                    {item.implication}
-                  </p>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-
           <Reveal>
-            <div className="mt-10 flex flex-wrap items-baseline gap-x-4 gap-y-1 rounded-r-xl border-l-2 border-accent bg-accent/[0.08] px-5 py-4">
-              <p className="font-display text-lg font-bold tracking-tight">
-                {ra.opportunity.statement.value}
-              </p>
-              <p className="text-muted">{ra.opportunity.statement.label}</p>
-            </div>
+            <p className="max-w-[70ch] text-lg leading-relaxed text-muted">
+              {ra.opportunity.intro}
+            </p>
           </Reveal>
         </div>
       </section>
 
-      {/* ── 02 Casting. Seven archetypes: a row spine rather than a card
-             grid, because seven cards leaves a ragged last row and the
-             left-hand labels are what the reader scans. ── */}
-      <section id="casting" className="scroll-mt-4 border-b border-line/60">
-        <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-          <SectionHeading
-            kicker={ra.casting.kicker}
-            title={ra.casting.title}
-            sub={ra.casting.sub}
-          />
-
-          <ul className="border-t border-line">
-            {ra.casting.archetypes.map((archetype) => (
-              <li key={archetype.label} className="border-b border-line/60">
-                <Reveal>
-                  <div className="grid gap-x-10 gap-y-3 py-6 lg:grid-cols-[18rem_minmax(0,1fr)]">
-                    <div>
-                      <h3 className="font-display font-bold leading-tight tracking-tight">
-                        {archetype.label}
-                      </h3>
-                      {/* The client's own products, so each archetype is
-                          visibly tied to something they actually sell. */}
-                      <p className="mt-2 text-[0.6875rem] uppercase tracking-[0.08em] leading-relaxed text-accent">
-                        {archetype.products}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-display text-lg font-bold tracking-tight">
-                        {archetype.problem}
-                      </p>
-                      <p className="mt-2 max-w-[70ch] text-[0.9375rem] leading-relaxed text-muted">
-                        {archetype.note}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-
-          {/* What we hold today vs what we source. Deliberately explicit:
-              our public roster carries no health or fitness names, and a
-              science-forward brand will check. */}
-          <Reveal>
-            <div className="mt-10 rounded-2xl border border-line bg-card p-6">
-              <h3 className="font-display flex items-center gap-2.5 font-bold tracking-tight">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                {ra.casting.proven.label}
-              </h3>
-              <div className="mt-5 grid gap-x-10 gap-y-4 sm:grid-cols-2">
-                <p className="flex gap-3 text-[0.9375rem] leading-relaxed">
-                  <Tick />
-                  <span>{ra.casting.proven.held}</span>
-                </p>
-                <p className="flex gap-3 text-[0.9375rem] leading-relaxed">
-                  <Tick />
-                  <span>{ra.casting.proven.sourced}</span>
-                </p>
-              </div>
-
-              <p className="mt-7 text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
-                {ra.casting.proven.adjacencyLabel}
-              </p>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                {[
-                  {
-                    brands: ra.casting.proven.energy,
-                    note: ra.casting.proven.energyNote,
-                  },
-                  {
-                    brands: ra.casting.proven.fmcg,
-                    note: ra.casting.proven.fmcgNote,
-                  },
-                ].map((group) => (
-                  <div
-                    key={group.note}
-                    className="rounded-xl border border-line bg-background/40 p-4"
-                  >
-                    <p className="font-display font-bold tracking-tight">
-                      {group.brands.join(" · ")}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
-                      {group.note}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── 03 What you get. Two outputs, side by side and equally
-             weighted: the whole point of the section is that UGC is not
-             a bonus attached to the posts. Two cards, not a row spine —
-             these are a comparison, not a sequence. ── */}
+      {/* ── 02 What you get. Two names, nothing else: the per-output
+             detail was cut. Kept as two equal panels rather than a
+             sentence so the pair still reads as two deliverables. ── */}
       <section id="outputs" className="scroll-mt-4 border-b border-line/60">
         <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
           <SectionHeading
@@ -283,120 +157,16 @@ export default function InfluencerCampaignProposal({
             sub={ra.whatYouGet.sub}
           />
 
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {ra.whatYouGet.outputs.map((output, i) => (
               <Reveal key={output.name} delay={i * 90} className="h-full">
-                <article className="card-hover flex h-full flex-col rounded-2xl border border-line bg-card p-6">
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-                    <h3 className="font-display text-xl font-extrabold tracking-tight">
-                      {output.name}
-                    </h3>
-                    {/* Where the asset ends up — the actual difference
-                        between the two, so it sits in the header. */}
-                    <span className="text-[0.6875rem] uppercase tracking-[0.1em] text-accent">
-                      {output.where}
-                    </span>
-                  </div>
-                  <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">
-                    {output.note}
-                  </p>
-                  <ul className="mt-5 grid gap-2.5 border-t border-line pt-5">
-                    {output.points.map((point) => (
-                      <li
-                        key={point}
-                        className="flex gap-3 text-[0.9375rem] leading-relaxed"
-                      >
-                        <Tick />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal>
-            <p className="mt-8 max-w-[80ch] border-t border-line pt-6 text-sm leading-relaxed text-muted">
-              {ra.whatYouGet.note}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── 04 How we run it. A real sequence, so it reads as a numbered
-             spine rather than six independent cards. ── */}
-      <section id="process" className="scroll-mt-4 border-b border-line/60">
-        <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-          <SectionHeading
-            kicker={ra.process.kicker}
-            title={ra.process.title}
-            sub={ra.process.sub}
-          />
-
-          <ol className="border-t border-line">
-            {ra.process.steps.map((step, i) => (
-              <li key={step.name} className="border-b border-line/60">
-                <Reveal>
-                  <div className="grid gap-x-10 gap-y-5 py-8 lg:grid-cols-[15rem_minmax(0,1fr)]">
-                    <div>
-                      <p className="text-xs tabular-nums tracking-wider text-accent">
-                        Step {String(i + 1).padStart(2, "0")}
-                      </p>
-                      <h3 className="font-display mt-2 text-2xl font-extrabold uppercase tracking-tight md:text-3xl">
-                        {step.name}
-                      </h3>
-                      <p className="mt-4 inline-block rounded-full bg-accent/15 px-3 py-1.5 text-[0.6875rem] uppercase tracking-[0.1em] text-accent">
-                        {step.outcome}
-                      </p>
-                    </div>
-
-                    <div>
-                      {/* One short sentence, set as a lead line — the
-                          detail is in the two-column list under it. */}
-                      <p className="font-display text-lg font-bold tracking-tight md:text-xl">
-                        {step.objective}
-                      </p>
-                      <ul className="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
-                        {step.points.map((point) => (
-                          <li
-                            key={point}
-                            className="flex gap-3 text-[0.9375rem] leading-relaxed text-muted"
-                          >
-                            <Tick />
-                            <span>{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* ── 05 Guardrails ── */}
-      <section id="guardrails" className="scroll-mt-4 border-b border-line/60">
-        <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
-          <SectionHeading
-            kicker={ra.guardrails.kicker}
-            title={ra.guardrails.title}
-            sub={ra.guardrails.sub}
-          />
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {ra.guardrails.rules.map((rule, i) => (
-              <Reveal key={rule.rule} delay={(i % 3) * 80} className="h-full">
-                <article className="card-hover flex h-full flex-col gap-3 rounded-2xl border border-line bg-card p-5">
-                  <h3 className="font-display flex items-start gap-2.5 font-bold leading-tight tracking-tight">
-                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    {rule.rule}
+                <article className="card-hover flex h-full items-center gap-4 rounded-2xl border border-line bg-card px-6 py-8">
+                  <span className="font-display text-xs tabular-nums tracking-wider text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-2xl font-extrabold tracking-tight">
+                    {output.name}
                   </h3>
-                  <p className="text-sm leading-relaxed text-muted">
-                    {rule.note}
-                  </p>
                 </article>
               </Reveal>
             ))}
@@ -404,7 +174,7 @@ export default function InfluencerCampaignProposal({
         </div>
       </section>
 
-      {/* ── 06 Packages ── */}
+      {/* ── 03 Packages ── */}
       <section id="packages" className="scroll-mt-4 border-b border-line/60">
         <div className="mx-auto max-w-6xl px-5 py-14 md:py-20">
           <SectionHeading
