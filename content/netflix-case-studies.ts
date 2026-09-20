@@ -11,11 +11,14 @@
 //
 //  ── THE ARC, AND WHY IT IS IN THIS ORDER ───────────────────────
 //    why us    → standing, from content/site.ts, before any claim
-//    what we do→ what a brand is actually buying
 //    THE WORK  → the three case studies, as a marked-off section
 //    the case  → what those three have in common: cast size is the
 //                strategy. A CONCLUSION, drawn from the evidence just
 //                shown — never a claim made ahead of it
+//    what we do→ what a brand is actually buying. AFTER the work: a
+//                services list is the slide every agency has, and at
+//                the front it spends the best position in the deck
+//                saying nothing a competitor could not say too
 //    process   → how a campaign runs
 //    the ask   → three concrete first steps
 //
@@ -24,8 +27,8 @@
 //  was put at the front, which was worse in a subtler way — it made the
 //  cast-size argument out of campaigns the reader had not met yet, so
 //  it spoiled the proof and the proof then repeated it. Proof in the
-//  middle, standing before it, meaning after it. If a section is cut,
-//  keep that shape.
+//  middle, standing before it, meaning after it, and the things we
+//  sell behind all of that. If a section is cut, keep that shape.
 //
 //  ── WHERE EVERY FIGURE CAME FROM ───────────────────────────────
 //  Three campaign one-pagers supplied on 20 September 2026:

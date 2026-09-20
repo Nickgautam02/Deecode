@@ -553,8 +553,8 @@ def main():
     prs.slide_width, prs.slide_height = Emu(int(W)), Emu(int(H))
 
     # ⚠ THIS ORDER IS THE ARGUMENT, and it must match the web deck's.
-    # Standing, then the offer, then the proof as a marked-off block,
-    # then what the proof means, then how we would run it, then the ask.
+    # Standing, then the proof as a marked-off block, then what the
+    # proof means, then the offer and how we would run it, then the ask.
     #
     # The pattern slide sits AFTER the case studies, not before. It
     # opened the deck once, and made its cast-size argument out of three
@@ -562,11 +562,11 @@ def main():
     # repeated it. See the header of content/netflix-case-studies.ts.
     cover(prs, deck)
     why_us(prs, deck, stats, site["brands"])
-    what_we_do(prs, deck)
     glance(prs, deck)                     # opens THE WORK, feature ground
     for i, case in enumerate(deck["cases"]):
         case_slide(prs, deck, case, i)    # feature ground
     the_case(prs, deck)                   # the pattern, as a conclusion
+    what_we_do(prs, deck)                 # the offer, once the work has argued
     process(prs, deck)
     close(prs, deck, site)
 

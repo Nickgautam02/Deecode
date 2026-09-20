@@ -198,24 +198,24 @@ export default function CaseStudyDeck({
   const slideLabels = [
     deck.labels.cover,
     deck.whyUs.kicker,
-    deck.whatWeDo.kicker,
     deck.glance.kicker,
     ...deck.cases.map((entry) => entry.label),
     deck.theCase.kicker,
+    deck.whatWeDo.kicker,
     deck.process.kicker,
     deck.howWeStart.kicker,
   ];
 
   /* The proof section, by slide index. Tints those dots in the rail so
      the flipped run is legible in the navigation too, not only once you
-     land on it. Cover / why us / what we do are 0..2, then the totals
-     slide opens the section and the case studies follow.
+     land on it. Cover and why us are 0..1, then the totals slide opens
+     the section and the case studies follow.
 
      ⚠ `proofTo` is exclusive and must count the totals slide as well as
      the cases — `3 + cases.length` left the last case study's dot
      untinted, which is exactly the kind of off-by-one nobody notices.
      Keep in step with `slideLabels` above. */
-  const proofFrom = 3;
+  const proofFrom = 2;
   const proofTo = proofFrom + 1 + deck.cases.length;
 
   const goTo = useCallback((index: number) => {
@@ -447,38 +447,7 @@ export default function CaseStudyDeck({
           </div>
         </Slide>
 
-        {/* ── 03 The offer ── */}
-        <Slide id="services">
-          <Kicker>{deck.whatWeDo.kicker}</Kicker>
-          <h2 className="font-display mt-4 max-w-[20ch] text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
-            {deck.whatWeDo.title}
-          </h2>
-
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
-            {deck.whatWeDo.services.map((service, i) => (
-              <article
-                key={service.name}
-                className="card-hover flex h-full flex-col rounded-2xl border border-line bg-card p-7"
-              >
-                <span className="text-xs font-bold tabular-nums tracking-[0.1em] text-accent-strong">
-                  {pad(i + 1)}
-                </span>
-                <h3 className="font-display mt-4 text-xl font-extrabold tracking-tight">
-                  {service.name}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">
-                  {service.text}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <p className="mt-9 max-w-[70ch] border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-muted">
-            {deck.whatWeDo.note}
-          </p>
-        </Slide>
-
-        {/* ── 04 THE WORK opens here, and slides 04–07 run inverted.
+        {/* ── 03 THE WORK opens here, and slides 03–06 are the
                This one doubles as the section opener and the totals:
                a separate divider slide would have been a title and
                nothing else. ── */}
@@ -500,7 +469,7 @@ export default function CaseStudyDeck({
           </p>
         </Slide>
 
-        {/* ── 05–07 One slide per campaign, still inside The work ── */}
+        {/* ── 04–06 One slide per campaign, still inside The work ── */}
         {deck.cases.map((entry, index) => (
           <Slide key={entry.id} id={entry.id} className="slide-feature">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -583,7 +552,7 @@ export default function CaseStudyDeck({
           </Slide>
         ))}
 
-        {/* ── 08 The pattern. Deliberately AFTER the three case
+        {/* ── 07 The pattern. Deliberately AFTER the three case
                studies, not before them. Sitting at 02 it built the
                cast-size argument out of campaigns the reader had not
                met yet — it spoiled the proof, and the proof then
@@ -623,6 +592,43 @@ export default function CaseStudyDeck({
 
           <p className="mt-9 max-w-[76ch] border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-muted">
             {deck.theCase.closer}
+          </p>
+        </Slide>
+
+        {/* ── 08 The offer. Deliberately AFTER the work, not
+               before it. A services list is the one slide every agency
+               has, and at 03 it spent the deck's best position saying
+               nothing a competitor could not. Here it answers the
+               question the proof has just raised — and pairs with the
+               process slide as one "working with us" block ahead of
+               the ask. ── */}
+        <Slide id="services">
+          <Kicker>{deck.whatWeDo.kicker}</Kicker>
+          <h2 className="font-display mt-4 max-w-[20ch] text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
+            {deck.whatWeDo.title}
+          </h2>
+
+          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+            {deck.whatWeDo.services.map((service, i) => (
+              <article
+                key={service.name}
+                className="card-hover flex h-full flex-col rounded-2xl border border-line bg-card p-7"
+              >
+                <span className="text-xs font-bold tabular-nums tracking-[0.1em] text-accent-strong">
+                  {pad(i + 1)}
+                </span>
+                <h3 className="font-display mt-4 text-xl font-extrabold tracking-tight">
+                  {service.name}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {service.text}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-9 max-w-[70ch] border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-muted">
+            {deck.whatWeDo.note}
           </p>
         </Slide>
 
