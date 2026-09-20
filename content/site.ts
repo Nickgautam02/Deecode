@@ -20,6 +20,38 @@ export type Creator = {
   image: string;
 };
 
+/** One input in a contact form. `name` is the key posted to the sheet
+ *  webhook — it must match a column the Apps Script writes. `label` is
+ *  only used by the mailto fallback. */
+export type ContactField = {
+  name: string;
+  label: string;
+  placeholder: string;
+  /** "textarea" and "select" render those elements; anything else is
+   *  used verbatim as the input's `type` attribute. */
+  kind: "text" | "email" | "tel" | "textarea" | "select";
+  /** Required by kind "select", ignored otherwise. */
+  options?: string[];
+};
+
+/** One of the two forms behind the contact toggle. */
+export type ContactAudience = {
+  id: string;
+  /** Label on the toggle that picks this form. */
+  tab: string;
+  /** Chips inside the form; the chosen one lands in the sheet's Role column. */
+  roles: string[];
+  fields: ContactField[];
+  /** The Apps Script web app this form posts to — each audience has its
+   *  own deployment writing to its own spreadsheet. Empty falls back to
+   *  opening the visitor's email client. */
+  webhookUrl: string;
+  submitLabel: string;
+  /** Shown in place of the form once it has been submitted. */
+  sentTitle: string;
+  sentBody: string;
+};
+
 export const site = {
   // ← Replace with your real brand name
   name: "Deecode Media House",
@@ -204,16 +236,124 @@ export const site = {
     // The word wrapped in [brackets] is rendered in the accent color
     heading: "Let's build something [massive].",
     sub: "Tell us whether you're a brand looking to scale or a creator ready to go pro — we'll get back within 24 hours.",
-    roles: ["I'm a Brand", "I'm a Creator", "I need a website", "Something else"],
 
-    // ── Google Sheet integration ──
-    // Submissions are appended to the "Deecode" spreadsheet via a Google
-    // Apps Script web app (see scripts/google-apps-script.gs for the code
-    // and setup steps). Paste the deployed web-app URL (ends in /exec)
-    // below. While it's empty, the form falls back to opening the
-    // visitor's email client instead.
-    sheetWebhookUrl:
-      "https://script.google.com/macros/s/AKfycbxMk9YOMH3WNzs-6mb1PG9XXwQYwY2bReNNElV5bNfqxzjOD_MVw6JcS13BKzRgvuh-1A/exec",
+    // ── Two forms, one section ──
+    // Brands (and website enquiries) fill the first; creators and
+    // everyone else fill the second. A toggle at the top of the card
+    // swaps between them so each audience only sees the fields that
+    // apply to it.
+    //
+    // Both post to the one webhook below, and the Apps Script files them
+    // into two different spreadsheets based on `id` — so renaming an id
+    // means editing that script too.
+    //
+    // `roles` are the chips inside a form, and the chosen one lands in
+    // the sheet's Role column. Keep those four strings exactly as they
+    // are: rows are already filed under them.
+    //
+    // `fields` drive the inputs, in order. A field's `name` is the key
+    // the Apps Script reads, so a new name needs a new column there too
+    // (see scripts/google-apps-script.gs).
+    audiences: [
+      {
+        id: "brand",
+        tab: "Brand / business",
+        roles: ["I'm a Brand", "I need a website"],
+        // The standalone brand script (scripts/google-apps-script.gs),
+        // writing to the "Deecode Brands" spreadsheet.
+        webhookUrl:
+          "https://script.google.com/macros/s/AKfycbyV5AmvtaBVbRJxal1v9L7pCKNxNoqp5TBLSM6g5qSEzvLchpTkXsPLPsyO0ONitRZCOw/exec",
+        submitLabel: "Send brief",
+        sentTitle: "Brief received 🎉",
+        sentBody:
+          "Thanks — we'll come back with a plan and a shortlist of creators within 24 hours.",
+        fields: [
+          { name: "name", label: "Name", placeholder: "Your name", kind: "text" },
+          {
+            name: "email",
+            label: "Work email",
+            placeholder: "Work email address",
+            kind: "email",
+          },
+          {
+            name: "phone",
+            label: "Phone",
+            placeholder: "Phone / WhatsApp number",
+            kind: "tel",
+          },
+          {
+            name: "company",
+            label: "Brand",
+            placeholder: "Brand or company name",
+            kind: "text",
+          },
+          {
+            name: "profile",
+            label: "Website / handle",
+            placeholder: "Website or Instagram handle",
+            kind: "text",
+          },
+          {
+            name: "budget",
+            label: "Budget",
+            placeholder: "Budget range",
+            kind: "select",
+            options: [
+              "Under ₹1 lakh",
+              "₹1–3 lakh",
+              "₹3–10 lakh",
+              "₹10 lakh+",
+              "Not sure yet",
+            ],
+          },
+          {
+            name: "message",
+            label: "Brief",
+            placeholder: "What are you launching? Product, timeline, platforms…",
+            kind: "textarea",
+          },
+        ],
+      },
+      {
+        id: "creator",
+        tab: "Creator / other",
+        roles: ["I'm a Creator", "Something else"],
+        // The original deployment, bound to the "Deecode" spreadsheet.
+        // Unchanged, and now only ever sees creator submissions.
+        webhookUrl:
+          "https://script.google.com/macros/s/AKfycbxMk9YOMH3WNzs-6mb1PG9XXwQYwY2bReNNElV5bNfqxzjOD_MVw6JcS13BKzRgvuh-1A/exec",
+        submitLabel: "Send message",
+        sentTitle: "Message sent 🎉",
+        sentBody: "Thanks for reaching out — we'll get back to you within 24 hours.",
+        fields: [
+          { name: "name", label: "Name", placeholder: "Your name", kind: "text" },
+          {
+            name: "email",
+            label: "Email",
+            placeholder: "Email address",
+            kind: "email",
+          },
+          {
+            name: "phone",
+            label: "Phone",
+            placeholder: "Phone / WhatsApp number",
+            kind: "tel",
+          },
+          {
+            name: "profile",
+            label: "Profile",
+            placeholder: "Your profile link (Instagram / YouTube)",
+            kind: "text",
+          },
+          {
+            name: "message",
+            label: "Goal",
+            placeholder: "Tell us about your goals…",
+            kind: "textarea",
+          },
+        ],
+      },
+    ] satisfies ContactAudience[],
   },
 };
 

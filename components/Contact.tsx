@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { site } from "@/content/site";
+import type { ContactAudience, ContactField } from "@/content/site";
 import Reveal from "./Reveal";
 
 const inputClasses =
@@ -21,38 +22,122 @@ function Heading({ text }: { text: string }) {
   );
 }
 
+/**
+ * One field of an audience's form. Every field is uncontrolled — the
+ * values are read off FormData at submit — except the select, which
+ * tracks its own value only so the unchosen prompt can stay greyed out
+ * like a placeholder.
+ */
+function Field({ field }: { field: ContactField }) {
+  const [value, setValue] = useState("");
+
+  if (field.kind === "textarea") {
+    return (
+      <textarea
+        name={field.name}
+        required
+        rows={5}
+        placeholder={field.placeholder}
+        className={`${inputClasses} resize-none`}
+      />
+    );
+  }
+
+  if (field.kind === "select") {
+    return (
+      <div className="relative">
+        <select
+          name={field.name}
+          required
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          className={`${inputClasses} appearance-none pr-10 ${
+            value ? "" : "text-muted/60"
+          }`}
+        >
+          <option value="" disabled>
+            {field.placeholder}
+          </option>
+          {field.options?.map((option) => (
+            <option key={option} value={option} className="bg-background text-foreground">
+              {option}
+            </option>
+          ))}
+        </select>
+        <svg
+          aria-hidden
+          viewBox="0 0 20 20"
+          fill="none"
+          className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"
+        >
+          <path
+            d="m5 7.5 5 5 5-5"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <input
+      name={field.name}
+      type={field.kind}
+      required
+      placeholder={field.placeholder}
+      className={inputClasses}
+    />
+  );
+}
+
 type Status = "idle" | "sending" | "sent" | "error";
 
 export default function Contact() {
-  const [role, setRole] = useState(site.contact.roles[0]);
+  const { audiences } = site.contact;
+  const [audience, setAudience] = useState<ContactAudience>(audiences[0]);
+  const [role, setRole] = useState(audiences[0].roles[0]);
   const [status, setStatus] = useState<Status>("idle");
+
+  /** Switching forms starts the other one fresh rather than carrying a
+   *  half-filled state — or a "sent" panel — across the toggle. */
+  const selectAudience = (next: ContactAudience) => {
+    setAudience(next);
+    setRole(next.roles[0]);
+    setStatus("idle");
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const webhookUrl = site.contact.sheetWebhookUrl;
+    // Each form posts to its own Apps Script deployment, so the two
+    // audiences land in two different spreadsheets.
+    const webhookUrl = audience.webhookUrl;
 
-    // Fallback while the Google Sheet webhook isn't connected: open the
+    // Fallback while this form's webhook isn't connected: open the
     // visitor's email client with a pre-filled message.
     if (!webhookUrl) {
       const subject = encodeURIComponent(`${role} — enquiry from ${data.get("name")}`);
-      const body = encodeURIComponent(
-        `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nPhone: ${data.get("phone")}\nProfile: ${data.get("profile")}\nRole: ${role}\n\n${data.get("message")}`,
+      const lines = audience.fields.map(
+        (field) => `${field.label}: ${data.get(field.name) ?? ""}`,
       );
-      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${site.email}?subject=${subject}&body=${encodeURIComponent(
+        `${lines.join("\n")}\nRole: ${role}`,
+      )}`;
       return;
     }
 
     setStatus("sending");
-    const payload = new URLSearchParams({
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      profile: String(data.get("profile") ?? ""),
-      message: String(data.get("message") ?? ""),
-      role,
-    });
+    // Only this audience's fields are posted. `audience` rides along so a
+    // script that handles both can tell them apart — the brand endpoint
+    // ignores it, since everything reaching it is a brand.
+    const payload = new URLSearchParams({ role, audience: audience.id });
+    for (const field of audience.fields) {
+      payload.set(field.name, String(data.get(field.name) ?? ""));
+    }
 
     try {
       // Apps Script web apps don't send CORS headers, so the response is
@@ -106,93 +191,89 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={150}>
-            {status === "sent" ? (
-              <div className="flex h-full min-h-80 flex-col items-center justify-center rounded-2xl border border-accent/40 bg-card p-10 text-center">
-                <p className="font-display text-3xl font-bold text-accent">Message sent 🎉</p>
-                <p className="mt-3 max-w-sm text-muted">
-                  Thanks for reaching out — we&apos;ll get back to you within 24 hours.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setStatus("idle")}
-                  className="mt-8 rounded-full border border-line px-6 py-2.5 text-sm font-semibold transition-colors hover:border-accent hover:text-accent"
-                >
-                  Send another message
-                </button>
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="rounded-2xl border border-line bg-card p-8 md:p-10"
+            <div className="rounded-2xl border border-line bg-card p-8 md:p-10">
+              {/* The toggle stays visible either way, so someone who
+                  submitted one form can start the other. */}
+              <div
+                role="tablist"
+                aria-label="Who's getting in touch"
+                className="mb-8 grid grid-cols-2 gap-1 rounded-full border border-line p-1"
               >
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {site.contact.roles.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => setRole(option)}
-                      className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
-                        role === option
-                          ? "border-accent bg-accent text-background"
-                          : "border-line text-muted hover:border-accent hover:text-foreground"
-                      }`}
-                    >
-                      {option}
-                    </button>
-                  ))}
-                </div>
+                {audiences.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={option.id === audience.id}
+                    onClick={() => selectAudience(option)}
+                    className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-colors ${
+                      option.id === audience.id
+                        ? "bg-accent text-background"
+                        : "text-muted hover:text-foreground"
+                    }`}
+                  >
+                    {option.tab}
+                  </button>
+                ))}
+              </div>
 
-                <div className="space-y-4">
-                  <input
-                    name="name"
-                    required
-                    placeholder="Your name"
-                    className={inputClasses}
-                  />
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="Email address"
-                    className={inputClasses}
-                  />
-                  <input
-                    name="phone"
-                    type="tel"
-                    required
-                    placeholder="Phone / WhatsApp number"
-                    className={inputClasses}
-                  />
-                  <input
-                    name="profile"
-                    required
-                    placeholder="Your profile link (Instagram / YouTube / website)"
-                    className={inputClasses}
-                  />
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    placeholder="Tell us about your goals…"
-                    className={`${inputClasses} resize-none`}
-                  />
-                </div>
-
-                {status === "error" && (
-                  <p className="mt-4 text-sm text-red-400">
-                    Something went wrong — please try again or email us directly.
+              {status === "sent" ? (
+                <div className="flex min-h-72 flex-col items-center justify-center text-center">
+                  <p className="font-display text-3xl font-bold text-accent">
+                    {audience.sentTitle}
                   </p>
-                )}
+                  <p className="mt-3 max-w-sm text-muted">{audience.sentBody}</p>
+                  <button
+                    type="button"
+                    onClick={() => setStatus("idle")}
+                    className="mt-8 rounded-full border border-line px-6 py-2.5 text-sm font-semibold transition-colors hover:border-accent hover:text-accent"
+                  >
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+                // Keyed so switching audience remounts the fields rather
+                // than reusing them by position.
+                <form key={audience.id} onSubmit={handleSubmit}>
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    {audience.roles.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => setRole(option)}
+                        className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                          role === option
+                            ? "border-accent bg-accent text-background"
+                            : "border-line text-muted hover:border-accent hover:text-foreground"
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="mt-6 w-full rounded-full bg-accent py-3.5 font-semibold text-background transition-transform hover:scale-[1.02] disabled:opacity-60"
-                >
-                  {status === "sending" ? "Sending…" : "Send message"}
-                </button>
-              </form>
-            )}
+                  <div className="space-y-4">
+                    {audience.fields.map((field) => (
+                      <Field key={field.name} field={field} />
+                    ))}
+                  </div>
+
+                  {status === "error" && (
+                    <p className="mt-4 text-sm text-red-400">
+                      Something went wrong — please try again or email us directly.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="mt-6 w-full rounded-full bg-accent py-3.5 font-semibold text-background transition-transform hover:scale-[1.02] disabled:opacity-60"
+                  >
+                    {status === "sending" ? "Sending…" : audience.submitLabel}
+                  </button>
+                </form>
+              )}
+            </div>
           </Reveal>
         </div>
       </div>
