@@ -254,3 +254,155 @@ body {
     radial-gradient(600px 400px at 15% 10%, rgba(135, 123, 242, 0.16), transparent 65%),
     radial-gradient(700px 500px at 85% 85%, rgba(135, 123, 242, 0.09), transparent 65%);
 }
+
+/* ── Case-study deck (components/CaseStudyDeck.tsx) ─────────────────
+   Nothing to do with `.deck-theme` above, despite the name: that is
+   the scoped palette swap for /portfolio/MIT. This is the slide
+   machinery for /netflix-case-studies, and it is palette-agnostic —
+   the colours come from `.deck-light` below.
+
+   A scroll-snap slide runner. The snapping itself is Tailwind
+   (`snap-y snap-mandatory` on the runner, `snap-start` on each slide);
+   what cannot be expressed in utilities lives here.
+
+   `scroll-behavior` is set on the runner rather than inherited: the
+   `html` rule above does not apply to a nested scroll container, and
+   without it the arrow keys would jump rather than glide. */
+.deck {
+  scroll-behavior: smooth;
+  /* The rail and the arrows are the affordance; a scrollbar down the
+     side of a full-bleed slide reads as a rendering accident. */
+  scrollbar-width: none;
+}
+
+.deck::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck {
+    scroll-behavior: auto;
+  }
+}
+
+/* ── The deck runs light ────────────────────────────────────────────
+   /netflix-case-studies is set on the light side of the site's own
+   palette: `--foreground` becomes the ground, `--background` becomes
+   the type, and the violet is unchanged. So it is still the site's
+   colours — it is not a per-client re-skin, and it is not the
+   `.deck-theme` system /portfolio/MIT uses. A projected deck and a
+   printed PDF both read better this way round than near-black does.
+
+   Same mechanism as `.deck-theme`: redefine the properties and every
+   Tailwind utility in the subtree follows, with no per-class overrides.
+
+   ⚠ TWO TOKENS CANNOT SIMPLY CARRY OVER, because both are tuned for a
+   near-black ground. The site's muted grey drops to 2.6:1 here and the
+   violet to 3.1:1. So muted is re-darkened, and `--accent-strong` —
+   which is just the accent everywhere else on the site — becomes a
+   genuinely darker violet. Measured against #f4f4f0: #5f5f58 is 5.8:1,
+   #5a4ecc is 5.6:1, and the plain violet stays for display sizes only.
+   That is why the deck uses `text-accent-strong` on every label and
+   `text-accent` only on the big figures. Reversing that pair is the
+   single easiest way to break this page's contrast. */
+.deck-light {
+  --background: #f4f4f0;
+  --foreground: #08080a;
+  --muted: #5f5f58;
+  --card: #e8e8e2;
+  --line: rgba(8, 8, 10, 0.14);
+  --accent: #877bf2;
+  --accent-strong: #5a4ecc;
+
+  /* ⚠ LOAD-BEARING, AND NOT OBVIOUS. Redefining --foreground above is
+     not enough on its own. `text-foreground` sits on this same element,
+     so it happens to work here — but the rule is kept explicit because
+     `.slide-feature` below relies on the same trick one level down,
+     where `color` has already been computed and inherited as a finished
+     value that a redefined custom property cannot retroactively change.
+     Without it a subtree flips its ground and keeps its old text
+     colour, i.e. goes invisible. */
+  color: var(--foreground);
+}
+
+/* The case studies, still marked off as their own section.
+
+   With the whole deck light there is no ground to flip to, so the
+   separation is carried by the solid section tab plus this: the
+   surfaces swap places. Everywhere else a card sits DARKER than the
+   page; across these four slides the page steps down and the cards sit
+   LIGHTER than it. Subtle on one slide, unmistakable when you page
+   through the run. */
+.deck-light .slide-feature {
+  --background: #eae9e3;
+  --card: #f6f6f2;
+  --line: rgba(8, 8, 10, 0.18);
+  color: var(--foreground);
+}
+
+/* `.card-hover`'s lift and wash were built for the dark ground; the
+   violet glow over a pale card reads as a smudge. Keep the lift and
+   the border, drop the shadow and the gradient. */
+.deck-light .card-hover:hover {
+  box-shadow: 0 16px 34px -22px rgba(8, 8, 10, 0.4);
+}
+
+.deck-light .card-hover:hover::before {
+  opacity: 0;
+  animation: none;
+}
+
+/* Likewise the hero glow: two violet radials over near-white turn the
+   cover milky rather than lit. */
+.deck-light .hero-glow {
+  background: none;
+}
+
+/* ── Printing the deck (File ▸ Print ▸ Save as PDF) ──────────────────
+   This is how the deck becomes a file you can attach to an email, so it
+   is a supported output, not an afterthought.
+
+   A scroll container prints as whatever is scrolled into view — one
+   slide, and the other six lost — so the runner is unwound back into
+   normal flow and each slide is given its own sheet. `print-color-adjust`
+   is load-bearing rather than decorative here: the deck is light type on
+   a near-black ground, and without it a browser that drops background
+   graphics prints seven blank pages.
+
+   ⚠ THE OTHER HALF OF THESE RULES IS IN CaseStudyDeck.tsx — the `@page`
+   size and the print root font-size, both of which target the document
+   itself and so cannot be scoped to this route from here. Changing the
+   sheet size or the scale means reading both places. */
+@media print {
+  .deck {
+    height: auto;
+    overflow: visible;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .deck-slide {
+    /* On screen a slide is at least a viewport tall and its top padding
+       clears the fixed masthead. Neither applies to a sheet of paper. */
+    min-height: 0;
+    padding: 1.5rem 2.5rem;
+    /* Deliberately no `break-inside: avoid`: with every slide already
+       ending its own page it buys nothing, and what actually produced
+       the blank pages between slides was a slide overflowing its sheet
+       by a few pixels — fixed by the print root size, not by a break
+       rule. */
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .deck-slide:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  /* The masthead, the rail and the arrows are all `position: fixed`,
+     which in print means "repeated on every sheet". */
+  .deck-chrome {
+    display: none !important;
+  }
+}
