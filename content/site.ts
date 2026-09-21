@@ -70,11 +70,17 @@ export const site = {
   // Root-relative so these resolve from sub-routes (/gallery, /portfolio/*)
   // as well as the homepage.
   nav: [
-    // First, and pointing at the homepage's own section rather than at
-    // /netflix-case-studies: the deck is noindex and is the thing you
-    // hand to a prospect, while #work is the version anyone can land
-    // on. The section links through to the deck itself.
-    { label: "Case studies", href: "/#work" },
+    // Straight to the deck, not to the homepage's #work section — the
+    // full campaigns are the thing worth landing on, and #work already
+    // links through to the same place for anyone reading the homepage.
+    //
+    // ⚠ /netflix-case-studies CARRIES `robots: { index: false }`, and a
+    // sitewide nav link does not change that — the page's own metadata
+    // decides. What it does change is that the URL is now reachable by
+    // anyone on the site rather than only by someone we sent it to. That
+    // is deliberate; see the note in app/netflix-case-studies/page.tsx
+    // about whose numbers those are before making the page indexable too.
+    { label: "Case studies", href: "/netflix-case-studies" },
     { label: "Services", href: "/#services" },
     { label: "Creators", href: "/#creators" },
     { label: "Gallery", href: "/gallery" },

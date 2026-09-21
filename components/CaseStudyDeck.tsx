@@ -344,7 +344,9 @@ export default function CaseStudyDeck({
           previously-fine 11px export back to 12 pages with two blanks.
           ⚠ RE-EXPORT AND COUNT THE PAGES after changing this deck's
           copy or chrome. The failure is silent — the page still looks
-          right on screen. */}
+          right on screen. The count is 11: ten slides plus the sheet of
+          clip stills that prints after the work opener. Anything above
+          that is an overrun, and the extra pages will be blank. */}
       <style>{`
         @page { size: A4 landscape; margin: 0; }
         @media print { html { font-size: 10.5px; } }
@@ -492,6 +494,57 @@ export default function CaseStudyDeck({
             {deck.glance.footnote}
           </p>
         </Slide>
+
+        {/* ── PRINT ONLY: the clips as a sheet of stills ──────────────
+            The strip above is `print:hidden` because a printed slide
+            that overruns does not clip — Chrome emits a blank
+            continuation page after it. Squeezed onto the work slide the
+            stills cost two extra pages and both were blank; given a
+            sheet of their own they cost one page that is worth having.
+
+            On paper this is all a video can be. The films themselves
+            play on the web deck and in the PowerPoint, and the line
+            under the heading says where.
+
+            The posters are the same files the strip loads, so the
+            browser serves them from cache — and they are plain <img>
+            rather than next/image on purpose: this block is
+            `display: none` until the print stylesheet runs, and a lazy
+            image inside it is never in a viewport, so it would print
+            as seven empty boxes. */}
+        <section className="hidden px-5 pt-10 print:block print:break-before-page sm:px-8">
+          <div className="mx-auto w-full max-w-4xl">
+            <SectionTab>{deck.work.sectionLabel}</SectionTab>
+            <h2 className="font-display mt-5 text-3xl font-extrabold leading-[1.02] tracking-tight">
+              {deck.labels.clips}
+            </h2>
+            <p className="mt-3 max-w-[70ch] text-sm leading-relaxed text-muted">
+              Stills from the creator content the three campaigns ran. The
+              films play at {site.domain}/netflix-case-studies.
+            </p>
+
+            <div className="mt-8 grid grid-cols-4 gap-5">
+              {workClips.map((clip) => (
+                <figure key={clip.src}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={clip.poster}
+                    alt={`${clip.campaign} — ${clip.caption}`}
+                    className="w-full rounded-lg border border-line"
+                  />
+                  <figcaption className="mt-2">
+                    <span className="block text-[0.625rem] font-semibold uppercase tracking-[0.1em] text-accent-strong">
+                      {clip.campaign}
+                    </span>
+                    <span className="mt-0.5 block text-[0.6875rem] leading-snug text-muted">
+                      {clip.caption}
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* ── 04–06 One slide per campaign, still inside The work ──
 
