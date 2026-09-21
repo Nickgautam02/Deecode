@@ -29,7 +29,13 @@ export default function Navbar() {
           <span className="text-accent">.</span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        {/* ⚠ THE FULL MENU STARTS AT `lg`, NOT `md`. Six links, the
+            wordmark and the CTA do not fit a 768px header at any gap
+            worth having — the wordmark breaks across two lines and the
+            button follows it. Tablets get the same slide-down menu
+            phones get, which already renders every nav item. Adding a
+            seventh link means checking this again at 1024. */}
+        <div className="hidden items-center gap-6 lg:flex lg:gap-8">
           {site.nav.map((item) => (
             <Link
               key={item.href}
@@ -52,7 +58,7 @@ export default function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
         >
           <span
             className={`h-0.5 w-6 bg-foreground transition-transform ${open ? "translate-y-1 rotate-45" : ""}`}
@@ -64,7 +70,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-line px-5 pb-6 pt-2 md:hidden">
+        <div className="border-t border-line px-5 pb-6 pt-2 lg:hidden">
           {site.nav.map((item) => (
             <Link
               key={item.href}

@@ -70,6 +70,11 @@ export const site = {
   // Root-relative so these resolve from sub-routes (/gallery, /portfolio/*)
   // as well as the homepage.
   nav: [
+    // First, and pointing at the homepage's own section rather than at
+    // /netflix-case-studies: the deck is noindex and is the thing you
+    // hand to a prospect, while #work is the version anyone can land
+    // on. The section links through to the deck itself.
+    { label: "Case studies", href: "/#work" },
     { label: "Services", href: "/#services" },
     { label: "Creators", href: "/#creators" },
     { label: "Gallery", href: "/gallery" },

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DeckCase } from "@/content/netflix-case-studies";
 import { netflixCaseStudies } from "@/content/netflix-case-studies";
@@ -763,9 +764,19 @@ export default function CaseStudyDeck({
       {/* ── Fixed chrome. `deck-chrome` is what the print rules hide. ── */}
       <div className="deck-chrome pointer-events-none fixed inset-x-0 top-0 z-30 border-b border-line/60 bg-background/80 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-baseline justify-between gap-6 px-5 py-4 sm:px-8">
-          <p className="font-display text-sm font-extrabold uppercase tracking-tight">
+          {/* The wordmark is the way back to the site. `pointer-events-auto`
+              is doing real work: the bar it sits in is
+              `pointer-events-none` so a click anywhere across the top
+              lands on the slide behind it rather than on the chrome, and
+              a link inside it inherits that and quietly does nothing.
+              Only this one element takes clicks back. */}
+          <Link
+            href="/"
+            title={`${site.name} — home`}
+            className="pointer-events-auto font-display text-sm font-extrabold uppercase tracking-tight transition-colors hover:text-accent-strong"
+          >
             Deecode <span className="text-accent-strong">Media House</span>
-          </p>
+          </Link>
           <p className="text-[0.6875rem] uppercase tabular-nums tracking-[0.1em] text-muted">
             {deck.eyebrow} <span className="text-accent-strong">/</span>{" "}
             {pad(active + 1)} — {pad(slideLabels.length)}
