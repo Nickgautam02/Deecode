@@ -85,6 +85,44 @@
  *  teaching the component about lakhs, multiples and percentages. */
 export type DeckFigure = { value: string; label: string };
 
+/** One piece of creator content from the campaign. Vertical phone
+ *  video, because that is what the campaign actually shipped — the
+ *  strip reserves each clip's real shape.
+ *
+ *  ⚠ WHERE THESE RENDER IS NOT WHERE THEY LIVE. Each clip is written
+ *  under the campaign it came from, but the deck gathers all of them
+ *  into ONE strip on the slide that opens the work section, in the
+ *  order the cases appear here. So the case a clip sits under still
+ *  decides the label printed beside it, and the case order decides the
+ *  strip order — but adding one to a campaign does not put a strip on
+ *  that campaign's slide.
+ *
+ *  TO ADD ONE:
+ *    1. Drop the MP4 in public/case-studies/ under a kebab-case name
+ *       that starts with the campaign id: bts-watch-party-room.mp4.
+ *    2. Cut a poster frame beside it, <name>-poster.jpg. Without one
+ *       the slide shows a black box until the reader presses play —
+ *       the clips load nothing up front (`preload="none"`), so the
+ *       poster IS the slide's picture of the campaign.
+ *    3. Read the file's real pixel size and put it in `w`/`h`. The
+ *       strip sizes each box from that pair, so a wrong one crops or
+ *       letterboxes the clip:
+ *         mdls -name kMDItemPixelWidth -name kMDItemPixelHeight <file>
+ *
+ *  CAPTIONS FOLLOW THE SAME TWO RULES AS THE REST OF THIS FILE: no
+ *  dates or timeframes, and nobody is named who is not the campaign.
+ *  Describe what the frame shows — the creators in these clips are
+ *  talent we booked, not signatories to a credentials deck. */
+export type DeckClip = {
+  src: string;
+  poster: string;
+  /** True pixel dimensions of the MP4, not the display size. */
+  w: number;
+  h: number;
+  /** One short line, sitting under the clip in the strip. */
+  caption: string;
+};
+
 export type DeckCase = {
   /** Anchor id. Also the href used by the contents row on the cover. */
   id: string;
@@ -105,6 +143,10 @@ export type DeckCase = {
   note?: string;
   /** The one number this slide is built around. */
   hero: { value: string; label: string; sub: string };
+  /** Creator content from the campaign, shown in the work section's
+   *  one strip rather than on this case's own slide. Optional: a
+   *  campaign with none simply contributes nothing to the strip. */
+  clips?: readonly DeckClip[];
 };
 
 export const netflixCaseStudies = {
@@ -208,6 +250,7 @@ export const netflixCaseStudies = {
     brief: "The brief",
     impact: "Business impact",
     creators: "creators",
+    clips: "Creator content",
   },
 
   glance: {
@@ -262,6 +305,28 @@ export const netflixCaseStudies = {
         label: "Views delivered",
         sub: "Across creator-led Reels, Stories and social content.",
       },
+      /* Screening-day content from the film's Lucknow house — creators
+         in the room, and the Airtel Postpaid activation that stood in
+         the lobby beside it. The posts carry both brands' handles,
+         which is why they are filed under Mirzapur rather than Airtel:
+         the Airtel case in this deck is #MillionThankYou, a different
+         campaign entirely. */
+      clips: [
+        {
+          src: "/case-studies/mirzapur-lucknow-screening.mp4",
+          poster: "/case-studies/mirzapur-lucknow-screening-poster.jpg",
+          w: 720,
+          h: 1280,
+          caption: "A full house in Lucknow, from inside the screen",
+        },
+        {
+          src: "/case-studies/mirzapur-creator-wall.mp4",
+          poster: "/case-studies/mirzapur-creator-wall-poster.jpg",
+          w: 720,
+          h: 1280,
+          caption: "A creator at the campaign wall",
+        },
+      ],
     },
     {
       // ⚠ "Netflix" here is from the supplied filename, not from the
@@ -297,6 +362,48 @@ export const netflixCaseStudies = {
         label: "Views delivered",
         sub: "Across creator-led Reels, Stories and social content.",
       },
+      /* Watch-party content: the room, the light sticks and the stream
+         on the big screen. Five clips against Mirzapur's two because
+         this campaign's proof IS the crowd — the case argues that 50
+         creators turned a comeback into a conversation, and this is
+         what that looked like in the room. */
+      clips: [
+        {
+          src: "/case-studies/bts-comeback-title-card.mp4",
+          poster: "/case-studies/bts-comeback-title-card-poster.jpg",
+          w: 720,
+          h: 1280,
+          caption: "The title card, and the room goes up",
+        },
+        {
+          src: "/case-studies/bts-watch-party-room.mp4",
+          poster: "/case-studies/bts-watch-party-room-poster.jpg",
+          w: 478,
+          h: 850,
+          caption: "The house filling before the stream",
+        },
+        {
+          src: "/case-studies/bts-comeback-stage-screen.mp4",
+          poster: "/case-studies/bts-comeback-stage-screen-poster.jpg",
+          w: 478,
+          h: 850,
+          caption: "The stage, on the big screen",
+        },
+        {
+          src: "/case-studies/bts-watch-party-light-sticks.mp4",
+          poster: "/case-studies/bts-watch-party-light-sticks-poster.jpg",
+          w: 478,
+          h: 850,
+          caption: "Light sticks up across the hall",
+        },
+        {
+          src: "/case-studies/bts-watch-party-creators.mp4",
+          poster: "/case-studies/bts-watch-party-creators-poster.jpg",
+          w: 478,
+          h: 850,
+          caption: "Creators on the floor, mid-cheer",
+        },
+      ],
     },
     {
       id: "airtel",
