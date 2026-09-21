@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { DeckCase, DeckClip } from "@/content/netflix-case-studies";
+import type { DeckCase } from "@/content/netflix-case-studies";
 import { netflixCaseStudies } from "@/content/netflix-case-studies";
+import ClipStrip, { clipsFromCases } from "./ClipStrip";
 import { site } from "@/content/site";
 
 /* A full-screen, keyboard-driven credentials deck. Rendered by
@@ -151,108 +152,6 @@ function Figures({
   );
 }
 
-/** One column per clip, and the class has to exist in this file for
-    Tailwind to emit it — `lg:grid-cols-${n}` would compile to nothing.
-    Anything past seven wraps onto a second row rather than shrinking
-    the players below the size where a control bar is usable. */
-function clipColumns(count: number) {
-  if (count >= 7) return "lg:grid-cols-7";
-  if (count === 6) return "lg:grid-cols-6";
-  if (count === 5) return "lg:grid-cols-5";
-  return "lg:grid-cols-4";
-}
-
-/** The campaigns' own content, as a strip of phone-shaped players.
-
-    ⚠ ONE STRIP, ON THE SLIDE THAT OPENS THE WORK, NOT ONE PER CASE.
-    It was built per campaign first and that was wrong twice over: in
-    the narrow column of a case slide the five-clip campaign showed
-    three and a half and hid the rest behind a sideways scroll, and
-    even full-width it turned two of the three case slides into the
-    tall ones. Gathered here the reader meets the whole body of work at
-    the top of the section, in case order, and every case slide keeps
-    the shape it was designed with. The clips still live on their own
-    case in content/netflix-case-studies.ts — this slide flattens them,
-    so re-hanging them per case is a move, not a re-entry.
-
-    Nothing autoplays and nothing preloads. Seven muted videos starting
-    by themselves would be the loudest thing on a slide whose argument
-    is the totals above them, and on a phone it would pull seven files
-    down before the reader has asked for one. The poster frame is what
-    the slide shows; pressing play is what fetches the video.
-
-    Below `lg` the row scrolls sideways rather than wrapping, so a phone
-    gets one strip to swipe instead of a block of thumbnails. The label
-    carries the count either way, the way /gallery heads its grid with
-    "18 photographs · 3 films".
-
-    ⚠ `print:hidden`, and it has to stay that way. The print block below
-    documents the budget: at 10.5px the tallest slide already uses 722
-    of a landscape sheet's 793px, and the strip is ~200px of that scale.
-    A printed slide that overruns does not clip — Chrome emits a blank
-    continuation page after it, silently, and only a page count catches
-    it. Nothing is lost on paper either way: a video prints as a still. */
-function ClipStrip({
-  items,
-  label,
-}: {
-  items: readonly (DeckClip & { campaign: string })[];
-  label: string;
-}) {
-  return (
-    <div className="mt-12 border-t border-line pt-6 print:hidden">
-      <p className="text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
-        {label} · {items.length} {items.length === 1 ? "clip" : "clips"}
-      </p>
-      {/* `-mx-1 px-1` so the focus ring on a player at either end is not
-          clipped by the scroll container.
-
-          Two layouts, one list. Below `lg` it is a swipeable strip of
-          phone-sized thumbnails; at `lg` the cells divide the slide's
-          full width, so the players are big enough to read across a
-          room and the row ends where the figures above it end. */}
-      <ul
-        className={`-mx-1 mt-5 flex snap-x gap-3 overflow-x-auto px-1 pb-1 lg:mx-0 lg:grid lg:gap-5 lg:overflow-visible lg:px-0 ${clipColumns(
-          items.length,
-        )}`}
-      >
-        {items.map((clip) => (
-          <li
-            key={clip.src}
-            className="w-[124px] shrink-0 snap-start sm:w-[136px] lg:w-auto"
-          >
-            <div
-              className="overflow-hidden rounded-xl border border-line bg-black"
-              style={{ aspectRatio: `${clip.w} / ${clip.h}` }}
-            >
-              <video
-                controls
-                preload="none"
-                playsInline
-                poster={clip.poster}
-                aria-label={`${clip.campaign} — ${clip.caption}`}
-                className="h-full w-full"
-              >
-                <source src={clip.src} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            {/* The campaign, then the frame. On a mixed strip the caption
-                alone leaves the reader to guess which case each clip
-                belongs to, and the three cases are the whole section. */}
-            <p className="mt-2.5 text-[0.625rem] font-semibold uppercase tracking-[0.1em] text-accent-strong">
-              {clip.campaign}
-            </p>
-            <p className="mt-1 text-[0.6875rem] leading-snug text-muted">
-              {clip.caption}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function Slide({
   id,
   className = "",
@@ -322,13 +221,8 @@ export default function CaseStudyDeck({
   const proofTo = proofFrom + 1 + deck.cases.length;
 
   /* Every campaign's clips, in case order, for the one strip on the
-     slide that opens the section. The cast is `readonly DeckCase[]`
-     for the same reason the case slides annotate their callback: the
-     content file's `as const` gives each case its own literal type,
-     and a campaign with no clips has no `clips` property to read. */
-  const workClips = (deck.cases as readonly DeckCase[]).flatMap((entry) =>
-    (entry.clips ?? []).map((clip) => ({ ...clip, campaign: entry.label })),
-  );
+     slide that opens the section. */
+  const workClips = clipsFromCases(deck.cases as readonly DeckCase[]);
 
   const goTo = useCallback((index: number) => {
     const runner = runnerRef.current;
@@ -572,8 +466,22 @@ export default function CaseStudyDeck({
             {deck.glance.title}
           </h2>
           <Figures items={deck.glance.stats} size="lg" className="mt-12" />
+          {/* ⚠ ONE STRIP HERE, NOT ONE PER CASE SLIDE. The clips were
+              hung on their own campaigns first and it failed twice: in
+              a case slide's narrow column the five-clip campaign showed
+              three and a half and hid the rest behind a sideways
+              scroll, and full-width it turned two of the three case
+              slides into the tall ones. Gathered here the reader meets
+              the whole body of work at the top of the section, in case
+              order, and every case slide keeps the shape it was
+              designed with. The clips still live on their own case in
+              the content file — this flattens them. */}
           {workClips.length > 0 ? (
-            <ClipStrip items={workClips} label={deck.labels.clips} />
+            <ClipStrip
+              items={workClips}
+              label={deck.labels.clips}
+              className="mt-12"
+            />
           ) : null}
           {/* The de-duplication caveat. It stays on the slide rather than
               in a footnote nobody opens — a media buyer will ask, and

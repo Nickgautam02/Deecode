@@ -15,6 +15,7 @@ import { site } from "@/content/site";
 // Indexed on purpose:
 //   /                                       the homepage
 //   /influencer-marketing-agency-<city>     three city landing pages
+//   /careers                                the creator hiring page
 //
 // Deliberately absent, each carrying `index: false` in its own metadata:
 //   /gallery, /storydigital, /portfolio/MIT, and the per-client proposals.
@@ -37,6 +38,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    // Recruiting, not sales: it ranks for a different search than the
+    // rest of this list ("content creator internship delhi"), which is
+    // why it is here at all and why it sits below the city pages.
+    {
+      url: `https://${site.domain}/careers`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.5,
     },
     // 0.8, not 1 — priority is relative within this file only, and it
     // says the homepage is still the page to prefer on a brand search.

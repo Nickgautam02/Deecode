@@ -74,6 +74,9 @@ export const site = {
     { label: "Creators", href: "/#creators" },
     { label: "Gallery", href: "/gallery" },
     { label: "About", href: "/#about" },
+    // Hiring is a route, not an anchor: it is the one page on this site
+    // written for someone who wants to work here rather than hire us.
+    { label: "Careers", href: "/careers" },
   ],
 
   hero: {
@@ -184,33 +187,6 @@ export const site = {
     { name: "KuyikBassey", niche: "Tech", followers: "5.1K", platform: "YouTube", location: "USA", market: "USA", image: "/creators/kuyikbassey.jpg" },
     { name: "A1 republic", niche: "Tech", followers: "1.72K", platform: "YouTube", location: "USA", market: "USA", image: "/creators/a1-republic.jpg" },
   ] satisfies Creator[],
-
-  caseStudies: [
-    {
-      brand: "FinPeak",
-      category: "Fintech · Performance Campaign",
-      title: "3M+ views in 45 days for a fintech launch",
-      description:
-        "A 40-creator finance squad took FinPeak's new investing app from unknown to unmissable — short-form explainers, long-form deep dives and a viral challenge that made investing feel simple.",
-      metrics: [
-        { value: "3M+", label: "Views" },
-        { value: "12x", label: "ROAS" },
-        { value: "40+", label: "Creators" },
-      ],
-    },
-    {
-      brand: "TuneVerse Records",
-      category: "Music Label · Creator Growth",
-      title: "5M+ views across three artist launches",
-      description:
-        "We paired a leading music label with our dance and music roster to launch three artists in six months — choreography trends, creator remixes and fan-first content that kept every drop trending.",
-      metrics: [
-        { value: "5M+", label: "Views" },
-        { value: "120K", label: "Subscribers gained" },
-        { value: "3", label: "Chart-topping launches" },
-      ],
-    },
-  ],
 
   about: {
     // The words wrapped in [brackets] are rendered in the accent color
