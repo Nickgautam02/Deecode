@@ -406,6 +406,66 @@ def glance(prs, deck):
     footer_note(s, end + Inches(0.1), g["footnote"], Inches(10.4), FEATURE)
 
 
+def clips(prs, deck):
+    """The creator content, as video that actually plays.
+
+    ── WHY THIS SLIDE EXISTS ONLY IN THE POWERPOINT AND THE WEB DECK ──
+    The PDF export of /netflix-case-studies carries the same seven
+    pieces as stills, because printing rasterises a page: a <video>
+    becomes its poster frame and nothing else. PowerPoint can hold the
+    file itself, so the emailed deck is the one artefact where a
+    prospect can press play. Keynote and Google Slides play these too.
+
+    ⚠ IT PUTS ~14MB IN THE FILE. python-pptx embeds each MP4 rather
+    than linking it, which is what makes the deck self-contained and
+    also what takes it past the attachment limit on most mail servers.
+    Send a link, or cut the list here if it ever has to travel as an
+    attachment.
+
+    Each movie needs its poster frame: without one PowerPoint shows a
+    grey rectangle with a play triangle, which on a credentials slide
+    reads as a broken image rather than as a film.
+    """
+    items = [(case["label"], clip)
+             for case in deck["cases"] for clip in case.get("clips") or []]
+    if not items:
+        return
+
+    s = new_slide(prs, FEATURE)
+    ink = FEATURE
+    y = section_tab(s, Inches(0.8), deck["work"]["sectionLabel"], ink)
+    y = kicker(s, y, deck["labels"]["clips"], ink)
+    f = textbox(s, MARGIN, y, Inches(9), Inches(0.8))
+    write(f, "The content the campaigns actually ran.", 30, ink.fg,
+          bold=True, track=-0.02, line=1.05, display=True)
+    f = textbox(s, MARGIN, y + Inches(0.78), Inches(9), Inches(0.3))
+    write(f, "Press play in slideshow mode.", 10.5, ink.muted, line=1.4)
+
+    # One row, sized from the row rather than from the clip: seven 9:16
+    # players across the content width, with the gap taken out first.
+    gap = Inches(0.17)
+    w = (CONTENT_W - gap * (len(items) - 1)) / len(items)
+    h = w * 16 / 9
+    top = Inches(2.85)
+
+    for i, (campaign, clip) in enumerate(items):
+        x = MARGIN + i * (w + gap)
+        movie = REPO / "public" / clip["src"].lstrip("/")
+        poster = REPO / "public" / clip["poster"].lstrip("/")
+        if not movie.exists() or not poster.exists():
+            # A missing file is a content error, not a layout one: say so
+            # and keep building rather than dying nine slides in.
+            print(f"  ⚠ missing {movie.name} or its poster — clip skipped")
+            continue
+        s.shapes.add_movie(str(movie), int(x), int(top), int(w), int(h),
+                           poster_frame_image=str(poster),
+                           mime_type="video/mp4")
+        f = textbox(s, x, top + h + Inches(0.1), w, Inches(0.22))
+        write(f, campaign.upper(), 7, ink.strong, bold=True, track=0.06)
+        f = textbox(s, x, top + h + Inches(0.32), w, Inches(0.5))
+        write(f, clip["caption"], 7.5, ink.muted, line=1.35)
+
+
 def case_slide(prs, deck, case, index):
     s = new_slide(prs, FEATURE)
     ink = FEATURE
@@ -563,6 +623,7 @@ def main():
     cover(prs, deck)
     why_us(prs, deck, stats, site["brands"])
     glance(prs, deck)                     # opens THE WORK, feature ground
+    clips(prs, deck)                      # the content itself, playable
     for i, case in enumerate(deck["cases"]):
         case_slide(prs, deck, case, i)    # feature ground
     the_case(prs, deck)                   # the pattern, as a conclusion

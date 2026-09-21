@@ -327,21 +327,29 @@ export default function CaseStudyDeck({
           the HTML this route serves. (A `:root:has(.deck)` guard in
           globals.css was tried first and never applied during print.)
 
-          Landscape A4 is 1123px wide, which clears Tailwind's `lg`
-          breakpoint at 1024px — so the printed slide keeps the same
-          two-column layout as the screen one instead of stacking.
+          ⚠ A LANDSCAPE SHEET IS 1123px WIDE AND `lg:` STILL DOES NOT
+          FIRE ON IT. This block used to claim the opposite, and the
+          printed deck quietly disagreed for as long as it said so:
+          Chrome lays print out against a narrower width than the page
+          box — `sm:` and `md:` apply, `lg:` does not — so every
+          two-column slide stacked and every three-card row printed as
+          three stacked cards. The layout classes that matter on paper
+          are duplicated as `print:` variants throughout this file.
+          Check a PDF, not a browser window, after touching a grid.
 
           The root font-size is measured, not guessed. Tailwind's type
           and spacing are all rem, so the root scales the slide as a
-          whole. At the site's 16px the tallest case study needs far
-          more than the 793px a landscape sheet gives it, and Chrome
-          answers by emitting a near-blank continuation page after every
-          slide that overruns.
+          whole. At the site's 16px the tallest slide needs far more
+          than the 793px a landscape sheet gives it, and Chrome answers
+          by emitting a near-blank continuation page after every slide
+          that overruns.
 
-          10.5px puts the tallest slide at 722px of ink, leaving ~70px.
-          That margin is thin on purpose-built content: adding the
-          section tab to the case slides alone cost ~30px and pushed a
-          previously-fine 11px export back to 12 pages with two blanks.
+          13px, swept rather than reasoned: 14 still fits, 15 overruns.
+          It was 10.5px for as long as the case slides printed as one
+          stacked column — half the sheet went unused and the type was
+          smaller than it needed to be. Restoring the two-column print
+          layout freed that height, and this spends it on legibility.
+          Two steps of slack is the margin; do not spend it all.
           ⚠ RE-EXPORT AND COUNT THE PAGES after changing this deck's
           copy or chrome. The failure is silent — the page still looks
           right on screen. The count is 11: ten slides plus the sheet of
@@ -349,7 +357,20 @@ export default function CaseStudyDeck({
           that is an overrun, and the extra pages will be blank. */}
       <style>{`
         @page { size: A4 landscape; margin: 0; }
-        @media print { html { font-size: 10.5px; } }
+        @media print { html { font-size: 13px; } }
+
+        /* NOTE, AND MIND THE BACKTICKS — this block is a template
+           literal, so a CSS comment here cannot quote class names the
+           way the JSX comments above do. It ends the string, and the
+           route 500s.
+
+           DO NOT PIN .deck-slide TO 210mm TO CENTRE IT ON THE SHEET.
+           It is the obvious fix for the band of white under a short
+           slide, and it collapses the export to a SINGLE PAGE: the
+           slides live in an overflow-y-auto runner, and giving them a
+           definite height lets that runner clip everything past the
+           first one instead of letting the print flow paginate it.
+           min-h-dvh is load-bearing. Tried 2026-09-22. */
       `}</style>
 
       <div
@@ -433,7 +454,7 @@ export default function CaseStudyDeck({
               ))}
           </dl>
 
-          <div className="mt-9 grid gap-7 lg:grid-cols-3">
+          <div className="mt-9 grid gap-7 print:grid-cols-3 lg:grid-cols-3">
             {deck.whyUs.points.map((point) => (
               <div key={point.name}>
                 <h3 className="font-display text-base font-extrabold tracking-tight">
@@ -512,8 +533,27 @@ export default function CaseStudyDeck({
             `display: none` until the print stylesheet runs, and a lazy
             image inside it is never in a viewport, so it would print
             as seven empty boxes. */}
-        <section className="hidden px-5 pt-10 print:block print:break-before-page sm:px-8">
-          <div className="mx-auto w-full max-w-4xl">
+        {/* ⚠ `break-after-page` IS NOT OPTIONAL. Every other block here
+            is a slide that happens to fill a sheet, so the flow breaks
+            itself; this one is half a sheet tall, and without the break
+            the case study that follows starts in the leftover space and
+            is sliced across two pages — its section tab on the bottom
+            of this sheet and its figures on the next. */}
+        {/* ⚠ THE WHOLE SHEET HAS TO FIT ONE PAGE, AND IT ONLY JUST
+            DOES. A landscape sheet is 794px tall; at max-w-4xl the
+            heading and two rows of four come to ~724. Widening this to
+            max-w-5xl scales every still up with it, the block reaches
+            ~798, and the grid drops onto a second page leaving this one
+            holding nothing but the heading. Measure before you widen. */}
+        <section className="hidden px-5 pb-8 pt-10 print:block print:break-after-page print:break-before-page sm:px-8">
+          {/* ⚠ FIXED PIXEL WIDTH IN PRINT, NOT A rem MAX-WIDTH. Every
+              other measurement on the printed page scales with the root
+              font-size below, which is how the whole deck is tuned to
+              the sheet — but these stills are images, and scaling them
+              with the type pushed the second row onto a page of its
+              own the moment the root went above 12px. 560px keeps two
+              rows of four on one sheet at any root size we would use. */}
+          <div className="mx-auto w-full max-w-4xl print:w-[560px]">
             <SectionTab>{deck.work.sectionLabel}</SectionTab>
             <h2 className="font-display mt-5 text-3xl font-extrabold leading-[1.02] tracking-tight">
               {deck.labels.clips}
@@ -523,7 +563,7 @@ export default function CaseStudyDeck({
               films play at {site.domain}/netflix-case-studies.
             </p>
 
-            <div className="mt-8 grid grid-cols-4 gap-5">
+            <div className="mt-8 grid grid-cols-4 gap-5 print:gap-4">
               {workClips.map((clip) => (
                 <figure key={clip.src}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -557,8 +597,8 @@ export default function CaseStudyDeck({
                the one case that has it.) */}
         {deck.cases.map((entry: DeckCase, index) => (
           <Slide key={entry.id} id={entry.id} className="slide-feature">
-            <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-              <div className="lg:col-span-5">
+            <div className="grid gap-10 print:grid-cols-12 print:gap-8 lg:grid-cols-12 lg:gap-14">
+              <div className="print:col-span-5 lg:col-span-5">
                 <div className="flex items-baseline justify-between gap-4">
                   <SectionTab>
                     {deck.work.caseLabel} {pad(index + 1)} / {pad(deck.cases.length)}
@@ -592,7 +632,7 @@ export default function CaseStudyDeck({
                 </div>
               </div>
 
-              <div className="lg:col-span-7">
+              <div className="print:col-span-7 lg:col-span-7">
                 <div className="rounded-2xl border border-line bg-card p-7 md:p-9">
                   <p className="font-display text-6xl font-extrabold leading-none tracking-tight text-accent sm:text-7xl md:text-8xl">
                     {entry.hero.value}
@@ -653,7 +693,7 @@ export default function CaseStudyDeck({
             {deck.theCase.intro}
           </p>
 
-          <div className="mt-11 grid gap-4 lg:grid-cols-3">
+          <div className="mt-11 grid gap-4 print:grid-cols-3 lg:grid-cols-3">
             {deck.theCase.shapes.map((shape) => (
               <article
                 key={shape.name}
@@ -693,7 +733,7 @@ export default function CaseStudyDeck({
             {deck.whatWeDo.title}
           </h2>
 
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 print:grid-cols-3 lg:grid-cols-3">
             {deck.whatWeDo.services.map((service, i) => (
               <article
                 key={service.name}
@@ -726,7 +766,7 @@ export default function CaseStudyDeck({
           <h2 className="font-display mt-4 max-w-[20ch] text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
             {deck.process.title}
           </h2>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-12 grid gap-4 print:grid-cols-5 sm:grid-cols-2 lg:grid-cols-5">
             {deck.process.steps.map((step, index) => (
               <article
                 key={step.name}
@@ -762,7 +802,7 @@ export default function CaseStudyDeck({
           <p className="mt-10 text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
             {deck.howWeStart.kicker}
           </p>
-          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+          <div className="mt-4 grid gap-4 print:grid-cols-3 lg:grid-cols-3">
             {deck.howWeStart.steps.map((step, i) => (
               <article
                 key={step.name}
