@@ -5,80 +5,101 @@
 //  Applications go to a Google Form Nikhil owns and edits by hand; no
 //  part of it is in git, and nothing here can change a question on it.
 //  This page is a wrapper: the pitch in the site's own voice, then the
-//  form embedded as-is.
+//  way in to the form. The script that built it is in
+//  scripts/outreach-intern-form.gs, and the long-form JD — for LinkedIn,
+//  Instagram, or anyone who asks — is scripts/outreach-intern-jd.md.
+//  Those three say the same thing in three lengths; change one, change
+//  the others.
 //
-//  ⚠ USE THE /forms/d/e/… RESPONDER URL BELOW, NOT THE /forms/d/<id>/edit
-//  ONE. The edit URL opens the form BUILDER, and anyone not signed in as
-//  Nikhil gets a permission wall instead of an application. The two ids
-//  are different strings for the same form — the long `1FAIpQLSe…` one
-//  is the public face of it.
+//  ⚠ USE THE RESPONDER URL BELOW, NOT THE /forms/d/<id>/edit ONE. The
+//  edit URL opens the form BUILDER, and anyone not signed in as Nikhil
+//  gets a permission wall instead of an application.
 //
-//  If the form is ever rebuilt, it is rebuilt IN PLACE by id so this URL
-//  keeps working. A brand-new form means a new responder id and a dead
-//  embed here, with no error to notice — the page would simply show
-//  Google's "file not found" inside the frame.
+//  ⚠ THIS FORM IS LINKED, NOT EMBEDDED, AND THE CV FIELD IS WHY. A form
+//  with a file-upload question only accepts a signed-in Google account,
+//  so an anonymous request for it returns 401 — and Google's sign-in page
+//  sets headers that forbid it from rendering inside an iframe. Embedded,
+//  the section was a white box for exactly the people we are trying to
+//  reach. Sent out to Google's own page, the sign-in happens where it is
+//  allowed to happen.
+//
+//  So: if the upload question is ever replaced by the "Link to your CV"
+//  text question the build script leaves in place, the form opens for
+//  everyone again and this page can go back to an <iframe> — see the
+//  commit that removed it for the markup.
+//
+//  ── THE ROLE CHANGED HERE ONCE ALREADY ─────────────────────────
+//  This page ran the on-camera creator hiring form first (form id
+//  1Lai-Api7nPM1_Uw4aiv3lw4DT5kA3UgC1hU_s7yULCE, still live, still
+//  Nikhil's). It was replaced rather than joined — one role at a time
+//  on this page. If both are ever open at once this file needs a list
+//  of roles rather than one, and the page needs a card per role.
 //
 //  ── THE VOICE ──────────────────────────────────────────────────
-//  The form opens "Are you camera-friendly, full of energy, spontaneous,
-//  and slightly unpredictable (in the best way)?" and says outright: no
-//  boring, rehearsed influencer vibes. This page has to sound like the
-//  same people wrote it. Corporate-HR copy here — "we are seeking a
-//  dynamic individual" — would filter for exactly the applicants the
-//  role does not want, and they would meet the form's tone one click
-//  later and know something was off.
+//  Say what the work is. "Dynamic self-starter", "fast-paced
+//  environment" and "wear many hats" filter for people who write like
+//  that, which is the opposite of the filter we want — this role is
+//  mostly writing to strangers who did not ask to hear from us.
 //
 //  ⚠ NO STIPEND FIGURE ON THIS PAGE. The form asks each applicant what
-//  they expect to be paid per month, which only works while we have not
-//  already named a number for them to repeat back.
+//  they expect per month, which only works while we have not already
+//  named a number for them to repeat back.
 // ────────────────────────────────────────────────────────────────
 
 export const careers = {
   kicker: "Careers",
   /** Split so the page can accent the second half. */
-  title: { lead: "We're hiring one", accent: "crazy content creator." },
-  lede: "Camera-friendly, spontaneous, slightly unpredictable — the kind of person who can walk into a crowd with a mic and come back with a reel. Paid internship, on camera and in the field from day one.",
+  title: { lead: "We're hiring an", accent: "outreach & social media intern." },
+  lede: "Someone to find the creators, talk to them, and keep our own channels alive while we do it. Paid internship, real briefs from day one — Delhi NCR is a plus, but the work travels.",
 
   /** The three-column block above the form. Each list is short on
-   *  purpose: the form itself runs to six sections, and a page that
+   *  purpose: the form is three minutes of tick-boxes, and a page that
    *  says everything twice is a page nobody scrolls to the form on. */
   blocks: [
     {
-      title: "Who we're looking for",
+      title: "What you'd actually do",
       points: [
-        "Lively, confident, funny — personality over polish",
-        "Not afraid to talk to strangers or try something ridiculous in public",
-        "Understands shooting, framing and angles well enough to stop a thumb",
-        "Shoots and edits your own reels, or close to it",
-        "Based in Delhi NCR — the shoots happen out on the street, so you need to be here",
+        "Find the creators who fit a brief, and work out who's worth approaching",
+        "Send the DMs and the emails — and chase the ones who go quiet",
+        "Plan and post for our own handles, writing as us rather than as you",
+        "Lay out posts and story frames in Canva, without waiting on a designer",
+        "Keep the creator lists, outreach status and campaign numbers straight in Sheets",
+        "Influencer and market research for campaigns we're about to pitch",
       ],
     },
     {
-      title: "What the role is",
+      title: "What we're looking for",
       points: [
-        "A paid internship with Deecode Media House",
-        "On camera and in the field making reels from day one — not fetching coffee",
+        "You can start a conversation with a stranger and survive the first 'no reply'",
+        "You write like a person — a DM that reads like a template gets ignored",
+        "Canva well enough to make something look decent on your own",
+        "A spreadsheet with 300 rows makes you curious, not tired",
+        "No agency experience needed: a page you've run counts for more",
+      ],
+    },
+    {
+      title: "The deal",
+      points: [
+        // The form asks each applicant what they expect per month. The
+        // page used to say so too, which put money in front of the
+        // reader before the work had.
+        "Paid internship",
+        "Real accounts, real creators, real briefs from day one",
+        "Delhi NCR is a plus; if you're good and you're elsewhere, apply anyway",
         "Open-ended, and it turns into something longer if you're good",
-        "You tell us the monthly stipend you're expecting",
-      ],
-    },
-    {
-      title: "Before you start",
-      points: [
-        "Have a link ready to a reel you are ON camera in, talking",
-        "That single link matters more than everything else in the form",
-        "The form takes about six minutes",
-        "Shortlisted creators hear from us on WhatsApp",
+        "Three minutes to apply, mostly tick-boxes. Shortlist hears from us on WhatsApp",
       ],
     },
   ],
 
   form: {
-    /** Public responder URL. See the warning at the top of this file. */
-    url: "https://docs.google.com/forms/d/e/1FAIpQLSeudllGZq1ZCMTWGEua0ZoBrlQh4atwHGXhiYAOG7CTZqv3MA/viewform",
-    heading: "Apply",
-    /** Shown beside the embed, for anyone whose browser blocks the
-     *  frame — third-party frame blocking is common enough on mobile
-     *  that a page with no way out of it loses those applicants. */
-    fallback: "Form not loading? Open it in a new tab",
+    /** Responder URL. See both warnings at the top of this file. */
+    url: "https://docs.google.com/forms/d/156i_kRH_zaqmvksn6jMBHY8luNPcU16Vywcwcu2ij2E/viewform",
+    /* The page has one CTA now — "Apply now" in the hero, straight to
+       this URL. It had a heading, a line of copy and a second button
+       under the cards; all three said what the cards already say, and a
+       page that repeats itself on the way to a click is a page people
+       stop reading. The label lives in the component, since it is the
+       only one left. */
   },
 } as const;
