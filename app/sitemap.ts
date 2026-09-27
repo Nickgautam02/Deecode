@@ -16,6 +16,9 @@ import { site } from "@/content/site";
 //   /                                       the homepage
 //   /influencer-marketing-agency-<city>     three city landing pages
 //   /careers                                the creator hiring page
+//   /talent-management-agency               the creator-facing service
+//                                           page — unlisted in the UI,
+//                                           found only through here
 //
 // Deliberately absent, each carrying `index: false` in its own metadata:
 //   /gallery, /storydigital, /portfolio/MIT, and the per-client proposals.
@@ -38,6 +41,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
+    },
+    // ⚠ THIS ENTRY IS THE PAGE'S ONLY DISCOVERY PATH. Nothing on the
+    // site links to /talent-management-agency — it is deliberately
+    // unlisted, a URL to hand out — so removing it here does not make
+    // the page quieter, it makes it invisible. 0.8, like the city
+    // pages: a different search from the homepage's, and one we would
+    // rather win.
+    {
+      url: `https://${site.domain}/talent-management-agency`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     // Recruiting, not sales: it ranks for a different search than the
     // rest of this list ("content creator internship delhi"), which is
