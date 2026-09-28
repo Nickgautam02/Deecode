@@ -52,11 +52,11 @@
 //  remember. If it is not a Netflix campaign, the fix is the single
 //  `kicker` string on that case.
 //
-//  ⚠ THIS DECK AND content/site.ts DISAGREE ON LIFETIME VIEWS.
-//  The homepage stat block claims "10M+ views generated"; these three
-//  campaigns alone sum to 53M+. Both cannot be current. Raise the
-//  homepage figure rather than shrinking this one — until then, a
-//  prospect who opens both will notice.
+//  ⚠ THIS DECK AND content/site.ts ONCE DISAGREED ON LIFETIME VIEWS —
+//  the homepage claimed 10M+ while these three campaigns alone sum to
+//  53M+. Fixed on 28 September 2026: site.ts now says 70M+, supplied
+//  by Nikhil as the real lifetime figure. Keep it above the sum of the
+//  campaigns in this file, or the contradiction comes back.
 //
 //  ⚠ NO DATES, NO TIMEFRAMES, ANYWHERE IN THE CLIENT-FACING COPY.
 //  Not release dates, not "release week", not "a fixed date", not
@@ -473,12 +473,9 @@ export const netflixCaseStudies = {
      homepage cannot disagree — the same rule InfluencerCampaignProposal
      follows for its credentials strip.
 
-     ⚠ ONE STAT IS DELIBERATELY SKIPPED. site.ts carries a "10M+ views
-     generated" figure, and the proof section of this very deck sums to
-     53M+. Putting both in one document is a contradiction a reader
-     will find in ten seconds, so the component filters that stat out
-     rather than shrinking the campaign numbers. Fix the homepage and
-     this filter can go — see the note at the top of this file. */
+     All four render. One used to be filtered out — site.ts said 10M+
+     views while the proof section of this deck sums to 53M+ — and the
+     filter came out when that figure was corrected to 70M+. */
   whyUs: {
     kicker: "Why Deecode",
     title: "The roster is ours, not rented.",

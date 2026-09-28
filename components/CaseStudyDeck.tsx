@@ -427,31 +427,35 @@ export default function CaseStudyDeck({
         </Slide>
 
         {/* ── 02 Why us — standing, before any claim.
-                The three figures come out of
-               content/site.ts, not out of this file, so the deck and
-               the homepage cannot drift apart. The views stat is
-               filtered: see the note in the content file — it says 10M+
-               where the proof section of this deck sums to 53M+. ── */}
+               The figures come out of content/site.ts, not out of this
+               file, so the deck and the homepage cannot drift apart.
+
+               All four of them now. The views stat was filtered out
+               here for as long as site.ts said 10M+ while the proof
+               section of this same deck summed to 53M+ — one document
+               cannot carry both. It says 70M+ as of 28 September 2026,
+               which is the lifetime figure and is larger than the three
+               campaigns behind it, so there is nothing left to hide. ── */}
         <Slide id="why">
           <Kicker>{deck.whyUs.kicker}</Kicker>
           <h2 className="font-display mt-4 max-w-[20ch] text-3xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
             {deck.whyUs.title}
           </h2>
 
-          <dl className="mt-11 grid grid-cols-3 gap-x-6 border-y border-line py-7">
-            {site.stats
-              .filter((stat) => !/views/i.test(stat.label))
-              .map((stat) => (
-                <div key={stat.label}>
-                  <dd className="font-display text-4xl font-extrabold tabular-nums leading-none tracking-tight text-accent sm:text-5xl">
-                    {stat.value}
-                    {stat.suffix}
-                  </dd>
-                  <dt className="mt-2.5 text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
-                    {stat.label}
-                  </dt>
-                </div>
-              ))}
+          {/* Four across, not three: the row was sized for the three
+              stats that survived the filter above. */}
+          <dl className="mt-11 grid grid-cols-2 gap-x-6 gap-y-7 border-y border-line py-7 print:grid-cols-4 sm:grid-cols-4">
+            {site.stats.map((stat) => (
+              <div key={stat.label}>
+                <dd className="font-display text-4xl font-extrabold tabular-nums leading-none tracking-tight text-accent sm:text-5xl">
+                  {stat.value}
+                  {stat.suffix}
+                </dd>
+                <dt className="mt-2.5 text-[0.6875rem] uppercase tracking-[0.1em] text-muted">
+                  {stat.label}
+                </dt>
+              </div>
+            ))}
           </dl>
 
           <div className="mt-9 grid gap-7 print:grid-cols-3 lg:grid-cols-3">

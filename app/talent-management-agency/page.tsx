@@ -168,11 +168,13 @@ export default function TalentManagementPage() {
         </section>
 
         {/* ── Roster facts, as plain text a crawler and an LLM can both
-              read. ⚠ NOT site.stats: that array carries "10M+ views
-              generated", which the case studies on the homepage already
-              contradict at 53M+. A page written today does not get to
-              publish a figure we know is stale — the deck filters the
-              same stat for the same reason. ── */}
+              read. Deliberately not site.stats: this page argues to
+              creators, so roster size, markets and brand partners are
+              the numbers that answer "would they represent me". The
+              campaign-volume figures live on the pages that sell to
+              brands. (It also sidestepped a stale views figure when it
+              was written; that one is fixed, and this choice stands on
+              its own.) ── */}
         <section className="border-y border-line bg-card/40 px-5 py-10">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 sm:grid-cols-3">
             {tm.roster.facets.map((facet) => (

@@ -547,8 +547,11 @@ def why_us(prs, deck, stats, brands):
     write(f, w["title"], 34, FG, bold=True, track=-0.02, line=1.05,
           display=True)
 
+    # cols=4, not 3: the row was sized for the three stats that used to
+    # survive the filter in main(). A fourth on a three-column grid
+    # wraps to a second row and walks straight through the rule below.
     rule(s, MARGIN, Inches(2.65), CONTENT_W)
-    figures(s, MARGIN, Inches(2.9), CONTENT_W, stats, 36, BASE, cols=3)
+    figures(s, MARGIN, Inches(2.9), CONTENT_W, stats, 34, BASE, cols=4)
     rule(s, MARGIN, Inches(3.95), CONTENT_W)
 
     col_w = (CONTENT_W - Inches(0.6)) / 3
@@ -601,13 +604,14 @@ def main():
     data = content()
     deck, site = data["deck"], data["site"]
 
-    # ⚠ THE VIEWS STAT IS DROPPED ON PURPOSE. content/site.ts says "10M+
-    # views generated" and the proof section of this very deck sums to
-    # 53M+ — printing both is a contradiction a reader finds instantly.
-    # The web deck filters the same stat the same way. Fix the homepage
-    # figure and both filters can go.
+    # All four stats, views included. This dropped the views figure for
+    # as long as content/site.ts said 10M+ while the proof section of
+    # this same deck summed to 53M+ — a contradiction a reader finds
+    # instantly. site.ts says 70M+ as of 28 September 2026, a lifetime
+    # figure comfortably larger than the three campaigns inside it, so
+    # the filter is gone from here and from the web deck both.
     stats = [{"value": f"{x['value']}{x['suffix']}", "label": x["label"]}
-             for x in site["stats"] if "views" not in x["label"].lower()]
+             for x in site["stats"]]
 
     prs = Presentation()
     prs.slide_width, prs.slide_height = Emu(int(W)), Emu(int(H))

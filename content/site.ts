@@ -102,7 +102,7 @@ export const site = {
   stats: [
     { value: 600, suffix: "+", label: "Creator roster", decimals: 0 },
     { value: 100, suffix: "+", label: "Campaigns delivered", decimals: 0 },
-    { value: 10, suffix: "M+", label: "Views generated", decimals: 0 },
+    { value: 70, suffix: "M+", label: "Views generated", decimals: 0 },
     { value: 80, suffix: "+", label: "Brand partners", decimals: 0 },
   ],
 
@@ -202,7 +202,7 @@ export const site = {
   about: {
     // The words wrapped in [brackets] are rendered in the accent color
     heading: "Where brands meet the [creator economy].",
-    body: "Deecode Media House connects ambitious brands with a network of 600+ creators across India, the USA and Dubai. From Garnier to Red Bull to Ixigo, we've turned briefs into 10M+ views by matching the right voices to the right audiences — and backing every campaign with strategy, production muscle and numbers that hold up in the boardroom.",
+    body: "Deecode Media House connects ambitious brands with a network of 600+ creators across India, the USA and Dubai. From Garnier to Red Bull to Ixigo, we've turned briefs into 70M+ views by matching the right voices to the right audiences — and backing every campaign with strategy, production muscle and numbers that hold up in the boardroom.",
     pillars: [
       {
         title: "Right creator, right audience",
