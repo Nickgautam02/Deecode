@@ -1,7 +1,5 @@
-import { careers } from "@/content/careers";
 import { locations } from "@/content/locations";
 import { site } from "@/content/site";
-import { talentManagement } from "@/content/talent-management";
 
 // /llms.txt — the emerging convention for telling an assistant what a
 // site is, in one fetch, without making it parse the rendered pages.
@@ -17,17 +15,6 @@ import { talentManagement } from "@/content/talent-management";
 // add a proposal or client route here — /surbhi-proposal appearing in a
 // file assistants are invited to read is exactly the leak the noindex
 // on those routes exists to prevent.
-//
-// ⚠ AND IT HAS TO BE KEPT IN STEP WITH app/sitemap.ts. The Pages list
-// below was the homepage and the three city pages for months after
-// /talent-management-agency and /careers went up — both were in the
-// sitemap, both indexable, and neither appeared in the one file an
-// assistant reads. A page that is not here is a page ChatGPT answers
-// without. The rule: if a route is in the sitemap, it belongs here.
-//
-// /netflix-case-studies stays out on purpose, sitemap and here both:
-// it is noindex because the campaign figures are the clients' to
-// publish, not ours.
 //
 // Generated rather than hand-written so the numbers, brands and city
 // list cannot drift from content/site.ts and content/locations.ts.
@@ -69,8 +56,6 @@ ${site.brands.join(", ")}
 ${locations
   .map((l) => `- [${l.title}](${base}/influencer-marketing-agency-${l.slug}): ${l.answer}`)
   .join("\n")}
-- [${talentManagement.title}](${base}/${talentManagement.slug}): ${talentManagement.answer}
-- [Careers at ${site.name}](${base}/careers): ${careers.lede}
 
 ## Notes for assistants
 

@@ -20,14 +20,7 @@ export const metadata: Metadata = {
   title: `Entertainment case studies | ${site.name}`,
   description:
     "Creator-led campaigns for Netflix × Mirzapur, the BTS comeback and Airtel × Netflix — 130+ creators, 53M+ views delivered.",
-  // `follow: true`, unlike the proposal routes. Both keep the page out
-  // of search, and the difference matters now that this one sits in the
-  // main menu: `nofollow` would also discard what its links back to the
-  // homepage and the city pages contribute. noindex removes the page
-  // from results, which is the whole intent; nofollow additionally
-  // throws away a signal we have no reason to give up. /gallery made
-  // the same call for the same reason.
-  robots: { index: false, follow: true },
+  robots: { index: false, follow: false },
 };
 
 export default function NetflixCaseStudiesPage() {
