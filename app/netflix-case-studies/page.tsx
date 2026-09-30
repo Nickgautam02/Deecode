@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import CaseStudyDeck from "@/components/CaseStudyDeck";
 import { site } from "@/content/site";
+import { shareImage } from "@/app/shared-metadata";
+
+const title = `Entertainment case studies | ${site.name}`;
+const description =
+  "Creator-led campaigns for Netflix × Mirzapur, the BTS comeback and Airtel × Netflix — 130+ creators, 53M+ views delivered.";
 
 // The entertainment credentials deck — the URL we hand out when a
 // prospect asks what we have run.
@@ -17,9 +22,32 @@ import { site } from "@/content/site";
 // decisions in two places — this `robots` key, and staying absent from
 // the sitemap. Both are done; do not add this route there.
 export const metadata: Metadata = {
-  title: `Entertainment case studies | ${site.name}`,
-  description:
-    "Creator-led campaigns for Netflix × Mirzapur, the BTS comeback and Airtel × Netflix — 130+ creators, 53M+ views delivered.",
+  title,
+  description,
+  // Self-referencing, and not optional. With no `alternates` here the
+  // page inherited the root layout's canonical of "/", so it said
+  // "noindex" and "the real version of this page is the homepage" at
+  // once — two contradictory signals, and the second one asks Google to
+  // fold this URL's links into the homepage's.
+  alternates: { canonical: "/netflix-case-studies" },
+  // Its own share card. This is the URL we paste to prospects, and
+  // before this it inherited the homepage's og:url, title and
+  // description, so the preview under the link described a different
+  // page. noindex does not affect link previews; these still render.
+  openGraph: {
+    title,
+    description,
+    url: `https://${site.domain}/netflix-case-studies`,
+    siteName: site.name,
+    type: "website",
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [shareImage],
+  },
   // `follow: true`, unlike the proposal routes. Both keep the page out
   // of search, and the difference matters now that this one sits in the
   // main menu: `nofollow` would also discard what its links back to the

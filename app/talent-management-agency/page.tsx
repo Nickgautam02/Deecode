@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import { locations } from "@/content/locations";
 import { site } from "@/content/site";
 import { talentManagement as tm } from "@/content/talent-management";
+import { shareImage } from "@/app/shared-metadata";
 
 // /talent-management-agency — the creator-facing service page.
 //
@@ -55,8 +56,14 @@ export const metadata: Metadata = {
     url,
     siteName: site.name,
     type: "website",
+    images: [shareImage],
   },
-  twitter: { card: "summary_large_image", title, description: tm.answer },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: tm.answer,
+    images: [shareImage],
+  },
 };
 
 export default function TalentManagementPage() {

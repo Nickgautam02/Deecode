@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Reveal from "./Reveal";
 import { findLocation, locationProof, locations, officeLocality } from "@/content/locations";
 import { site } from "@/content/site";
+import { shareImage } from "@/app/shared-metadata";
 
 // One implementation behind three URLs. The route folders named
 // app/influencer-marketing-agency-<slug> are two lines each and differ
@@ -46,11 +47,13 @@ export function locationMetadata(slug: string): Metadata {
       url,
       siteName: site.name,
       type: "website",
+      images: [shareImage],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: location.answer,
+      images: [shareImage],
     },
   };
 }

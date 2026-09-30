@@ -61,8 +61,9 @@ export const metadata: Metadata = {
 // clever shortcut. Add awards, ratings or review counts only when they are
 // real and shown on the site.
 //
-// Add profiles to `sameAs` as they go live (Instagram, YouTube, X) — a
-// single LinkedIn is thin, and this list is one of the cheapest wins left.
+// Add profiles to `sameAs` as they go live (YouTube, X, Google Business
+// Profile) — LinkedIn and Instagram are in; two is still thin, and this
+// list is one of the cheapest wins left.
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",

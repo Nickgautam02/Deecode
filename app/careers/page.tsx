@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
 import { careers } from "@/content/careers";
 import { site } from "@/content/site";
+import { shareImage } from "@/app/shared-metadata";
 
 // /careers — the hiring page for whichever role is open. The copy is in
 // content/careers.ts; the application form is a Google Form that lives
@@ -34,6 +35,17 @@ export const metadata: Metadata = {
     url: `https://${site.domain}/careers`,
     siteName: site.name,
     type: "website",
+    images: [shareImage],
+  },
+  // Without its own `twitter` block this page inherited the root
+  // layout's, so an X/Twitter card for /careers carried the homepage's
+  // title and description. Same strings as `openGraph` above.
+  twitter: {
+    card: "summary_large_image",
+    title: `Careers — ${site.name}`,
+    description:
+      "We're hiring an outreach and social media intern. Paid internship, real briefs from day one, Delhi NCR or remote.",
+    images: [shareImage],
   },
 };
 
