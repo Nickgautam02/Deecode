@@ -15,13 +15,16 @@ import { site } from "@/content/site";
 // Indexed on purpose:
 //   /                                       the homepage
 //   /influencer-marketing-agency-<city>     three city landing pages
-//   /careers                                the creator hiring page
+//   /careers                                the hiring page for
+//                                           whichever role is open
 //   /talent-management-agency               the creator-facing service
 //                                           page — unlisted in the UI,
 //                                           found only through here
 //
 // Deliberately absent, each carrying `index: false` in its own metadata:
-//   /gallery, /storydigital, /portfolio/MIT, and the per-client proposals.
+//   /gallery, /storydigital, /portfolio/MIT, /netflix-case-studies (named
+//   clients' campaign figures, theirs to publish), and the per-client
+//   proposals.
 //
 // The city pages are in no navigation menu — they are reached by direct
 // link, from this sitemap, and from the Locations column in the footer.
@@ -55,8 +58,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     // Recruiting, not sales: it ranks for a different search than the
-    // rest of this list ("content creator internship delhi"), which is
-    // why it is here at all and why it sits below the city pages.
+    // rest of this list ("social media internship delhi" for the
+    // current role), which is why it is here at all and why it sits
+    // below the city pages.
     {
       url: `https://${site.domain}/careers`,
       lastModified,

@@ -13,8 +13,9 @@ import { shareImage } from "@/app/shared-metadata";
 // holds one at a time, which is why nothing here names a role.
 //
 // ── INDEXED, UNLIKE /gallery AND THE PROPOSALS ─────────────────────
-// Every other secondary route on this domain carries `robots: { index:
-// false }`, because they exist to be sent to someone. This one exists to
+// /gallery, /netflix-case-studies and the proposal routes carry `robots:
+// { index: false }`, because they exist to be sent to someone. This one,
+// like the city pages and /talent-management-agency, exists to
 // be found: someone searching "social media internship delhi" is exactly
 // the reader it wants, and a recruiting page nobody can find is a form
 // with no traffic.

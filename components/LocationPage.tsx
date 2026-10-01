@@ -37,10 +37,11 @@ export function locationMetadata(slug: string): Metadata {
     // first sentence is built to carry the page on its own.
     description: location.answer,
     alternates: { canonical: `/influencer-marketing-agency-${slug}` },
-    // ⚠ NO `robots` KEY HERE, DELIBERATELY. These three pages are the
-    // only routes besides the homepage that are meant to rank, and
-    // they are listed in app/sitemap.ts to match. Adding a `robots`
-    // key would silently undo that — see the warning in sitemap.ts.
+    // ⚠ NO `robots` KEY HERE, DELIBERATELY. These three pages are
+    // meant to rank — alongside the homepage, /talent-management-agency
+    // and /careers — and they are listed in app/sitemap.ts to match.
+    // Adding a `robots` key would silently undo that — see the warning
+    // in sitemap.ts.
     openGraph: {
       title,
       description: location.answer,

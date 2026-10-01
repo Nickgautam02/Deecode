@@ -1,8 +1,8 @@
 // ────────────────────────────────────────────────────────────────
 //  LOCATION PAGES — the copy behind /influencer-marketing-agency-*
 //
-//  These are the only routes on this site besides the homepage that
-//  are meant to rank. Each one targets a phrase people actually type:
+//  Three of the routes on this site that are meant to rank (the full
+//  list is in app/sitemap.ts). Each one targets a phrase people type:
 //  "influencer marketing agency in Noida" and its neighbours.
 //
 //  ⚠ THREE RULES, LEARNED FROM WHAT THE COMPETITION GETS WRONG:
