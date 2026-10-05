@@ -35,13 +35,18 @@ import { site } from "@/content/site";
 // Adding a route that SHOULD rank means two edits, not one: add it here
 // and leave `robots` off its metadata. Doing only the first is silent —
 // the page is submitted and then refused, with nothing to show why.
+//
+// ⚠ NO `lastModified`, DELIBERATELY. It used to be `new Date()` on every
+// entry, which stamped every page as changed at every deploy — a CSS fix
+// told Google the Noida page had new content. Google uses <lastmod> only
+// when it is "consistently and verifiably accurate", and a value that is
+// always today is neither, so it trains the crawler to ignore the field
+// for this domain. Omitted is honest. If it comes back, it has to be a
+// real per-page date that moves only when that page's copy does.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   return [
     {
       url: `https://${site.domain}`,
-      lastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
@@ -53,7 +58,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // rather win.
     {
       url: `https://${site.domain}/talent-management-agency`,
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -63,7 +67,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // below the city pages.
     {
       url: `https://${site.domain}/careers`,
-      lastModified,
       changeFrequency: "monthly",
       priority: 0.5,
     },
@@ -72,7 +75,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // It has no effect on ranking for the city terms themselves.
     ...locations.map((location) => ({
       url: `https://${site.domain}/influencer-marketing-agency-${location.slug}`,
-      lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

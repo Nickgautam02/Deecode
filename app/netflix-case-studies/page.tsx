@@ -50,8 +50,10 @@ export const metadata: Metadata = {
   },
   // `follow: true`, unlike the proposal routes. Both keep the page out
   // of search, and the difference matters now that this one sits in the
-  // main menu: `nofollow` would also discard what its links back to the
-  // homepage and the city pages contribute. noindex removes the page
+  // main menu: `nofollow` would also discard what its link back to the
+  // homepage contributes. (The deck renders no Navbar or Footer, so the
+  // homepage — the masthead and the closing slide — is the only internal
+  // route out of it; it does not link to the city pages.) noindex removes the page
   // from results, which is the whole intent; nofollow additionally
   // throws away a signal we have no reason to give up. /gallery made
   // the same call for the same reason.

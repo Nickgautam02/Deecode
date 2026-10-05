@@ -1,9 +1,9 @@
 // ────────────────────────────────────────────────────────────────
 //  TALENT MANAGEMENT — the copy behind /talent-management-agency.
 //
-//  The fourth route on this site built to rank, after the homepage and
-//  the three city pages, and the first one aimed at CREATORS rather
-//  than at brands. Someone searching "talent management agency" or
+//  One of the routes on this site built to rank (the full list is in
+//  app/sitemap.ts), and the only one aimed at CREATORS rather than at
+//  brands. Someone searching "talent management agency" or
 //  "creator management India" is asking who would represent them, not
 //  who would run their campaign.
 //
