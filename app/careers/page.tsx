@@ -24,15 +24,18 @@ import { shareImage } from "@/app/shared-metadata";
 // no `robots` key here, and an entry in the sitemap. Both are done. To
 // pull it back out of search, add `robots: { index: false, follow: true }`
 // here AND delete it from app/sitemap.ts; doing one is silent.
+//
+// The title and descriptions name the role, so they are in
+// content/careers.ts under `meta`, not here.
+const title = `${careers.meta.title} | ${site.name}`;
+
 export const metadata: Metadata = {
-  title: `Careers — ${site.name}`,
-  description:
-    "We're hiring an outreach and social media intern — creator outreach, our own handles, Canva and research. Paid internship, Delhi NCR or remote.",
+  title,
+  description: careers.meta.description,
   alternates: { canonical: "/careers" },
   openGraph: {
-    title: `Careers — ${site.name}`,
-    description:
-      "We're hiring an outreach and social media intern. Paid internship, real briefs from day one, Delhi NCR or remote.",
+    title,
+    description: careers.meta.shareDescription,
     url: `https://${site.domain}/careers`,
     siteName: site.name,
     type: "website",
@@ -43,9 +46,8 @@ export const metadata: Metadata = {
   // title and description. Same strings as `openGraph` above.
   twitter: {
     card: "summary_large_image",
-    title: `Careers — ${site.name}`,
-    description:
-      "We're hiring an outreach and social media intern. Paid internship, real briefs from day one, Delhi NCR or remote.",
+    title,
+    description: careers.meta.shareDescription,
     images: [shareImage],
   },
 };

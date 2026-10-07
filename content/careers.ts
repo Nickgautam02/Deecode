@@ -47,6 +47,23 @@
 // ────────────────────────────────────────────────────────────────
 
 export const careers = {
+  /** Search and share copy for /careers. It names the role, so it lives
+   *  here with the rest of the role's copy: when the page changed roles
+   *  it was the one part outside this file, and it had to be found and
+   *  rewritten by hand in app/careers/page.tsx.
+   *
+   *  `title` is the role, not "Careers" — it is the strongest on-page
+   *  signal for "social media internship delhi", and the word "Careers"
+   *  matched nothing anyone types. The page appends " | <site name>". */
+  meta: {
+    title: "Outreach & Social Media Internship",
+    description:
+      "We're hiring an outreach and social media intern — creator outreach, our own handles, Canva and research. Paid internship, Delhi NCR or remote.",
+    /** For OpenGraph and Twitter cards — shorter, for a link preview. */
+    shareDescription:
+      "We're hiring an outreach and social media intern. Paid internship, real briefs from day one, Delhi NCR or remote.",
+  },
+
   kicker: "Careers",
   /** Split so the page can accent the second half. */
   title: { lead: "We're hiring an", accent: "outreach & social media intern." },
