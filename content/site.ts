@@ -1,7 +1,18 @@
 // ────────────────────────────────────────────────────────────────
-//  SITE CONTENT — edit this one file to change everything on the
-//  website: brand name, contact details, stats, services, creators,
-//  case studies and footer links. No other file needs touching.
+//  SITE CONTENT — the sitewide facts: brand name, domain, contact
+//  details, nav, stats, brands, services, creators, About and the
+//  contact forms. Everything that reads one of these (the homepage,
+//  the city and talent pages, the Organization schema in app/layout.tsx,
+//  /llms.txt) picks a change up from here.
+//
+//  It is not the only content file, and the gaps are where an edit
+//  goes missing:
+//    · case-study figures — content/netflix-case-studies.ts, read by
+//      both the deck and the homepage's case-study cards
+//    · the footer's Locations column and the city pages —
+//      content/locations.ts
+//    · /talent-management-agency — content/talent-management.ts
+//    · /careers — content/careers.ts
 // ────────────────────────────────────────────────────────────────
 
 export type Creator = {
@@ -53,7 +64,9 @@ export type ContactAudience = {
 };
 
 export const site = {
-  // ← Replace with your real brand name
+  // Spelt with the double "e" everywhere it appears: Google rewrites
+  // "Deecode" to "Decode" until enough sources agree (see `sameAs` in
+  // app/layout.tsx).
   name: "Deecode Media House",
   domain: "www.deecodemediahouse.com",
   tagline: "Influencer marketing & talent management agency",
@@ -106,7 +119,9 @@ export const site = {
     { value: 80, suffix: "+", label: "Brand partners", decimals: 0 },
   ],
 
-  // Logos strip under the hero
+  // Names, not logos: the strip under the hero renders them as text, and
+  // the same list is the brand line on the city and talent pages and in
+  // /llms.txt.
   brands: [
     "Garnier",
     "Monster",
